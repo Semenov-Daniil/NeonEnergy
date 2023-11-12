@@ -1,0 +1,104 @@
+.header {
+    height: 8vh;
+    padding: 0px 5%;
+    border-bottom: 1px solid #818181;
+    background-color: #0000003C;
+    box-shadow: 0px 5px 15px 0px rgba(129, 129, 129, 0.25);
+    backdrop-filter: blur(12.5px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav {
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    white-space: nowrap;
+}
+
+.nav__right {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1 auto;
+}
+
+.nav__left {
+    flex: 1 auto;
+}
+
+.nav__list {
+    display: flex;
+    gap: 3rem;
+    font-size: 1.6rem;
+    list-style-type: none;
+}
+
+.nav__list__icon {
+    display: flex;
+    list-style-type: none;
+}
+
+.nav__logo {
+    position: relative;
+
+}
+
+.nav__list__icon li {
+    padding: 0.2rem 1.5rem;
+}
+
+.nav__list__icon svg {
+    width: 2rem;
+    height: 2rem;
+}
+
+.nav__list__icon a {
+    display: block;
+    line-height: 0;
+    position: relative;
+
+    font-size: 1rem;
+    color: #00FF01;
+}
+
+.item--border {
+    border-left: #818181 0.2rem solid;
+}
+
+.nav__icon {
+    position: relative;
+    text-align: center;
+}
+
+[data-title]:hover::after {
+    content: attr(data-title);
+    position: absolute;
+
+    left: 50%;
+    transform: translate(-50%);
+    top: 170%;
+    z-index: 1;
+}
+
+.mobile--menu {
+    display: none;
+
+    svg {
+        width: 3.5rem;
+        height: 2.1rem;
+    }
+}
+
+.mobile--menu svg {
+    width: 3.5rem;
+    height: 2.1rem;
+}
+
+.icon {
+    fill: white;
+}
