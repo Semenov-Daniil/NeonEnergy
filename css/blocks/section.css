@@ -537,3 +537,73 @@
 .swiper-pagination-bullet {
     transition-duration: 500ms;
 }
+
+/* ответы на вопросы */
+.section--answers {
+    width: 90%;
+    
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px
+}
+
+.answers__title {
+    font-size: 3rem;
+    text-transform: uppercase;
+    font-family: 'OpenSans-BoldItalic';
+    width: 50%;
+}
+
+.answers__title h1 {
+    text-align: end;
+    color: #00FF01;
+}
+
+
+.answers__accordion {
+    width: 50%;
+    font-size: 2.5rem;
+    align-self: flex-end;
+}
+
+.accordionjs {
+    width: 100%;
+}
+
+.accordion__title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.accordion__title svg {
+    stroke: #ffffff;
+    stroke-width: 2px;
+    width: 2.5rem;
+    height: 2.5rem;
+    transition: .5s;
+}
+
+.accordion__body {
+    font-size: 1.5rem;
+    padding: 20px;
+}
+
+.accordion__line {
+    border-bottom: 2px solid #ffffff;
+}
+
+.accordion__title-active {
+    color: #00FF01;
+}
+
+.accordion__title-active svg {
+    stroke: #00FF01;
+    transform: rotate(-45deg);
+    transition: .5s;
+}

@@ -195,6 +195,15 @@
         padding-left: 40px;
         padding-right: 40px;
     }
+
+    /* section--answers */
+    .answers__title {
+        width: 100%;
+    }
+
+    .answers__accordion {
+        width: 100%;
+    }
 }
 
 @media only screen and (max-width: 480px) {
