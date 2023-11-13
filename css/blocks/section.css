@@ -330,7 +330,18 @@
     gap: 1rem;
 }
 
-.card-product__rating {
+.wrapper__rating {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 1rem;
+    color: #000000;
+    font-size: 1.5rem;
+    font-family: 'OpenSans-BoldItalic';
+    align-items: center;
+}
+
+.product__rating {
     display: flex;
     gap: 0.3rem;
 }
@@ -467,7 +478,8 @@
 
 .card-product__special {
     position: absolute;
-    left: -1rem;
+    left: 1rem;
+    top: 1rem;
 
     color: #00FF01;
     z-index: 20;
@@ -541,7 +553,7 @@
 /* ответы на вопросы */
 .section--answers {
     width: 90%;
-    
+
     display: flex;
     flex-direction: column;
 

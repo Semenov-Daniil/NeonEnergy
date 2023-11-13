@@ -1,5 +1,5 @@
 jQuery(document).ready(function($){
-    $("#my-accordion").accordionjs({
+    $(".accordionjs").accordionjs({
         // Allow self close.(data-close-able)
         closeAble   : true,
 
@@ -18,11 +18,11 @@ jQuery(document).ready(function($){
 
         // Callback before a section is open
         beforeOpenSection: function( section ){
-            $(section[0].childNodes[1]).addClass('accordion__title-active');
+            $(section[0].childNodes[0]).addClass('accordion__title-active');
         },
 
         beforeCloseSection: function(section) {
-            $(section[0].childNodes[1]).removeClass('accordion__title-active');
+            $(section[0].childNodes[0]).removeClass('accordion__title-active');
         }
     });
 });
