@@ -466,6 +466,7 @@
     position: absolute;
     top: 1.5rem;
     right: 1.5rem;
+    cursor: pointer;
 }
 
 .wishlist--active .card-product-icon-favorites {
