@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" fill="none">
-  <symbol id="icon-lightning" viewBox="0 0 8 21">
-    <path d="M4 20.006L7 10.006L1 10.9602L4 0.955078" stroke-linecap="round" stroke-linejoin="round"/>
-  </symbol>
-  <symbol id="icon-lightning2" viewBox="0 0 26 53">
-    <path d="M5.67196 53C5.67196 53 24.0621 13.0903 24.0643 13.0846L25.0849 10.8147C21.1288 11.9517 12.2897 14.1161 12.2614 14.2041C13.1859 11.6171 17.164 0 17.3354 0C13.5541 0 9.77279 0 5.99158 0L4.84071 5.48033L0 25.3436L12.7876 21.8622L5.67196 53Z"/>
-  </symbol>
-</svg>
