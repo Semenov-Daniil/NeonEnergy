@@ -1,0 +1,136 @@
+.footer {
+    height: 15vh;
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid #818181;
+    background-color: #0000003C;
+    box-shadow: 0px -5px 14px 0px rgba(129, 129, 129, 0.25);
+
+    flex-wrap: wrap;
+    white-space: nowrap;
+}
+
+.footer__logo--left, .footer__logo--right {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+    position: relative;
+}
+
+.footer__logo--left {
+    left: -2rem;
+}
+
+.footer__logo--right {
+    right: -2rem;
+}
+
+.footer__logo {
+    height: 80%;
+
+    img {
+        height: 100%;
+    }
+}
+
+.footer__logo img {
+    height: 100%;
+}
+
+.footer__logo--left {
+    align-items: flex-end;
+}
+
+.footer__logo--right {
+    align-items: center;
+}
+
+.footer__widget__info {
+    height: 100%;
+    padding-top: 1rem;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-around;
+    gap: 10%;
+
+    width: 50vw;
+    min-width: fit-content;
+    max-width: 50%;
+}
+
+.footer__widget {
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+}
+
+.list__socials {
+    height: fit-content;
+
+    li {
+        height: fit-content;
+    }
+
+    a {
+        display: block;
+        line-height: 0;
+    }
+
+    svg {
+        height: 2rem;
+        width: 2rem;
+    }
+}
+
+.list__socials li {
+    height: fit-content;
+}
+
+.list__socials a {
+    display: block;
+    line-height: 0;
+}
+
+.list__socials svg {
+    height: 2rem;
+    width: 2rem;
+}
+
+.list__row, .list__column {
+    display: flex;
+    gap: 1rem;
+    flex: auto;
+}
+
+.list__column {
+    flex-direction: column;
+}
+
+.widget__link {
+    padding: 1rem 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-top: 1px solid #818181;
+
+    .svg--arrow {
+        height: 3rem;
+        width: 3rem;
+    }
+
+}
+
+.widget__link .icon-arrow {
+    height: 3rem;
+    width: 3rem;
+}
+
+.widget__link__mobile {
+    display: none;
+    width: 100%;
+    padding-top: 1rem;
+}

@@ -1,0 +1,237 @@
+@media only screen and (max-width: 1024px) {
+
+    .block__short--description {
+        width: auto;
+    }
+
+    .block__short--description--logo {
+        position: relative;
+    }
+
+    .block__fly--energy--drink {
+        position: relative;
+        right: 0;
+    }
+
+    .section__hero {
+        position: relative;
+    }
+
+    .block__description {
+        margin-left: 25%;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    /* header */
+    .mobile--menu {
+        display: block;
+    }
+
+    .nav__list {
+        display: none;
+    }
+
+    .nav__left {
+        flex: 2 auto;
+    }
+
+    /* footer */
+    .footer__logo--left {
+        display: none;
+    }
+
+    .footer__logo--right {
+        right: 0;
+    }
+
+    /* section__opening */
+    .content--left {
+        left: 0;
+    }
+
+    .content--bottom {
+        max-width: 100%;
+    }
+
+    /* section products */
+
+    .container--products__header {
+        flex-direction: column;
+    }
+
+    .products__header--left::after,.cp--mirrored .products__header--left::after {
+        border-radius: 0px;
+    }
+
+    .container--products__body, .cp--mirrored .container--products__body {
+        border-radius: 30px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    html {
+        font-size: 8px;
+    }
+
+    /* header */
+    .nav__left {
+        flex: 1 auto !important;
+    }
+
+    .nav__list__icon {
+        li:not(.icon-search) {
+            display: none;
+        }
+    }
+
+    .nav__list__icon li:not(.icon-search) {
+        display: none;
+    }
+
+    /* footer */
+    .footer {
+        height: fit-content;
+        padding-bottom: 10%;
+    }
+
+    .footer__logo {
+        height: 20vw;
+    }
+
+    .footer__widget__info {
+        gap: 1rem;
+        width: 100%;
+        flex: 1;
+        max-width: none;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .footer__widget {
+        flex: 0;
+        .widget__link {
+            display: none;
+        }
+    }
+
+    .footer__widget .widget__link {
+        display: none;
+    }
+
+    .widget__link__mobile {
+        display: block;
+    }
+
+    /* section__opening */
+    .section__opening {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        min-height: max-content;
+        height: 70vmin;
+    }
+
+    .content--left {
+        top: 0;
+    }
+
+    .content--bottom {
+        order: 2;
+        height: auto;
+    }
+
+    .opening--desc {
+        margin: 0;
+    }
+
+    .content--right {
+        max-height: 80%;
+        width: 60%;
+        max-width: none;
+        height: auto;
+    }
+
+    .fly--energy {
+        max-height: 80%;
+        width: 100%;
+        height: auto;
+
+        img {
+            height: 100%;
+            transform: rotate(15deg);
+        }
+    }
+
+    .fly--energy img {
+        max-height: 100%;
+        max-width: 100%;
+        width: auto;
+        height: auto;
+        transform: rotate(15deg);
+    }
+
+    .content--left img {
+        width: 130%;
+    }
+
+    .oval--backlight {
+        height: 30%;
+        width: auto;
+    }
+
+    .oval--backlight img {
+        height: 100%;
+        width: auto;
+    }
+
+    .oval--backlight img {
+        width: 140%;
+    }
+
+    /* section products */
+    .container--products__body {
+        height: 40vh;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    /* section--answers */
+    .answers__title {
+        width: 100%;
+    }
+
+    .answers__accordion {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    html {
+        font-size: 6px;
+    }
+
+    /* header */
+    .header {
+        height: fit-content;
+        padding: 1rem 5%;
+    }
+
+    .nav, .nav__right {
+        flex-wrap: wrap;
+    }
+
+    .nav__logo {
+        height: 5vh;
+    }
+
+    .section__opening {
+        height: 50vh;
+    }
+
+    /* section products */
+    .container--products__body {
+        height: 30vh;
+        padding: 20px;
+    }
+}
