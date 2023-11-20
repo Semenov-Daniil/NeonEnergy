@@ -1,22 +1,22 @@
 {
     "popularProducts": [
-        {"id": 1, "img": "Jaguar_Live.png", "rating": 4.5, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": true, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99},
-        {"id": 1, "img": "Jaguar_Live.png", "rating": 4.5, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": true, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99},
-        {"id": 1, "img": "Jaguar_Live.png", "rating": 4.5, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": true, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99},
-        {"id": 1, "img": "Jaguar_Live.png", "rating": 4.5, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": true, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99},
-        {"id": 1, "img": "Jaguar_Live.png", "rating": 4.5, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": true, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99},
-        {"id": 1, "img": "Jaguar_Live.png", "rating": 4.5, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": true, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99},
-        {"id": 1, "img": "Jaguar_Live.png", "rating": 4.5, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": true, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99},
-        {"id": 1, "img": "Jaguar_Live.png", "rating": 4.5, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": true, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99}
+        {"id": 1, "img": "Jaguar_Live.png", "rating": 4, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": true, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99},
+        {"id": 2, "img": "Jaguar_Live.png", "rating": 4.5, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": false, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99},
+        {"id": 3, "img": "Jaguar_Live.png", "rating": 3, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": false, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99},
+        {"id": 4, "img": "Jaguar_Live.png", "rating": 4.5, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": true, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99},
+        {"id": 5, "img": "Jaguar_Live.png", "rating": 4, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": false, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99},
+        {"id": 6, "img": "Jaguar_Live.png", "rating": 4.5, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": true, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99},
+        {"id": 17, "img": "Jaguar_Live.png", "rating": 4, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": false, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99},
+        {"id": 8, "img": "Jaguar_Live.png", "rating": 4.5, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": true, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99}
     ],
     "newProducts": [
-        {"id": 1, "img": "Jaguar_Live.png", "rating": 4.5, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": true, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99},
-        {"id": 1, "img": "Jaguar_Live.png", "rating": 4.5, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": true, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99},
-        {"id": 1, "img": "Jaguar_Live.png", "rating": 4.5, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": true, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99},
-        {"id": 1, "img": "Jaguar_Live.png", "rating": 4.5, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": true, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99},
-        {"id": 1, "img": "Jaguar_Live.png", "rating": 4.5, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": true, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99},
-        {"id": 1, "img": "Jaguar_Live.png", "rating": 4.5, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": true, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99},
-        {"id": 1, "img": "Jaguar_Live.png", "rating": 4.5, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": true, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99},
-        {"id": 1, "img": "Jaguar_Live.png", "rating": 4.5, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": true, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99}
+        {"id": 111, "img": "Jaguar_Live.png", "rating": 5, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": true, "spesialPrice": null, "spesialTitle": "NEW", "price": 99},
+        {"id": 21, "img": "Jaguar_Live.png", "rating": 4.5, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": false, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99},
+        {"id": 22, "img": "Jaguar_Live.png", "rating": 3.5, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": true, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99},
+        {"id": 31, "img": "Jaguar_Live.png", "rating": 4.5, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": false, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99},
+        {"id": 321, "img": "Jaguar_Live.png", "rating": 4, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": true, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99},
+        {"id": 411, "img": "Jaguar_Live.png", "rating": 4.5, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": false, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99},
+        {"id": 211, "img": "Jaguar_Live.png", "rating": 4, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": false, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99},
+        {"id": 1321, "img": "Jaguar_Live.png", "rating": 4.5, "title": "Jaguar Origin", "volume": "0,5л", "favorites": false, "spesial": true, "spesialPrice": 50, "spesialTitle": "-50%", "price": 99}
     ]
 }

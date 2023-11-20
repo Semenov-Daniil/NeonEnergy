@@ -37,7 +37,7 @@ html {
     font-size: 10px;
     color: #ffffff;
     font-family: 'OpenSans-SemiBold', sans-serif;
-    
+
     overflow-x: hidden;
 }
 
@@ -88,6 +88,13 @@ h6 {
     margin: 0;
 }
 
+input {
+    outline: none;
+}
+
+button {
+    border: none;
+}
 
 .text--caps {
     text-transform: uppercase;

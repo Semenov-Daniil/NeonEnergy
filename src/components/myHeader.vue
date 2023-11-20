@@ -54,6 +54,9 @@
                             <svg class="icon icon-favorites">
                                 <use xlink:href="images/icons/icons.svg#icon-basket"></use>
                             </svg>
+                            <div class="count-prod" v-if="card.length">
+                                {{ card.length }}
+                            </div>
                         </a>
                     </li>
                 </ul>
@@ -64,7 +67,12 @@
 
 <script>
 export default {
-    name: 'my-header'
+    name: 'my-header',
+    props: {
+        card: {
+            type: Array
+        }
+    },
 }
 </script>
 

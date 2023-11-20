@@ -22,14 +22,14 @@
                 <a href="#" class="card-product__title">{{ product.title }} <span class="card-product__title-add">{{ product.volume }}</span></a>
             </div>
             <div class="card-product__footer">
-                <div :class="{'card-product__price-tag': true, 'spesial__price': product.spesial}">
+                <div :class="{'card-product__price-tag': true, 'spesial__price': product.spesialPrice && product.spesial}">
                     <div class="price-tag">
                         <span class="price--base">{{ product.price }}</span>
                         <span class="price--spesial" v-if='product.spesial'>{{ product.spesialPrice }}</span>
                     </div>
                     ₽
                 </div>
-                <button class="card-product__btn" @click="addProductCard(product.id)">
+                <button class="card-product__btn" @click="$emit('addCard', product.id)">
                     <svg class="icon card-product-icon-basket">
                         <use xlink:href="images/icons/icons.svg#icon-basket"></use>
                     </svg>
@@ -58,7 +58,7 @@ export default {
     }
 }
 </script>
-    
+
 <style>
 
 </style>

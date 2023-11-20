@@ -5,4 +5,7 @@
 @import url(blocks/base.css);
 @import url(blocks/main.css);
 @import url(blocks/section.css);
+@import url(blocks/dialog.css);
+
+
 @import url(media/media.css);

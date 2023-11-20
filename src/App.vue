@@ -1,6 +1,11 @@
 <template>
-    <my-header/>
-    <router-view></router-view>
+    <my-header
+        :card="card"
+    />
+    <router-view
+        v-model:card="card"
+        v-model:search="search"
+    ></router-view>
     <my-footer/>
     <noscript>
         <strong>We're sorry but NeonEnergy doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
@@ -15,6 +20,13 @@ export default {
     components: {
         myHeader,
         myFooter,
+    },
+    data() {
+        return {
+            card: [
+            ],
+            search: '',
+        }
     },
 }
 </script>

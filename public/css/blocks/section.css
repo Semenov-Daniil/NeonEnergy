@@ -229,7 +229,7 @@
     background-color:rgba(255, 255, 255, 0.10);
     backdrop-filter: blur(7.5px);
     z-index: 2;
-    padding: 40px 80px;
+    padding: 40px 60px;
 }
 
 .container--products__background {
@@ -288,6 +288,7 @@
 .container__card-product {
     height: 100%;
     border-radius: 25px;
+    padding: 0 20px;
 }
 
 /* card product */
@@ -479,7 +480,7 @@
 
 .card-product__special {
     position: absolute;
-    left: 1rem;
+    left: -1rem;
     top: 1rem;
 
     color: #00FF01;

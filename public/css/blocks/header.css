@@ -102,3 +102,20 @@
 .icon {
     fill: white;
 }
+
+.count-prod {
+    background-color: #00FF01;
+    border-radius: 8px;
+    position: absolute;
+    box-shadow: 0 0 0 2px #000;
+    height: 1.8rem;
+    min-width: 1.8rem;
+    color: #000;
+    text-align: center;
+    right: -10px;
+    top: -5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+}

@@ -1,0 +1,63 @@
+.searh_dialog_wrapper {
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.searh_dialog_content {
+    position: absolute;
+    top: 10rem;
+    display: flex;
+    align-items: center;
+    width: 80vw;
+    font-size: 1.5rem;
+    border: 1.5px solid transparent;
+    border-radius: 25px;
+}
+
+.searh_dialog_content:hover {
+    border: 1.5px solid #00FF01;
+}
+
+.search_input {
+    flex: 1;
+    padding: 1rem 1.8rem;
+    border-radius: 25px 0 0 25px;
+    border: 1px solid transparent;
+}
+
+.search_btn {
+    padding: 1rem 1.5rem;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    cursor: pointer;
+}
+
+.search_btn svg {
+    fill: #000;
+    height: 2rem;
+}
+
+.search_btn_icon {
+    border-radius: 0 25px 25px 0;
+}
+
+.search_btn_icon:hover svg {
+    fill: #00FF01;
+}
+
+.searh_dialog_content .icon-cross {
+    transform: rotate(45deg);
+}
+
+.search_input_reset:hover svg {
+    fill: #818181;
+}

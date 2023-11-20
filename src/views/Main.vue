@@ -38,15 +38,15 @@
                     <div class='products__header--right'></div>
                 </div>
                 <div class='container--products__body'>
-                    <swiper 
-                        class="swiper mySwiper_one container__card-product"
+                    <swiper
+                        class="container__card-product"
                         :modules="modules"
                         :navigation="{
-                            nextEl: '.swiper-button-next_swiper1',
-                            prevEl: '.swiper-button-prev_swiper1'
+                            nextEl: '.swiper-button-next_swiper-popular-products',
+                            prevEl: '.swiper-button-prev_swiper-popular-products'
                         }"
                         :pagination="{
-                            el: '.swiper-pagination_swiper1',
+                            el: '.swiper-pagination_swiper-popular-products',
                             clickable: true
                         }"
                         :slidesPerView="4"
@@ -67,29 +67,30 @@
                                 slidesPerView: 2,
                                 spaceBetween: 80
                             },
-                            '1250': {
+                            '1600': {
                                 slidesPerView: 3,
                                 spaceBetween: 45,
                             },
-                            '1600': {
+                            '1900': {
                                 slidesPerView: 4,
-                                spaceBetween: 80,
+                                spaceBetween: 20,
                             }
                         }"
                     >
-                        <swiper-slide 
+                        <swiper-slide
                             v-for="product in products.popularProducts"
                             :key="product.id"
                         >
-                            <card-product        
+                            <card-product
                                 :product="product"
+                                @addCard="addCard"
                             >
                             </card-product>
                         </swiper-slide>
                     </swiper>
-                    <div class="swiper-pagination swiper-pagination_swiper1"></div>
-                    <div class="swiper-button-next_swiper1 swiper-button-next"></div>
-                    <div class="swiper-button-prev_swiper1 swiper-button-prev"></div>
+                    <div class="swiper-pagination swiper-pagination_swiper-popular-products"></div>
+                    <div class="swiper-button-next_swiper-popular-products swiper-button-next"></div>
+                    <div class="swiper-button-prev_swiper-popular-products swiper-button-prev"></div>
                 </div>
                 <div class="container--products__background bg-g"></div>
                 <div class="container--products__background bg-w"></div>
@@ -108,21 +109,21 @@
                     <div class='products__header--right'></div>
                 </div>
                 <div class='container--products__body'>
-                    <swiper 
-                        class="swiper mySwiper_one container__card-product"
+                    <swiper
+                        class="container__card-product"
                         :modules="modules"
                         :navigation="{
-                            nextEl: '.swiper-button-next_swiper2',
-                            prevEl: '.swiper-button-prev_swiper2'
+                            nextEl: '.swiper-button-next_swiper-new-products',
+                            prevEl: '.swiper-button-prev_swiper-new-products'
                         }"
                         :pagination="{
-                            el: '.swiper-pagination_swiper2',
+                            el: '.swiper-pagination_swiper-new-products',
                             clickable: true
                         }"
                         :slidesPerView="4"
                         :spaceBetween="50"
 
-                        :watchOverflow="true"
+                        :watchOverflow="false"
 
                         :breakpoints="{
                             '0': {
@@ -137,29 +138,30 @@
                                 slidesPerView: 2,
                                 spaceBetween: 80
                             },
-                            '1250': {
+                            '1600': {
                                 slidesPerView: 3,
                                 spaceBetween: 45,
                             },
-                            '1600': {
+                            '1900': {
                                 slidesPerView: 4,
-                                spaceBetween: 80,
+                                spaceBetween: 20,
                             }
                         }"
                     >
-                        <swiper-slide 
-                            v-for="product in products.popularProducts"
+                        <swiper-slide
+                            v-for="product in products.newProducts"
                             :key="product.id"
                         >
-                            <card-product        
+                            <card-product
                                 :product="product"
+                                @addCard="addCard"
                             >
                             </card-product>
                         </swiper-slide>
                     </swiper>
-                    <div class="swiper-pagination swiper-pagination_swiper2"></div>
-                    <div class="swiper-button-next swiper-button-next_swiper2"></div>
-                    <div class="swiper-button-prev swiper-button-prev_swiper2"></div>
+                    <div class="swiper-pagination swiper-pagination_swiper-new-products"></div>
+                    <div class="swiper-button-next swiper-button-next_swiper-new-products"></div>
+                    <div class="swiper-button-prev swiper-button-prev_swiper-new-products"></div>
                 </div>
                 <div class="container--products__background bg-w"></div>
                 <div class="container--products__background bg-g"></div>
@@ -200,16 +202,47 @@
             </div>
         </section>
     </main>
+    <div class="searh_dialog_wrapper">
+        <div class="searh_dialog_content">
+            <input
+                class="search_input"
+                type="text"
+                placeholder="Поиск на сайте NeonEnergy..."
+            />
+            <button class="search_btn search_input_reset">
+                <svg class="icon icon-cross">
+                    <use xlink:href="images/icons/cross2.svg#cross"></use>
+                </svg>
+            </button>
+            <a href="#" class="search_btn search_btn_icon">
+                <svg class="icon icon-search">
+                    <use xlink:href="images/icons/icons.svg#icon-search"></use>
+                </svg>
+            </a>
+        </div>
+    </div>
 </template>
 
 <script>
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination, Navigation } from 'swiper/modules';
+import Accordion from 'primevue/accordion';
+import AccordionTab from 'primevue/accordiontab';
 
 export default {
     components: {
         Swiper,
         SwiperSlide,
+        Accordion,
+        AccordionTab
+    },
+    props: {
+        card: {
+            type: Array
+        },
+        search: {
+            type: String, Number
+        }
     },
     data() {
         return {
@@ -225,21 +258,23 @@ export default {
             } catch(err) {
                 console.log(err.message);
             }
+        },
+        async addCard(event) {
+            let prod = {};
+            try {
+                let response = await fetch('./data/products.json');
+                let products = await response.json();
+                for (let productsItem in products) {
+                    products[productsItem].find((pr) => {if (pr.id === event) prod = pr });
+                }
+                this.card.push(prod);
+                this.$emit('update:card', this.card);
+            } catch(err) {
+                console.log(err.message);
+            }
         }
     },
     mounted() {
-    //   let recaptchaScript = document.createElement('script')
-    //   recaptchaScript.setAttribute('src', 'js/swiper-bundle.min.js')
-    //   document.head.appendChild(recaptchaScript)
-    //   recaptchaScript.setAttribute('src', 'js/swiper.js')
-    //   document.head.appendChild(recaptchaScript)
-    //   recaptchaScript.setAttribute('src', 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
-    //   document.head.appendChild(recaptchaScript)
-    //   recaptchaScript.setAttribute('src', 'js/accordion.min.js')
-    //   document.head.appendChild(recaptchaScript)
-    //   recaptchaScript.setAttribute('src', 'js/accordion.js')
-    //   document.head.appendChild(recaptchaScript)
-
       this.getPopularProducts();
     },
 }
