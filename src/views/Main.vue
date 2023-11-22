@@ -202,14 +202,21 @@
             </div>
         </section>
     </main>
-    <div class="searh_dialog_wrapper">
-        <div class="searh_dialog_content">
+    <div class="dialog_wrapper" v-show="this.searchDialog" @click="$emit('update:searchDialog', false)">
+        <div
+            class="searh_dialog_content dialog_content"
+            :class="{'dialog_focus': focusDialog}"
+            @click.stop
+        >
             <input
                 class="search_input"
                 type="text"
                 placeholder="Поиск на сайте NeonEnergy..."
+                @focus="focusDialog = true"
+                @blur="focusDialog = false"
+                v-model="searchValue"
             />
-            <button class="search_btn search_input_reset">
+            <button class="search_btn search_input_reset" v-show="searchValue.length" @click="searchValue = ''">
                 <svg class="icon icon-cross">
                     <use xlink:href="images/icons/cross2.svg#cross"></use>
                 </svg>
@@ -219,6 +226,25 @@
                     <use xlink:href="images/icons/icons.svg#icon-search"></use>
                 </svg>
             </a>
+        </div>
+    </div>
+    <div class="dialog_wrapper">
+        <div class="dialog_content card_dialog_content">
+            <header class="card_dialog_header">
+                <h1 class="card_title">КОРЗИНА ТОВАРОВ</h1>
+                <button class="close_card_btn">
+                    <svg class="icon icon-cross">
+                        <use xlink:href="images/icons/cross2.svg#cross"></use>
+                    </svg>
+                </button>
+            </header>
+            <main class="card_main">
+                <div class="card_product">
+                    <div class="conteiner--image">
+                        <img src="images/energy_drink/Jaguar_Live.png" alt="Jaguar Live">
+                    </div>
+                </div>
+            </main>
         </div>
     </div>
 </template>
@@ -242,12 +268,17 @@ export default {
         },
         search: {
             type: String, Number
+        },
+        searchDialog: {
+            type: Boolean
         }
     },
     data() {
         return {
             products: {},
             modules: [Pagination, Navigation],
+            focusDialog: false,
+            searchValue: '',
         }
     },
     methods: {

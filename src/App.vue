@@ -1,10 +1,12 @@
 <template>
     <my-header
         :card="card"
+        v-model:searchDialog="searchDialog"
     />
     <router-view
         v-model:card="card"
         v-model:search="search"
+        v-model:searchDialog="searchDialog"
     ></router-view>
     <my-footer/>
     <noscript>
@@ -26,6 +28,7 @@ export default {
             card: [
             ],
             search: '',
+            searchDialog: false,
         }
     },
 }

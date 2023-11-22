@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: >0.3%,defaults
+*/
+
 /* section__opening */
 .section__opening {
     width: auto;
@@ -10,6 +17,8 @@
 
 .content--left {
     width: 100%;
+    max-width: -webkit-fit-content;
+    max-width: -moz-fit-content;
     max-width: fit-content;
     position: absolute;
     left: 10%;
@@ -34,7 +43,22 @@
     align-self: flex-end;
     padding: 3rem 0;
     position: relative;
-    animation: 3s slidein;
+    -webkit-animation: 3s slidein;
+            animation: 3s slidein;
+}
+
+@-webkit-keyframes slidein {
+    from {
+      left: -150%;
+    }
+
+    25% {
+        text-shadow: -20px 0px 4px #00FF01;
+    }
+
+    to {
+      left: 0%;
+    }
 }
 
 @keyframes slidein {
@@ -59,7 +83,23 @@
     font-family: 'OpenSans-Italic', sans-serif;
     text-shadow: 0px 5px 4px #81818196;
     position: relative;
-    animation: 3s 3s anim--shadow;
+    -webkit-animation: 3s 3s anim--shadow;
+            animation: 3s 3s anim--shadow;
+}
+
+@-webkit-keyframes anim--shadow {
+    from {
+        display: none;
+    }
+
+    25% {
+        text-shadow: 0px 5px 4px #ffffffb4;
+    }
+
+    to {
+        display: inline;
+        text-shadow: 0px 5px 4px #81818196;
+    }
 }
 
 @keyframes anim--shadow {
@@ -94,24 +134,40 @@
     top: 8%;
     z-index: 2;
 
-    filter: drop-shadow(0px 0px 50px #ffffff4B);
+    -webkit-filter: drop-shadow(0px 0px 50px #ffffff4B);
+
+            filter: drop-shadow(0px 0px 50px #ffffff4B);
 
     flex-grow: 2;
 
     display: flex;
     justify-content: center;
 
-    animation: 1.5s 500ms infinite linear alternate fly-energy;
+    -webkit-animation: 1.5s 500ms infinite linear alternate fly-energy;
+
+            animation: 1.5s 500ms infinite linear alternate fly-energy;
 
     img {
         height: 100%;
-        transform: rotate(15deg);
+        -webkit-transform: rotate(15deg);
+                transform: rotate(15deg);
     }
 }
 
 .fly--energy img {
     height: 100%;
-    transform: rotate(15deg);
+    -webkit-transform: rotate(15deg);
+            transform: rotate(15deg);
+}
+
+@-webkit-keyframes fly-energy {
+    from {
+        top: 8%;
+    }
+
+    to {
+        top: 3%
+    }
 }
 
 @keyframes fly-energy {
@@ -158,6 +214,8 @@
 }
 
 .container--products__header {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
     height: fit-content;
     display: flex;
 }
@@ -191,6 +249,8 @@
 .products--link {
     height: 100%;
     width: 100%;
+    min-width: -webkit-fit-content;
+    min-width: -moz-fit-content;
     min-width: fit-content;
 
     padding: 1.2rem 3rem;
@@ -227,7 +287,8 @@
     height: 50vh;
     border-radius: 30px 0 30px 30px;
     background-color:rgba(255, 255, 255, 0.10);
-    backdrop-filter: blur(7.5px);
+    -webkit-backdrop-filter: blur(7.5px);
+            backdrop-filter: blur(7.5px);
     z-index: 2;
     padding: 40px 60px;
 }
@@ -243,14 +304,16 @@
 .bg-w {
     bottom: 0;
     right: 0;
-    transform: translate(20%, 20%);
+    -webkit-transform: translate(20%, 20%);
+            transform: translate(20%, 20%);
     background: radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.00) 100%);
 }
 
 .bg-g {
     top: 0;
     left: 0;
-    transform: translate(-20%, -20%);
+    -webkit-transform: translate(-20%, -20%);
+            transform: translate(-20%, -20%);
     background: radial-gradient(50% 50% at 50% 50%, rgba(0, 255, 1, 0.20) 0%, rgba(15, 15, 15, 0.00) 100%);
 }
 
@@ -275,14 +338,16 @@
     bottom: 0;
     left: 0;
     right: auto;
-    transform: translate(-20%, 20%);
+    -webkit-transform: translate(-20%, 20%);
+            transform: translate(-20%, 20%);
 }
 
 .cp--mirrored .bg-g {
     top: 0;
     right: 0;
     left: auto;
-    transform: translate(20%, -20%);
+    -webkit-transform: translate(20%, -20%);
+            transform: translate(20%, -20%);
 }
 
 .container__card-product {
@@ -293,7 +358,11 @@
 
 /* card product */
 .card-product {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
+    min-width: -webkit-fit-content;
+    min-width: -moz-fit-content;
     min-width: fit-content;
     height: 100%;
     background-color: #ffffff;
@@ -316,11 +385,13 @@
 
 .card-product__img-product img {
     height: 100%;
-    transform: rotate(15deg);
+    -webkit-transform: rotate(15deg);
+            transform: rotate(15deg);
 }
 
 .card-product__img-product img:hover {
-    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
 }
 
 .card-product__body {
@@ -373,7 +444,8 @@
 .card-product__footer {
     height: 15%;
     display: flex;
-    align-self: auto;
+    -ms-grid-row-align: auto;
+        align-self: auto;
 }
 
 .card-product__price-tag {
@@ -389,7 +461,8 @@
     padding: 1rem 2rem;
 
     text-align: center;
-    align-self: center;
+    -ms-grid-row-align: center;
+        align-self: center;
     position: relative;
 }
 
@@ -401,7 +474,8 @@
 .price--base {
     position:relative;
     text-align: center;
-    align-self: center;
+    -ms-grid-row-align: center;
+        align-self: center;
     order: 1;
 }
 
@@ -428,7 +502,8 @@
 	width:120%;
 	height:0;
 	border-bottom:2px solid #81818159;
-	transform:rotate(-10deg);
+	-webkit-transform:rotate(-10deg);
+	        transform:rotate(-10deg);
 }
 
 .card-product__btn {
@@ -488,7 +563,8 @@
 
     text-shadow: 0px 0px 5px #818181;
     font-size: 4rem;
-    transform: rotate(10deg);
+    -webkit-transform: rotate(10deg);
+            transform: rotate(10deg);
 }
 
 
@@ -502,7 +578,8 @@
     justify-content: center;
     z-index: 10;
     cursor: pointer;
-    transform: translate(0, -50%);
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
 }
 
 .swiper-btn-next {
@@ -513,7 +590,8 @@
 .swiper-btn-prev {
     left: 1rem;
     right: auto;
-    transform: rotate(-180deg) translate(0, 50%);
+    -webkit-transform: rotate(-180deg) translate(0, 50%);
+            transform: rotate(-180deg) translate(0, 50%);
 }
 
 .icon-arrow-swiper {
@@ -618,6 +696,7 @@
 
 .accordion__title-active svg {
     stroke: #00FF01;
-    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
     transition: .5s;
 }

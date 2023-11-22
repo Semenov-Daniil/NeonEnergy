@@ -1,4 +1,11 @@
-.searh_dialog_wrapper {
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: >0.3%,defaults
+*/
+
+.dialog_wrapper {
     background-color: rgba(0, 0, 0, 0.2);
     width: 100vw;
     height: 100vh;
@@ -10,10 +17,15 @@
     justify-content: center;
 }
 
-.searh_dialog_content {
+
+.dialog_content {
     position: absolute;
     top: 10rem;
     display: flex;
+}
+
+/* ПОИСК */
+.searh_dialog_content {
     align-items: center;
     width: 80vw;
     font-size: 1.5rem;
@@ -22,6 +34,11 @@
 }
 
 .searh_dialog_content:hover {
+    border: 1.5px solid #00FF01;
+}
+
+.dialog_focus {
+    box-shadow: 0 0 0 1.5px #b7ffb7;
     border: 1.5px solid #00FF01;
 }
 
@@ -55,9 +72,59 @@
 }
 
 .searh_dialog_content .icon-cross {
-    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
 }
 
 .search_input_reset:hover svg {
     fill: #818181;
+}
+
+/* КОРЗИНА */
+.card_dialog_content {
+    width: 60vw;
+    height: fit-content;
+    padding: 20px 50px;
+    background-color: rgba(255, 255, 255, 0.50);;
+    border-radius: 30px;
+    border: 1.5 solid #00FF01;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: #000;
+}
+
+.card_dialog_header {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card_title {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+}
+
+.close_card_btn {
+    background-color: transparent;
+    width: 5rem;
+    height: 5rem;
+    transform: rotate(45deg);
+}
+
+.close_card_btn svg {
+    width: 4rem;
+    height: 4rem;
+    fill: #000;
+}
+
+.card_main {
+    display: flex;
+    flex-direction: column;
+}
+
+.card_product {
+    padding: 20px;
+    height: 100px;
 }

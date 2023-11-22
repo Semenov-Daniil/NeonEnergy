@@ -22,8 +22,8 @@
 
                 <ul class="nav__list__icon">
                     <li class="icon-search">
-                        <a href="#" data-title="Поиск">
-                            <svg class="icon icon-search">
+                        <a href="#" data-title="Поиск" @click="$emit('update:searchDialog', true)">
+                            <svg class="icon icon-search" :class="{'icon-active': searchDialog}">
                                 <use xlink:href="images/icons/icons.svg#icon-search"></use>
                             </svg>
                         </a>
@@ -71,6 +71,9 @@ export default {
     props: {
         card: {
             type: Array
+        },
+        searchDialog: {
+            type: Boolean
         }
     },
 }
