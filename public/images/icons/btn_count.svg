@@ -1,6 +1,6 @@
-<svg>
+<svg fill="none" xmlns="http://www.w3.org/2000/svg">
     <symbol viewBox="0 0 8 2" id='minus'>
-        <path d="M1.25757 0.920898H6.7735" stroke-linecap="round" stroke="black" stroke-width="1.22576"/>
+        <path d="M1.25757 0.920898H6.7735" stroke-linecap="round"/>
     </symbol>
     <symbol viewBox="0 0 8 8" id='plus'>
         <path d="M1.22656 3.92105H6.74249M3.98453 6.67902V1.16309" stroke-linecap="round"/>

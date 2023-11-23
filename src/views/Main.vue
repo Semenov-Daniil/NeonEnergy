@@ -228,7 +228,7 @@
             </a>
         </div>
     </div>
-    <div class="dialog_wrapper">
+    <div class="dialog_wrapper d-none">
         <div class="dialog_content basket_dialog_content">
             <header class="basket_dialog_header">
                 <h1 class="basket_title">КОРЗИНА ТОВАРОВ</h1>
@@ -244,17 +244,70 @@
                         <img src="images/energy_drink/Jaguar_Live.png" alt="Jaguar Live">
                     </div>
                     <div class="container_main_product">
-                        <a href="#" class="card-product__title pd-none">Jaguar Original <span class="card-product__title-add">0,5л</span></a>
-                        <div class="btn_count_product">
-                            <button class="btn_product_minus">
-                                <svg viewBox="0 0 8 2" xmlns="http://www.w3.org/2000/svg" class="icon_count">
-                                    <use xlink:href="images/icons/btn_count.svg#minus"></use>
+                        <div class="container_title">
+                            <a href="#" class="card-product__title pd-none">Jaguar Original <span class="card-product__title-add">0,5л</span></a>
+                            <div class="btn_count_product">
+                                <button class="btn_product_minus">
+                                    <svg class="icon_count">
+                                        <use xlink:href="images/icons/btn_count.svg#minus"></use>
+                                    </svg>
+                                </button>
+                                <span class="count_product">1</span>
+                                <button class="btn_product_plus">
+                                    <svg class="icon_count">
+                                        <use xlink:href="images/icons/btn_count.svg#plus"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="basket_price">
+                            <div class="basket_product_price">
+                                <div class="price-tag">
+                                    <span class="price--base">99</span>
+                                    <!-- <span class="price--spesial">99</span> -->
+                                </div>
+                                ₽
+                            </div>
+                            <button class="btn_product_delete">
+                                <svg class="icon_count icon_basket">
+                                    <use xlink:href="images/icons/basket.svg#basket"></use>
                                 </svg>
                             </button>
-                            <span class="count_product">1</span>
-                            <button class="btn_product_plus">
-                                <svg viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg" class="icon_count">
-                                    <use xlink:href="images/icons/btn_count.svg#plus"></use>
+                        </div>
+                    </div>
+                </div>
+                <div class="basket_product">
+                    <div class="conteiner--image basket_image">
+                        <img src="images/energy_drink/Jaguar_Live.png" alt="Jaguar Live">
+                    </div>
+                    <div class="container_main_product">
+                        <div class="container_title">
+                            <a href="#" class="card-product__title pd-none">Jaguar Original <span class="card-product__title-add">0,5л</span></a>
+                            <div class="btn_count_product">
+                                <button class="btn_product_minus">
+                                    <svg class="icon_count">
+                                        <use xlink:href="images/icons/btn_count.svg#minus"></use>
+                                    </svg>
+                                </button>
+                                <span class="count_product">1</span>
+                                <button class="btn_product_plus">
+                                    <svg class="icon_count">
+                                        <use xlink:href="images/icons/btn_count.svg#plus"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="basket_price">
+                            <div class="basket_product_price">
+                                <div class="price-tag">
+                                    <span class="price--base">99</span>
+                                    <!-- <span class="price--spesial">99</span> -->
+                                </div>
+                                ₽
+                            </div>
+                            <button class="btn_product_delete">
+                                <svg class="icon_count icon_basket">
+                                    <use xlink:href="images/icons/basket.svg#basket"></use>
                                 </svg>
                             </button>
                         </div>
