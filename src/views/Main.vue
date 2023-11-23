@@ -1,5 +1,5 @@
 <template>
-    <main class="main__index">
+    <main class="main main__index">
         <section class="section__opening">
             <div class="content--left">
                 <img src="images/logo.png" alt="логотип Neon~Energy">
@@ -229,19 +229,35 @@
         </div>
     </div>
     <div class="dialog_wrapper">
-        <div class="dialog_content card_dialog_content">
-            <header class="card_dialog_header">
-                <h1 class="card_title">КОРЗИНА ТОВАРОВ</h1>
-                <button class="close_card_btn">
+        <div class="dialog_content basket_dialog_content">
+            <header class="basket_dialog_header">
+                <h1 class="basket_title">КОРЗИНА ТОВАРОВ</h1>
+                <button class="close_basket_btn">
                     <svg class="icon icon-cross">
                         <use xlink:href="images/icons/cross2.svg#cross"></use>
                     </svg>
                 </button>
             </header>
-            <main class="card_main">
-                <div class="card_product">
-                    <div class="conteiner--image">
+            <main class="basket_main">
+                <div class="basket_product">
+                    <div class="conteiner--image basket_image">
                         <img src="images/energy_drink/Jaguar_Live.png" alt="Jaguar Live">
+                    </div>
+                    <div class="container_main_product">
+                        <a href="#" class="card-product__title pd-none">Jaguar Original <span class="card-product__title-add">0,5л</span></a>
+                        <div class="btn_count_product">
+                            <button class="btn_product_minus">
+                                <svg viewBox="0 0 8 2" xmlns="http://www.w3.org/2000/svg" class="icon_count">
+                                    <use xlink:href="images/icons/btn_count.svg#minus"></use>
+                                </svg>
+                            </button>
+                            <span class="count_product">1</span>
+                            <button class="btn_product_plus">
+                                <svg viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg" class="icon_count">
+                                    <use xlink:href="images/icons/btn_count.svg#plus"></use>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </main>
