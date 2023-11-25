@@ -50,12 +50,12 @@
                         </a>
                     </li>
                     <li class="item--border">
-                        <a href="#" data-title="Корзина">
-                            <svg class="icon icon-favorites">
+                        <a href="#" data-title="Корзина" @click="$emit('update:basketDialog', true)">
+                            <svg class="icon icon-favorites" :class="{'icon-active': basketDialog}">
                                 <use xlink:href="images/icons/icons.svg#icon-basket"></use>
                             </svg>
-                            <div class="count-prod" v-if="card.length">
-                                {{ card.length }}
+                            <div class="count-prod" v-if="basket.length">
+                                {{ basket.length }}
                             </div>
                         </a>
                     </li>
@@ -69,12 +69,15 @@
 export default {
     name: 'my-header',
     props: {
-        card: {
+        basket: {
             type: Array
         },
         searchDialog: {
             type: Boolean
-        }
+        },
+        basketDialog: {
+            type: Boolean
+        },
     },
 }
 </script>

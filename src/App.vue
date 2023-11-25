@@ -1,12 +1,14 @@
 <template>
     <my-header
-        :card="card"
+        :basket="basket"
         v-model:searchDialog="searchDialog"
+        v-model:basketDialog="basketDialog"
     />
     <router-view
-        v-model:card="card"
+        v-model:basket="basket"
         v-model:search="search"
         v-model:searchDialog="searchDialog"
+        v-model:basketDialog="basketDialog"
     ></router-view>
     <my-footer/>
     <noscript>
@@ -25,10 +27,10 @@ export default {
     },
     data() {
         return {
-            card: [
-            ],
+            basket: [],
             search: '',
             searchDialog: false,
+            basketDialog: false,
         }
     },
 }

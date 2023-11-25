@@ -83,7 +83,7 @@
                         >
                             <card-product
                                 :product="product"
-                                @addCard="addCard"
+                                @addBasket="addBasket"
                             >
                             </card-product>
                         </swiper-slide>
@@ -154,7 +154,7 @@
                         >
                             <card-product
                                 :product="product"
-                                @addCard="addCard"
+                                @addBasket="addBasket"
                             >
                             </card-product>
                         </swiper-slide>
@@ -228,92 +228,32 @@
             </a>
         </div>
     </div>
-    <div class="dialog_wrapper d-none">
-        <div class="dialog_content basket_dialog_content">
+    <div class="dialog_wrapper" v-show="basketDialog" @click="$emit('update:basketDialog', false)">
+        <div class="dialog_content basket_dialog_content" @click.stop>
             <header class="basket_dialog_header">
                 <h1 class="basket_title">КОРЗИНА ТОВАРОВ</h1>
-                <button class="close_basket_btn">
+                <button class="close_basket_btn" @click="$emit('update:basketDialog', false)">
                     <svg class="icon icon-cross">
                         <use xlink:href="images/icons/cross2.svg#cross"></use>
                     </svg>
                 </button>
             </header>
             <main class="basket_main">
-                <div class="basket_product">
-                    <div class="conteiner--image basket_image">
-                        <img src="images/energy_drink/Jaguar_Live.png" alt="Jaguar Live">
-                    </div>
-                    <div class="container_main_product">
-                        <div class="container_title">
-                            <a href="#" class="card-product__title pd-none">Jaguar Original <span class="card-product__title-add">0,5л</span></a>
-                            <div class="btn_count_product">
-                                <button class="btn_product_minus">
-                                    <svg class="icon_count">
-                                        <use xlink:href="images/icons/btn_count.svg#minus"></use>
-                                    </svg>
-                                </button>
-                                <span class="count_product">1</span>
-                                <button class="btn_product_plus">
-                                    <svg class="icon_count">
-                                        <use xlink:href="images/icons/btn_count.svg#plus"></use>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="basket_price">
-                            <div class="basket_product_price">
-                                <div class="price-tag">
-                                    <span class="price--base">99</span>
-                                    <!-- <span class="price--spesial">99</span> -->
-                                </div>
-                                ₽
-                            </div>
-                            <button class="btn_product_delete">
-                                <svg class="icon_count icon_basket">
-                                    <use xlink:href="images/icons/basket.svg#basket"></use>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="basket_product">
-                    <div class="conteiner--image basket_image">
-                        <img src="images/energy_drink/Jaguar_Live.png" alt="Jaguar Live">
-                    </div>
-                    <div class="container_main_product">
-                        <div class="container_title">
-                            <a href="#" class="card-product__title pd-none">Jaguar Original <span class="card-product__title-add">0,5л</span></a>
-                            <div class="btn_count_product">
-                                <button class="btn_product_minus">
-                                    <svg class="icon_count">
-                                        <use xlink:href="images/icons/btn_count.svg#minus"></use>
-                                    </svg>
-                                </button>
-                                <span class="count_product">1</span>
-                                <button class="btn_product_plus">
-                                    <svg class="icon_count">
-                                        <use xlink:href="images/icons/btn_count.svg#plus"></use>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="basket_price">
-                            <div class="basket_product_price">
-                                <div class="price-tag">
-                                    <span class="price--base">99</span>
-                                    <!-- <span class="price--spesial">99</span> -->
-                                </div>
-                                ₽
-                            </div>
-                            <button class="btn_product_delete">
-                                <svg class="icon_count icon_basket">
-                                    <use xlink:href="images/icons/basket.svg#basket"></use>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
+                <card-product-basket
+                    v-for="product in basket"
+                    :key="product.id"
+                    :product="product"
+                ></card-product-basket>
+                <div v-if="!basket.length" class="not_products">
+                    В корзине пока нет товаров
                 </div>
             </main>
+            <footer class="basket_dialog_footer" v-if="basket.length">
+                <div class="sum_products text--caps">
+                    СУММА: <span class="sum_products_price">60</span> ₽
+                </div>
+                <a href="" class="btn_place_order">Оформить заказ</a>
+            </footer>
         </div>
     </div>
 </template>
@@ -332,7 +272,7 @@ export default {
         AccordionTab
     },
     props: {
-        card: {
+        basket: {
             type: Array
         },
         search: {
@@ -340,7 +280,10 @@ export default {
         },
         searchDialog: {
             type: Boolean
-        }
+        },
+        basketDialog: {
+            type: Boolean
+        },
     },
     data() {
         return {
@@ -359,7 +302,7 @@ export default {
                 console.log(err.message);
             }
         },
-        async addCard(event) {
+        async addBasket(event) {
             let prod = {};
             try {
                 let response = await fetch('./data/products.json');
@@ -367,8 +310,8 @@ export default {
                 for (let productsItem in products) {
                     products[productsItem].find((pr) => {if (pr.id === event) prod = pr });
                 }
-                this.card.push(prod);
-                this.$emit('update:card', this.card);
+                this.basket.push(prod);
+                this.$emit('update:basket', this.basket);
             } catch(err) {
                 console.log(err.message);
             }
