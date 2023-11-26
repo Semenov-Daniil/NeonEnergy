@@ -22,7 +22,7 @@
 
                 <ul class="nav__list__icon">
                     <li class="icon-search">
-                        <a href="#" data-title="Поиск" @click="$emit('update:searchDialog', true)">
+                        <a href="#" data-title="Поиск" @click.prevent="$emit('update:searchDialog', true)">
                             <svg class="icon icon-search" :class="{'icon-active': searchDialog}">
                                 <use xlink:href="images/icons/icons.svg#icon-search"></use>
                             </svg>
@@ -50,12 +50,12 @@
                         </a>
                     </li>
                     <li class="item--border">
-                        <a href="#" data-title="Корзина" @click="$emit('update:basketDialog', true)">
+                        <a href="#" data-title="Корзина" @click.prevent="$emit('update:basketDialog', true)">
                             <svg class="icon icon-favorites" :class="{'icon-active': basketDialog}">
                                 <use xlink:href="images/icons/icons.svg#icon-basket"></use>
                             </svg>
                             <div class="count-prod" v-if="basket.length">
-                                {{ basket.length }}
+                                {{ countProducts }}
                             </div>
                         </a>
                     </li>
@@ -79,6 +79,15 @@ export default {
             type: Boolean
         },
     },
+    computed: {
+        countProducts() {
+            let countProducts = 0;
+            for(let productItem in this.basket) {
+                countProducts += this.basket[productItem].count;
+            }
+            return countProducts;
+        }
+    }
 }
 </script>
 

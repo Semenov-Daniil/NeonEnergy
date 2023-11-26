@@ -149,7 +149,7 @@
                         }"
                     >
                         <swiper-slide
-                            v-for="product in products.newProducts"
+                            v-for="product in products.specialProducts"
                             :key="product.id"
                         >
                             <card-product
@@ -202,60 +202,6 @@
             </div>
         </section>
     </main>
-    <div class="dialog_wrapper" v-show="this.searchDialog" @click="$emit('update:searchDialog', false)">
-        <div
-            class="searh_dialog_content dialog_content"
-            :class="{'dialog_focus': focusDialog}"
-            @click.stop
-        >
-            <input
-                class="search_input"
-                type="text"
-                placeholder="Поиск на сайте NeonEnergy..."
-                @focus="focusDialog = true"
-                @blur="focusDialog = false"
-                v-model="searchValue"
-            />
-            <button class="search_btn search_input_reset" v-show="searchValue.length" @click="searchValue = ''">
-                <svg class="icon icon-cross">
-                    <use xlink:href="images/icons/cross2.svg#cross"></use>
-                </svg>
-            </button>
-            <a href="#" class="search_btn search_btn_icon">
-                <svg class="icon icon-search">
-                    <use xlink:href="images/icons/icons.svg#icon-search"></use>
-                </svg>
-            </a>
-        </div>
-    </div>
-    <div class="dialog_wrapper" v-show="basketDialog" @click="$emit('update:basketDialog', false)">
-        <div class="dialog_content basket_dialog_content" @click.stop>
-            <header class="basket_dialog_header">
-                <h1 class="basket_title">КОРЗИНА ТОВАРОВ</h1>
-                <button class="close_basket_btn" @click="$emit('update:basketDialog', false)">
-                    <svg class="icon icon-cross">
-                        <use xlink:href="images/icons/cross2.svg#cross"></use>
-                    </svg>
-                </button>
-            </header>
-            <main class="basket_main">
-                <card-product-basket
-                    v-for="product in basket"
-                    :key="product.id"
-                    :product="product"
-                ></card-product-basket>
-                <div v-if="!basket.length" class="not_products">
-                    В корзине пока нет товаров
-                </div>
-            </main>
-            <footer class="basket_dialog_footer" v-if="basket.length">
-                <div class="sum_products text--caps">
-                    СУММА: <span class="sum_products_price">60</span> ₽
-                </div>
-                <a href="" class="btn_place_order">Оформить заказ</a>
-            </footer>
-        </div>
-    </div>
 </template>
 
 <script>
@@ -274,27 +220,16 @@ export default {
     props: {
         basket: {
             type: Array
-        },
-        search: {
-            type: String, Number
-        },
-        searchDialog: {
-            type: Boolean
-        },
-        basketDialog: {
-            type: Boolean
-        },
+        }
     },
     data() {
         return {
             products: {},
             modules: [Pagination, Navigation],
-            focusDialog: false,
-            searchValue: '',
         }
     },
     methods: {
-        async getPopularProducts() {
+        async getProducts() {
             try {
                 let response = await fetch('./data/products.json');
                 this.products = await response.json();
@@ -303,22 +238,39 @@ export default {
             }
         },
         async addBasket(event) {
-            let prod = {};
+            let productBasket = {};
+            let addNewProduct = true;
             try {
-                let response = await fetch('./data/products.json');
-                let products = await response.json();
-                for (let productsItem in products) {
-                    products[productsItem].find((pr) => {if (pr.id === event) prod = pr });
+                for (let productItem in this.basket) {
+                    let product = this.basket[productItem]
+                    if (product.id === event) {
+                        product.count++;
+                        addNewProduct = false;
+                        break;
+                    }
                 }
-                this.basket.push(prod);
-                this.$emit('update:basket', this.basket);
+
+                if (addNewProduct) {
+                    let response = await fetch('./data/products.json');
+                    let data = await response.json();
+                    let allProducts = data.allProducts;
+                    for (let productItem in allProducts) {
+                        let product = allProducts[productItem];
+                        if (product.id === event) {
+                            productBasket = product;
+                            productBasket.count = 1;
+                        } 
+                    }
+                    this.basket.push(productBasket);
+                }
+                this.$emit('update:basket', JSON.parse(JSON.stringify(this.basket)));
             } catch(err) {
                 console.log(err.message);
             }
         }
     },
     mounted() {
-      this.getPopularProducts();
+      this.getProducts();
     },
 }
 </script>

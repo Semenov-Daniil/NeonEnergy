@@ -1,7 +1,7 @@
 <template>
     <div class="card-product">
         <a href="#" class="card-product__img-product">
-            <img src="images/energy_drink/Jaguar_Live.png" alt="Jaguar Live">
+            <img :src="'images/energy_drink/' + product.img_title" alt="Jaguar Live">
         </a>
         <div class="card-product__body">
             <div class="wrapper__rating">
@@ -21,10 +21,13 @@
             <a href="#" class="card-product__title">{{ product.title }} <span class="card-product__title-add">{{ product.volume }}</span></a>
         </div>
         <div class="card-product__footer">
-            <div :class="{'card-product__price-tag': true, 'spesial__price': product.spesialPrice && product.spesial}">
+            <div 
+                :class="{'spesial__price': ((specialProduct).id == 1)}"
+                class="card-product__price-tag"    
+            >
                 <div class="price-tag">
-                    <span class="price--base">{{ product.price }}</span>
-                    <span class="price--spesial" v-if='product.spesialPrice'>{{ product.spesialPrice }}</span>
+                    <span class="price--base">{{ (product.price).toLocaleString("ru-RU") }}</span>
+                    <span class="price--spesial" v-if='((specialProduct).id == 1)'>{{ (product.price / 100 * (specialProduct).discount).toLocaleString("ru-RU") }}</span>
                 </div>
                 ₽
             </div>
@@ -40,8 +43,8 @@
                 <use xlink:href="images/icons/icons.svg#icon-favorites"></use>
             </svg>
         </div>
-        <div v-if='product.spesial' class="card-product__special">
-        {{ product.spesialTitle }}
+        <div v-if='(specialProduct).id != 0' class="card-product__special">
+            {{ (specialProduct).id == 1 ? `-${(specialProduct).discount}%` : 'NEW'}}
         </div>
     </div>
 </template>
@@ -52,6 +55,11 @@ export default {
     props: {
         product: {
             type: Object,
+        }
+    },
+    computed: {
+        specialProduct() {
+            return this.product["speсial"]
         }
     }
 }
