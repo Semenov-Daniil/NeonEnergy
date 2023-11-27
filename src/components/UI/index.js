@@ -3,5 +3,5 @@ import cardProductBasket from '@/components/UI/cardProductBasket.vue';
 
 export default [
     cardProduct,
-    cardProductBasket
+    cardProductBasket,
 ]

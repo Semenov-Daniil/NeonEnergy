@@ -19,6 +19,9 @@
         v-model:basket="basket"
         v-model:basketDialog="basketDialog"
     />
+    <flash-message-list
+        v-model:messages="fleshMessages"
+    />
 </template>
 
 <script>
@@ -26,13 +29,15 @@ import myHeader from '@/components/myHeader.vue';
 import myFooter from '@/components/myFooter.vue';
 import modalSearch from '@/components/modalSearch.vue';
 import modalBasket from '@/components/modalBasket.vue';
+import flashMessageList from '@/components/flashMessageList.vue';
 
 export default {
     components: {
         myHeader,
         myFooter,
         modalSearch,
-        modalBasket
+        modalBasket,
+        flashMessageList
     },
     data() {
         return {
@@ -40,13 +45,22 @@ export default {
             search: '',
             searchDialog: false,
             basketDialog: false,
+            fleshMessages: [
+                {'type': 'success', 'message': 'Товар добавлен в корзину1', 'id': 1},
+                {'type': 'success', 'message': 'Товар добавлен в корзину2', 'id': 2},
+                {'type': 'success', 'message': 'Товар добавлен в корзину3', 'id': 3},
+                {'type': 'success', 'message': 'Товар добавлен в корзину4', 'id': 4},
+                {'type': 'success', 'message': 'Товар добавлен в корзину5', 'id': 5}
+            ]
         }
     },
-    watch: {
-        basketDialog() {
+    methods: {
+        modalMenu(value) {
             let body = document.getElementsByTagName('body')[0];
             let className = 'modal-active';
-            if (this.basketDialog) {
+            let marginSize = window.innerWidth - body.clientWidth;
+            if (value) {
+                body.style.marginRight = marginSize + "px";
                 if (body.classList) {
                     body.classList.add(className);
                 } else {
@@ -55,14 +69,23 @@ export default {
                     }
                 }
             } else {
+                body.style.marginRight = "";
                 if (body.classList) {
                     body.classList.remove(className);
                 } else {
                     if (body.className.indexOf(className) !== -1) {
                         body.className = body.className.replace(className, '');
                     }
-                }   
+                }
             }
+        }
+    },
+    watch: {
+        basketDialog(value) {
+            this.modalMenu(value);
+        },
+        searchDialog(value) {
+            this.modalMenu(value);
         }
     }
 }
