@@ -220,6 +220,9 @@ export default {
     props: {
         basket: {
             type: Array
+        },
+        flashMessages: {
+            type: Object
         }
     },
     data() {
@@ -259,14 +262,20 @@ export default {
                         if (product.id === event) {
                             productBasket = product;
                             productBasket.count = 1;
-                        } 
+                        }
                     }
                     this.basket.push(productBasket);
                 }
                 this.$emit('update:basket', JSON.parse(JSON.stringify(this.basket)));
+                this.addFlashMessage()
             } catch(err) {
                 console.log(err.message);
             }
+        },
+        addFlashMessage() {
+            this.flashMessages.messages.push({"type": "success", "message": 'Товар добавлен в корзину', "id": this.flashMessages.lastMessage});
+            this.flashMessages.lastMessage++;
+            this.$emit('update:flashMessages', JSON.parse(JSON.stringify(this.flashMessages)));
         }
     },
     mounted() {

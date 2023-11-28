@@ -42,6 +42,11 @@ export default {
             type: Boolean
         }
     },
+    data () {
+        return {
+            flashMessages: sessionStorage.getItem("flashMessages"),
+        }
+    },
     methods: {
         updateProduct(event) {
             this.basket.forEach((product) => {
@@ -58,6 +63,10 @@ export default {
                 }
             });
             this.$emit('update:basket', JSON.parse(JSON.stringify(this.basket)));
+            this.addFlashMessage();
+        },
+        addFlashMessage() {
+            this.flashMessages.push({'type': 'error', 'message': 'Товар удален из корзины'});
         }
     },
     computed: {

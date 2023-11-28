@@ -1,10 +1,10 @@
 <template>
     <div class="flash_messages_wrapper flash_message_list">
         <flash-message-item
-            v-for="(message, index) in messages"
+            v-for="(message, index) in messages.messages"
             :key="index"
             :message="message"
-            @remove="removeItem(message.id)"
+            @remove="removeItem"
         />
     </div>
 </template>
@@ -19,18 +19,16 @@ export default {
     },
     props: {
         messages: {
-            type: Array
+            type: Object
         }
     },
     methods: {
         removeItem(id) {
-            this.messages.forEach((message, index) => {
-                if (message.id == id) {
-                    console.log(message, index)
-                    this.messages.splice(index, 1);
-                }
-            });
-            this.$emit('update:messages', JSON.parse(JSON.stringify(this.messages)));
+            // console.log(id);
+            // this.messages.messages = this.messages.messages.filter(message => message.id != id);
+            // console.log(this.messages.messages)
+            // this.$emit('update:messages', JSON.parse(JSON.stringify(this.messages)));
+            this.$emit('remove', id)
         }
     }
 }

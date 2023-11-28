@@ -17,8 +17,8 @@ export default {
     },
     mounted() {
         setTimeout(() => {
-            this.$emit('remove', this.message)
-        }, 1000)
+            this.$emit('remove', this.message.id)
+        }, 2000)
     },
 }
 </script>
