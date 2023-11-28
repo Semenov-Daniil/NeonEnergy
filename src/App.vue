@@ -7,6 +7,7 @@
     <router-view
         v-model:basket="basket"
         v-model:flashMessages="flashMessages"
+        @updateBasket="updateBasket"
     ></router-view>
     <my-footer/>
     <noscript>
@@ -22,7 +23,7 @@
         v-model:messages="flashMessages"
     />
     <flash-message-list
-        v-model:messages="flashMessages"
+        v-model:flashMessages="flashMessages"
         @remove="removeMessage"
     />
 </template>
@@ -48,10 +49,7 @@ export default {
             search: '',
             searchDialog: false,
             basketDialog: false,
-            flashMessages: {
-                "lastMessage": 0,
-                "messages": []
-            }
+            flashMessages: []
         }
     },
     methods: {
@@ -79,10 +77,19 @@ export default {
                 }
             }
         },
-        async removeMessage(id) {
-            this.flashMessages.messages = this.flashMessages.messages.filter(message => message.id != id);
-            // console.log(this.flashMessages.messages, id)
-            console.log(id)
+        updateBasket(newBasket) {
+            this.basket = newBasket;
+            this.addFlashMessage();
+        },
+        removeMessage(id) {
+            this.flashMessages = this.flashMessages.filter(message => message.id != id);
+            //console.log(id)
+        },
+        addFlashMessage() {
+            this.flashMessages.push(
+                {"type": "success", "message": 'Товар добавлен в корзину', "id": (new Date())}
+            );
+            this.$emit('update:flashMessages', JSON.parse(JSON.stringify(this.flashMessages)));
         }
     },
     watch: {

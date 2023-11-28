@@ -266,16 +266,10 @@ export default {
                     }
                     this.basket.push(productBasket);
                 }
-                this.$emit('update:basket', JSON.parse(JSON.stringify(this.basket)));
-                this.addFlashMessage()
+                this.$emit('updateBasket', JSON.parse(JSON.stringify(this.basket)));
             } catch(err) {
                 console.log(err.message);
             }
-        },
-        addFlashMessage() {
-            this.flashMessages.messages.push({"type": "success", "message": 'Товар добавлен в корзину', "id": this.flashMessages.lastMessage});
-            this.flashMessages.lastMessage++;
-            this.$emit('update:flashMessages', JSON.parse(JSON.stringify(this.flashMessages)));
         }
     },
     mounted() {
