@@ -24,7 +24,7 @@
     />
     <flash-message-list
         v-model:flashMessages="flashMessages"
-        @remove="removeMessage"
+
     />
 </template>
 
@@ -49,7 +49,7 @@ export default {
             search: '',
             searchDialog: false,
             basketDialog: false,
-            flashMessages: []
+            flashMessages: [],
         }
     },
     methods: {
@@ -79,17 +79,23 @@ export default {
         },
         updateBasket(newBasket) {
             this.basket = newBasket;
-            this.addFlashMessage();
+            this.addFlashMessage('success', `${this.basket[this.basket.length-1].title} добавлен в корзину`);
         },
-        removeMessage(id) {
-            this.flashMessages = this.flashMessages.filter(message => message.id != id);
-            //console.log(id)
-        },
-        addFlashMessage() {
-            this.flashMessages.push(
-                {"type": "success", "message": 'Товар добавлен в корзину', "id": (new Date())}
+        removeFlash() {
+            this.flashMessages = this.flashMessages.filter(
+                message =>
+                    {
+                        return (new Date()) - message.id < 2100
+                    }
             );
-            this.$emit('update:flashMessages', JSON.parse(JSON.stringify(this.flashMessages)));
+        },
+        addFlashMessage(type, message) {
+            this.flashMessages.push(
+                {"type": type, "message": message, "id": (new Date().getTime())}
+            );
+            setTimeout(() => {
+                this.removeFlash();
+            }, 2100)
         }
     },
     watch: {
@@ -98,7 +104,7 @@ export default {
         },
         searchDialog(value) {
             this.modalMenu(value);
-        }
+        },
     }
 }
 </script>

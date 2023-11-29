@@ -1,7 +1,7 @@
 <template>
     <div
         class="flash_message_item"
-        :class="{'success': message.type == 'success', 'error': message.type == 'error', }"
+        :class="{'success': message.type == 'success', 'error': message.type == 'error', 'd-none': !showMessage}"
     >
     {{ message.message }}
     </div>
@@ -15,9 +15,15 @@ export default {
             type: Object
         }
     },
+    data() {
+        return {
+            showMessage: true,
+        }
+    },
     mounted() {
         setTimeout(() => {
-            this.$emit('remove', this.message.id)
+            this.showMessage = false;
+            this.$emit('removeFlash')
         }, 2000)
     },
 }

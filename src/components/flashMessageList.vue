@@ -4,7 +4,7 @@
             v-for="(message, index) in flashMessages"
             :key="index"
             :message="message"
-            @remove="$emit('remove', $event)"
+            @removeFlash="$emit('removeFlash')"
         />
     </div>
 </template>
