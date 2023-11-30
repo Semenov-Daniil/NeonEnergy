@@ -1,7 +1,9 @@
 <template>
     <div
         class="flash_message_item"
-        :class="{'success': message.type == 'success', 'error': message.type == 'error', 'd-none': !showMessage}"
+        :class="{'success': message.type == 'success', 'error': message.type == 'error'}"
+        v-show="showMessage || focusMessage"
+        @focus="focusMessage = true"
     >
     {{ message.message }}
     </div>
@@ -18,13 +20,13 @@ export default {
     data() {
         return {
             showMessage: true,
+            focusMessage: false,
         }
     },
     mounted() {
         setTimeout(() => {
             this.showMessage = false;
-            this.$emit('removeFlash')
-        }, 2000)
+        }, 3000)
     },
 }
 </script>

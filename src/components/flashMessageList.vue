@@ -1,11 +1,12 @@
 <template>
     <div class="flash_messages_wrapper flash_message_list">
-        <flash-message-item
-            v-for="(message, index) in flashMessages"
-            :key="index"
-            :message="message"
-            @removeFlash="$emit('removeFlash')"
-        />
+        <transition-group name="flip-list">
+            <flash-message-item
+                v-for="(message, index) in flashMessages"
+                :key="index"
+                :message="message"
+            />
+        </transition-group>
     </div>
 </template>
 
@@ -22,12 +23,23 @@ export default {
             type: Array
         }
     },
-    methods: {
-
-    }
 }
 </script>
 
 <style>
+    .flip-list-move {
+        transition: transform 0.1s linear;
+    }
+
+    .flip-list-enter-active,
+    .flip-list-leave-active {
+        transition: all 0.5s ease;
+    }
+
+    .flip-list-enter-from,
+    .flip-list-leave-to {
+        opacity: 0;
+        transform: translateX(30px);
+    }
 
 </style>

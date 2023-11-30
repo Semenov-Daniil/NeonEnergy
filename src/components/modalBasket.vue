@@ -62,11 +62,7 @@ export default {
                     this.basket.splice(index, 1);
                 }
             });
-            this.$emit('update:basket', JSON.parse(JSON.stringify(this.basket)));
-            this.addFlashMessage();
-        },
-        addFlashMessage() {
-            this.flashMessages.push({'type': 'error', 'message': 'Товар удален из корзины'});
+            this.$emit('deleteProduct', JSON.parse(JSON.stringify(this.basket)));
         }
     },
     computed: {

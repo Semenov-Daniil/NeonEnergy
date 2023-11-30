@@ -21,10 +21,10 @@
         v-model:basket="basket"
         v-model:basketDialog="basketDialog"
         v-model:messages="flashMessages"
+        @deleteProduct="deleteProduct"
     />
     <flash-message-list
         v-model:flashMessages="flashMessages"
-
     />
 </template>
 
@@ -50,6 +50,7 @@ export default {
             searchDialog: false,
             basketDialog: false,
             flashMessages: [],
+            testNum: 1,
         }
     },
     methods: {
@@ -81,11 +82,15 @@ export default {
             this.basket = newBasket;
             this.addFlashMessage('success', `${this.basket[this.basket.length-1].title} добавлен в корзину`);
         },
+        deleteProduct(newBasket) {
+            this.basket = newBasket;
+            this.addFlashMessage('error', `Товар удален из корзины`);
+        },
         removeFlash() {
             this.flashMessages = this.flashMessages.filter(
                 message =>
                     {
-                        return (new Date()) - message.id < 2100
+                        return (new Date()) - message.id < 4000
                     }
             );
         },
@@ -95,7 +100,7 @@ export default {
             );
             setTimeout(() => {
                 this.removeFlash();
-            }, 2100)
+            }, 5000)
         }
     },
     watch: {
