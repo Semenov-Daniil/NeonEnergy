@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Main from '@/views/Main.vue'
+import Product from '@/views/Product.vue'
 
 const routes = [
   {
@@ -10,6 +11,11 @@ const routes = [
       title: "Главная"
     }
   },
+  {
+    path: '/product/:id',
+    name: 'product',
+    component: Product,
+  },
 ]
 
 const router = createRouter({
@@ -18,7 +24,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  document.title = `${to.meta.title}`;
+  document.title = `NeonEnergy - ${to.meta.title}`;
   next();
 });
 

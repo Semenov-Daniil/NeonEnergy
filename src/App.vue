@@ -3,6 +3,8 @@
         :basket="basket"
         v-model:searchDialog="searchDialog"
         v-model:basketDialog="basketDialog"
+        v-model:warningDialog="warningDialog"
+        v-model:modalMenu="modalMenuDialog"
     />
     <router-view
         v-model:basket="basket"
@@ -23,8 +25,19 @@
         v-model:messages="flashMessages"
         @deleteProduct="deleteProduct"
     />
+    <modal-warning
+        v-model:warningDialog="warningDialog"
+    />
+    <modal-menu
+        v-model:modalMenu="modalMenuDialog"
+    />
     <flash-message-list
         v-model:flashMessages="flashMessages"
+    />
+    <modal-navbar
+        v-model:basket="basket"
+        v-model:basketDialog="basketDialog"
+        v-model:warningDialog="warningDialog"
     />
 </template>
 
@@ -34,6 +47,9 @@ import myFooter from '@/components/myFooter.vue';
 import modalSearch from '@/components/modalSearch.vue';
 import modalBasket from '@/components/modalBasket.vue';
 import flashMessageList from '@/components/flashMessageList.vue';
+import modalWarning from '@/components/modalWarning.vue';
+import modalMenu from '@/components/modalMenu.vue';
+import modalNavbar from '@/components/modalNavbar.vue';
 
 export default {
     components: {
@@ -41,7 +57,10 @@ export default {
         myFooter,
         modalSearch,
         modalBasket,
-        flashMessageList
+        flashMessageList,
+        modalWarning,
+        modalMenu,
+        modalNavbar
     },
     data() {
         return {
@@ -50,16 +69,21 @@ export default {
             searchDialog: false,
             basketDialog: false,
             flashMessages: [],
-            testNum: 1,
+            warningDialog: false,
+            modalMenuDialog: false,
         }
     },
     methods: {
         modalMenu(value) {
             let body = document.getElementsByTagName('body')[0];
+            let header = document.querySelector('header');
             let className = 'modal-active';
             let marginSize = window.innerWidth - body.clientWidth;
+            let scrollPosition = window.scrollY;
             if (value) {
                 body.style.marginRight = marginSize + "px";
+                body.style.top = -scrollPosition + "px";
+                header.style.top = scrollPosition + "px";
                 if (body.classList) {
                     body.classList.add(className);
                 } else {
@@ -68,7 +92,6 @@ export default {
                     }
                 }
             } else {
-                body.style.marginRight = "";
                 if (body.classList) {
                     body.classList.remove(className);
                 } else {
@@ -76,11 +99,15 @@ export default {
                         body.className = body.className.replace(className, '');
                     }
                 }
+                window.scroll(0, body.style.top.match(/\d+/g).join(''));
+                header.style.top = "";
+                body.style.marginRight = "";
+                body.style.top = "";
             }
         },
         updateBasket(newBasket) {
             this.basket = newBasket;
-            this.addFlashMessage('success', `${this.basket[this.basket.length-1].title} добавлен в корзину`);
+            this.addFlashMessage('success', `Товар добавлен в корзину`);
         },
         deleteProduct(newBasket) {
             this.basket = newBasket;
@@ -101,6 +128,11 @@ export default {
             setTimeout(() => {
                 this.removeFlash();
             }, 5000)
+        },
+        updateModalMenuDialog(e) {
+            if (window.innerWidth > 900) {
+                this.modalMenuDialog = false;
+            }
         }
     },
     watch: {
@@ -110,7 +142,16 @@ export default {
         searchDialog(value) {
             this.modalMenu(value);
         },
-    }
+        warningDialog(value) {
+            this.modalMenu(value);
+        }
+    },
+    created() {
+        window.addEventListener("resize", this.updateModalMenuDialog);
+    },
+    destroyed() {
+        window.removeEventListener("resize", this.updateModalMenuDialog);
+    },
 }
 </script>
 

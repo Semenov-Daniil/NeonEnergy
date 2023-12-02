@@ -2,8 +2,8 @@
     <div class="flash_messages_wrapper flash_message_list">
         <transition-group name="flip-list">
             <flash-message-item
-                v-for="(message, index) in flashMessages"
-                :key="index"
+                v-for="message in flashMessages"
+                :key="message.id"
                 :message="message"
             />
         </transition-group>

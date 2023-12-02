@@ -1,6 +1,6 @@
 <template>
     <div class="card-product">
-        <a href="#" class="card-product__img-product">
+        <a href="#" class="card-product__img-product" @click="navigateToProduct(product.id, { title: product.title.replace(/\s/g, '-') })">
             <img :src="'images/energy_drink/' + product.img_title" alt="Jaguar Live">
         </a>
         <div class="card-product__body">
@@ -18,7 +18,7 @@
                 </ul>
                 <span>{{ product.rating }}</span>
             </div>
-            <a href="#" class="card-product__title">{{ product.title }} <span class="card-product__title-add">{{ product.volume }}</span></a>
+            <a href="#" class="card-product__title" @click="navigateToProduct(product.id, { title: product.title })">{{ product.title }} <span class="card-product__title-add">{{ product.volume }}</span></a>
         </div>
         <div class="card-product__footer">
             <div 
@@ -60,6 +60,12 @@ export default {
     computed: {
         specialProduct() {
             return this.product["speсial"]
+        }
+    },
+    methods: {
+        navigateToProduct(id, meta) {
+            console.log(meta);
+            this.$router.push({ path: '/product/', params: { id: id }, meta })
         }
     }
 }

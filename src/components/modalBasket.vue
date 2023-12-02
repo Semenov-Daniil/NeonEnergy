@@ -3,7 +3,7 @@
         <div class="modal_content basket_modal_content" @click.stop>
             <header class="basket_modal_header">
                 <h1 class="basket_title">КОРЗИНА ТОВАРОВ</h1>
-                <button class="close_basket_btn" @click="$emit('update:basketDialog', false)">
+                <button class="close_modal_btn" @click="$emit('update:basketDialog', false)">
                     <svg class="icon icon-cross">
                         <use xlink:href="images/icons/cross2.svg#cross"></use>
                     </svg>

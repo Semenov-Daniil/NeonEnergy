@@ -204,6 +204,11 @@
     .answers__accordion {
         width: 100%;
     }
+
+
+    .wrapper_navbar {
+        display: block;
+    }
 }
 
 @media only screen and (max-width: 480px) {
