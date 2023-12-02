@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <template>
 
 </template>
@@ -18,25 +17,4 @@ export default {
 
 <style>
 
-=======
-<template>
-
-</template>
-
-<script>
-export default {
-    props: {
-        basket: {
-            type: Array
-        },
-        flashMessages: {
-            type: Object
-        }
-    },
-}
-</script>
-
-<style>
-
->>>>>>> ed75404 (update)
 </style>

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .flash_messages_wrapper {
     position: fixed;
     top: 10vh;
@@ -42,49 +41,4 @@
 .error:hover {
     border-color: #FF0000;
     color: #FF0000;
-=======
-.flash_messages_wrapper {
-    position: fixed;
-    top: 10vh;
-    right: 1.5vw;
-    font-size: 1.4rem;
-    z-index: 50;
-}
-
-.flash_messages_wrapper .success {
-    background-color: #00FF01;
-}
-
-.flash_messages_wrapper .error {
-    background-color: #FF0000;
-}
-
-.flash_message_list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.flash_message_item {
-    align-self: flex-end;
-    padding: 1rem 2rem;
-    border-radius: 15px;
-    cursor: pointer;
-    border: 1px solid transparent;
-}
-
-.flash_message_item:hover {
-    background-color: transparent;
-    backdrop-filter: blur(10px);
-}
-
-.success:hover {
-    border-color: #00FF01;
-    color: #00FF01;
-}
-
-.error:hover {
-    border-color: #FF0000;
-    color: #FF0000;
->>>>>>> ed75404 (update)
 }
