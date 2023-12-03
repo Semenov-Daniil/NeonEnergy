@@ -34,4 +34,6 @@ npm run build
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Live strem
+[NeonEnergy](https://neonenergy.netlify.app)
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/1df3349f-68bc-4085-801d-63341c99dd37/deploy-status)](https://app.netlify.com/sites/neonenergy/deploys)
