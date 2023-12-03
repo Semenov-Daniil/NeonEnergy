@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Main from '@/views/Main.vue'
 import Product from '@/views/Product.vue'
+import NotFound from '@/views/NotFound.vue'
 
 const routes = [
   {
@@ -8,14 +9,21 @@ const routes = [
     name: 'home',
     component: Main,
     meta: {
-      title: "Главная"
+        title: "Главная"
     }
   },
   {
-    path: '/product/:id',
+    path: '/product/:title',
     name: 'product',
     component: Product,
+    meta: {
+        title: "Продукт"
+    }
   },
+  { 
+    path: '/:pathMatch(.*)*', 
+    name: 'NotFound', 
+    component: NotFound },
 ]
 
 const router = createRouter({
@@ -24,8 +32,12 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  document.title = `NeonEnergy - ${to.meta.title}`;
-  next();
+    if (to.name == 'product') {
+        document.title = `NeonEnergy - ${to.params.title.replace(/-/g, ' ')}`;
+    } else {
+        document.title = `NeonEnergy - ${to.meta.title}`;
+    }
+    next();
 });
 
 export default router

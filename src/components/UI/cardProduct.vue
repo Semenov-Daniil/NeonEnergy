@@ -1,6 +1,6 @@
 <template>
     <div class="card-product">
-        <a href="#" class="card-product__img-product" @click="navigateToProduct(product.id, { title: product.title.replace(/\s/g, '-') })">
+        <a href="#" class="card-product__img-product" @click="navigateToProduct(product.title.replace(/\s/g, '-'), product.id)">
             <img :src="'images/energy_drink/' + product.img_title" alt="Jaguar Live">
         </a>
         <div class="card-product__body">
@@ -63,9 +63,9 @@ export default {
         }
     },
     methods: {
-        navigateToProduct(id, meta) {
-            console.log(meta);
-            this.$router.push({ path: '/product/', params: { id: id }, meta })
+        navigateToProduct(title, id) {
+            sessionStorage.setItem('productId', id)
+            this.$router.push(`product/${title}`)
         }
     }
 }
