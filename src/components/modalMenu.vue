@@ -16,7 +16,7 @@
                         <li class="modal_menu_nav_item ">
                             <a href="#" class="link_modal_menu">
                                 <svg class="icon icon-user">
-                                    <use xlink:href="images/icons/icons.svg#icon-user"></use>
+                                    <use :xlink:href="imagesUrl + 'images/icons/icons.svg#icon-user'"></use>
                                 </svg>
                                 ЛИЧНЫЙ КАБИНЕТ
                             </a>
@@ -24,7 +24,7 @@
                         <li class="modal_menu_nav_item">
                             <a href="#" class="link_modal_menu">
                                 <svg class="icon icon-favorites">
-                                    <use xlink:href="images/icons/icons.svg#icon-favorites"></use>
+                                    <use :xlink:href="imagesUrl + 'images/icons/icons.svg#icon-favorites'"></use>
                                 </svg>
                                 ИЗБРАННОЕ
                             </a>
@@ -32,7 +32,7 @@
                         <li class="modal_menu_nav_item">
                             <a href="#" class="link_modal_menu">
                                 <svg class="icon icon-favorites">
-                                    <use xlink:href="images/icons/icons.svg#icon-orders"></use>
+                                    <use :xlink:href="imagesUrl + 'images/icons/icons.svg#icon-orders'"></use>
                                 </svg>
                                 ЗАКАЗЫ
                             </a>
@@ -40,7 +40,7 @@
                         <li class="modal_menu_nav_item">
                             <a href="#" class="link_modal_menu">
                                 <svg class="icon icon-favorites">
-                                    <use xlink:href="images/icons/icons.svg#icon-basket"></use>
+                                    <use :xlink:href="imagesUrl + 'images/icons/icons.svg#icon-basket'"></use>
                                 </svg>
                                 КОРЗИНА
                             </a>
@@ -49,7 +49,7 @@
                 </nav>
                 <button class="close_modal_btn close_modal_menu" @click="$emit('update:modalMenu', false)">
                     <svg class="icon icon-cross">
-                        <use xlink:href="images/icons/cross2.svg#cross"></use>
+                        <use :xlink:href="imagesUrl + 'images/icons/cross2.svg#cross'"></use>
                     </svg>
                 </button>
             </div>
@@ -67,8 +67,9 @@ export default {
     },
     data() {
         return {
-            wrapperModal: false
-        }   
+            wrapperModal: false,
+            imagesUrl: '../',
+        }
     },
     watch: {
         modalMenu(value) {

@@ -28,6 +28,15 @@
     src: url(../../fonts/OpenSans-Bold.ttf);
 }
 
+@font-face {
+    font-family: 'OpenSans-BoldItalic';
+    src: url(../../fonts/OpenSans-BoldItalic.ttf);
+}
+
+:root {
+    --main-color-green: #00FF01;
+}
+
 * {
     box-sizing: border-box;
 

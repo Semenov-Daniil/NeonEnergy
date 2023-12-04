@@ -1,8 +1,8 @@
 <template>
     <footer class="footer">
         <div class="footer__logo--left">
-            <a class="footer__logo " href="#">
-                <img src="images/logo-mini.png" alt="Neon~Energy">
+            <a class="footer__logo " href="#" @click.prevent="$router.push('/')">
+                <img :src="imagesUrl + 'images/logo-mini.png'" alt="Neon~Energy">
             </a>
             <span class="title--company">by JAVALETS</span>
         </div>
@@ -15,14 +15,14 @@
                         <li>
                             <a href="#">
                                 <svg class="icon icon-vk">
-                                    <use xlink:href="images/icons/social_icons.svg#icon-vk"></use>
+                                    <use :xlink:href="imagesUrl + 'images/icons/social_icons.svg#icon-vk'"></use>
                                 </svg>
                             </a>
                         </li>
                         <li>
                             <a href="#">
                                 <svg class="icon icon-telegram">
-                                    <use xlink:href="images/icons/social_icons.svg#icon-telegram"></use>
+                                    <use :xlink:href="imagesUrl + 'images/icons/social_icons.svg#icon-telegram'"></use>
                                 </svg>
                             </a>
                         </li>
@@ -31,7 +31,7 @@
                 <a href="#" class="widget__link">
                     <span class="link__title text--caps">ЭНЕРГЕТИКИ</span>
                     <svg class="icon-arrow">
-                        <use xlink:href="images/icons/arrow.svg#arrow"></use>
+                        <use :xlink:href="imagesUrl + 'images/icons/arrow.svg#arrow'"></use>
                     </svg>
                 </a>
 
@@ -51,7 +51,7 @@
                 <a href="#" class="widget__link">
                     <span class="link__title text--caps">О нас</span>
                     <svg class="icon-arrow">
-                        <use xlink:href="images/icons/arrow.svg#arrow"></use>
+                        <use :xlink:href="imagesUrl + 'images/icons/arrow.svg#arrow'"></use>
                     </svg>
                 </a>
             </div>
@@ -59,21 +59,21 @@
                 <a href="#" class="widget__link widget__link__top">
                     <span class="link__title text--caps">ЭНЕРГЕТИКИ</span>
                     <svg class="icon-arrow">
-                        <use xlink:href="images/icons/arrow.svg#arrow"></use>
+                        <use :xlink:href="imagesUrl + 'images/icons/arrow.svg#arrow'"></use>
                     </svg>
                 </a>
                 <a href="#" class="widget__link widget__link__botton">
                     <span class="link__title text--caps">О нас</span>
                     <svg class="icon-arrow">
-                        <use xlink:href="images/icons/arrow.svg#arrow"></use>
+                        <use :xlink:href="imagesUrl + 'images/icons/arrow.svg#arrow'"></use>
                     </svg>
                 </a>
             </div>
         </div>
 
         <div class="footer__logo--right">
-            <a class="footer__logo" href="#">
-                <img src="images/logo.png" alt="Neon~Energy">
+            <a class="footer__logo" href="#" @click.prevent="$router.push('/')">
+                <img :src="imagesUrl + 'images/logo.png'" alt="Neon~Energy">
             </a>
             <span class="title--shops">© 2023 NeonEnergy</span>
         </div>
@@ -83,6 +83,11 @@
 <script>
 export default {
     name: 'my-footer',
+    data() {
+        return {
+            imagesUrl: '../'
+        }
+    }
 }
 </script>
 

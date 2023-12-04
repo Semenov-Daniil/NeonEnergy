@@ -16,23 +16,23 @@
             />
             <button class="search_btn search_input_reset" v-show="search.length" @click="$emit('update:search', '')">
                 <svg class="icon icon-cross">
-                    <use xlink:href="images/icons/cross2.svg#cross"></use>
+                    <use :xlink:href="imagesUrl + 'images/icons/cross2.svg#cross'"></use>
                 </svg>
             </button>
             <a href="#" class="search_btn search_btn_icon">
                 <svg class="icon icon-search">
-                    <use xlink:href="images/icons/icons.svg#icon-search"></use>
+                    <use :xlink:href="imagesUrl + 'images/icons/icons.svg#icon-search'"></use>
                 </svg>
             </a>
         </div>
             <ul class="search_tips" v-if="searchData.length">
-                <li 
-                    class="search_tips_item" 
-                    v-for="(result, index) in searchData" 
+                <li
+                    class="search_tips_item"
+                    v-for="(result, index) in searchData"
                     :key="index"
                     @click="$emit('update:search', result)"
                 >
-                    <a href="" class="search_tips_item_title" @click.prevent>{{ result }}</a>
+                    <a href="#" class="search_tips_item_title" @click.prevent>{{ result }}</a>
                 </li>
             </ul>
         </div>
@@ -53,7 +53,8 @@ export default {
     data() {
         return {
             focusDialog: false,
-            searchData: []
+            searchData: [],
+            imagesUrl: '../',
         }
     },
     methods: {

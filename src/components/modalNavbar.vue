@@ -6,35 +6,35 @@
                     <li class="navbar_nav_item">
                         <a href="#" @click="$router.push('/')">
                             <svg class="icon icon-main" :class="{'icon-active': (route.name == 'home')}">
-                                <use xlink:href="images/icons/icons.svg#icon-main"></use>
+                                <use :xlink:href="imagesUrl + 'images/icons/icons.svg#icon-main'"></use>
                             </svg>
                         </a>
                     </li>
                     <li class="navbar_nav_item" @click.prevent="$emit('update:warningDialog', true)">
                         <a href="#">
                             <svg class="icon icon-catalog">
-                                <use xlink:href="images/icons/icons.svg#icon-catalog"></use>
+                                <use :xlink:href="imagesUrl + 'images/icons/icons.svg#icon-catalog'"></use>
                             </svg>
                         </a>
                     </li>
                     <li class="navbar_nav_item" @click.prevent="$emit('update:warningDialog', true)">
                         <a href="#">
                             <svg class="icon icon-user">
-                                <use xlink:href="images/icons/icons.svg#icon-user"></use>
+                                <use :xlink:href="imagesUrl + 'images/icons/icons.svg#icon-user'"></use>
                             </svg>
                         </a>
                     </li>
                     <li class="navbar_nav_item" @click.prevent="$emit('update:warningDialog', true)">
                         <a href="#">
                             <svg class="icon icon-favorites">
-                                <use xlink:href="images/icons/icons.svg#icon-favorites"></use>
+                                <use :xlink:href="imagesUrl + 'images/icons/icons.svg#icon-favorites'"></use>
                             </svg>
                         </a>
                     </li>
                     <li class="navbar_nav_item">
                         <a href="#" @click.prevent="$emit('update:basketDialog', true)" class="navbar_nav_link">
                             <svg class="icon icon-favorites" :class="{'icon-active': basketDialog}">
-                                <use xlink:href="images/icons/icons.svg#icon-basket"></use>
+                                <use :xlink:href="imagesUrl + 'images/icons/icons.svg#icon-basket'"></use>
                             </svg>
                             <div class="count-prod" v-if="basket.length">
                                 {{ countProducts }}
@@ -68,7 +68,8 @@ export default {
     data() {
         return {
             router: useRouter(),
-            route: useRoute()
+            route: useRoute(),
+            imagesUrl: '../',
         }
     },
     computed: {

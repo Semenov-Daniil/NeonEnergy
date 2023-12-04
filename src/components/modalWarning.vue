@@ -8,9 +8,9 @@
                 <h1 class="warning_modal_title">К сожалению...</h1>
                 <button class="close_modal_btn" @click="$emit('update:warningDialog', false)">
                     <svg class="icon icon-cross">
-                        <use xlink:href="images/icons/cross2.svg#cross"></use>
+                        <use :xlink:href="imagesUrl + 'images/icons/cross2.svg#cross'"></use>
                     </svg>
-                </button>   
+                </button>
             </header>
             <main class="warning_modal_main">
                 <p class="warning_modal_text">К сожалению, в настоящий момент, данный контент недоступен. Приносим свои извинения за неудобства.</p>
@@ -25,6 +25,11 @@ export default {
     props: {
         warningDialog: {
             type: Boolean
+        }
+    },
+    data() {
+        return {
+            imagesUrl: '../'
         }
     }
 }

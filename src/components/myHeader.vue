@@ -10,49 +10,49 @@
 
                 <div class="mobile--menu" @click="$emit('update:modalMenu', true)">
                     <svg class="icon burger-menu">
-                        <use xlink:href="images/icons/icons.svg#burger-menu"></use>
+                        <use :xlink:href="imagesUrl + 'images/icons/icons.svg#burger-menu'"></use>
                     </svg>
                 </div>
             </div>
 
             <div class="nav__right">
-                <a class="nav__logo conteiner--image" href="#">
-                    <img src="images/logo.png" alt="логотип Neon~Energy">
+                <a class="nav__logo conteiner--image" href="#" @click.prevent="$router.push('/')">
+                    <img :src="imagesUrl + 'images/logo.png'" alt="логотип Neon~Energy">
                 </a>
 
                 <ul class="nav__list__icon">
                     <li class="icon-search">
                         <a href="#" data-title="Поиск" @click.prevent="$emit('update:searchDialog', true)">
                             <svg class="icon icon-search" :class="{'icon-active': searchDialog}">
-                                <use xlink:href="images/icons/icons.svg#icon-search"></use>
+                                <use :xlink:href="imagesUrl + 'images/icons/icons.svg#icon-search'"></use>
                             </svg>
                         </a>
                     </li>
                     <li class="item--border">
                         <a href="#" data-title="Личный кабинет" @click.prevent="$emit('update:warningDialog', true)">
                             <svg class="icon icon-user">
-                                <use xlink:href="images/icons/icons.svg#icon-user"></use>
+                                <use :xlink:href="imagesUrl + 'images/icons/icons.svg#icon-user'"></use>
                             </svg>
                         </a>
                     </li>
                     <li class="item--border">
                         <a href="#" data-title="Избранное" @click.prevent="$emit('update:warningDialog', true)">
                             <svg class="icon icon-favorites">
-                                <use xlink:href="images/icons/icons.svg#icon-favorites"></use>
+                                <use :xlink:href="imagesUrl + 'images/icons/icons.svg#icon-favorites'"></use>
                             </svg>
                         </a>
                     </li>
                     <li class="item--border">
                         <a href="#" data-title="Заказы" @click.prevent="$emit('update:warningDialog', true)">
                             <svg class="icon icon-favorites">
-                                <use xlink:href="images/icons/icons.svg#icon-orders"></use>
+                                <use :xlink:href="imagesUrl + 'images/icons/icons.svg#icon-orders'"></use>
                             </svg>
                         </a>
                     </li>
                     <li class="item--border">
                         <a href="#" data-title="Корзина" @click.prevent="$emit('update:basketDialog', true)">
                             <svg class="icon icon-favorites" :class="{'icon-active': basketDialog}">
-                                <use xlink:href="images/icons/icons.svg#icon-basket"></use>
+                                <use :xlink:href="imagesUrl + 'images/icons/icons.svg#icon-basket'"></use>
                             </svg>
                             <div class="count-prod" v-if="basket.length">
                                 {{ countProducts }}
@@ -92,6 +92,11 @@ export default {
                 countProducts += this.basket[productItem].count;
             }
             return countProducts;
+        }
+    },
+    data() {
+        return {
+            imagesUrl: '../'
         }
     }
 }

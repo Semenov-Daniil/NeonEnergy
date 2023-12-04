@@ -5,7 +5,7 @@
                 <h1 class="basket_title">КОРЗИНА ТОВАРОВ</h1>
                 <button class="close_modal_btn" @click="$emit('update:basketDialog', false)">
                     <svg class="icon icon-cross">
-                        <use xlink:href="images/icons/cross2.svg#cross"></use>
+                        <use :xlink:href="imagesUrl + 'images/icons/cross2.svg#cross'"></use>
                     </svg>
                 </button>
             </header>
@@ -25,7 +25,7 @@
                 <div class="sum_products text--caps">
                     СУММА: <span class="sum_products_price">{{ sumProducts.toLocaleString("ru-RU") }}</span> ₽
                 </div>
-                <a href="" class="btn_place_order">Оформить заказ</a>
+                <a href="#" class="btn_place_order">Оформить заказ</a>
             </footer>
         </div>
     </div>
@@ -45,6 +45,7 @@ export default {
     data () {
         return {
             flashMessages: sessionStorage.getItem("flashMessages"),
+            imagesUrl: '../',
         }
     },
     methods: {
