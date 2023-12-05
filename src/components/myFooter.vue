@@ -44,7 +44,7 @@
                             <a href="mailto:neon@enrgy.shop">neon@enrgy.shop</a>
                         </li>
                         <li>
-                            <a href="tel:89817406942">+7 (981) 740-69-42</a>
+                            <a href="tel:89817406943">+7 (981) 740-69-43</a>
                         </li>
                     </ul>
                 </div>

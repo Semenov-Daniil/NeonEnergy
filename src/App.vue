@@ -144,6 +144,9 @@ export default {
         },
         warningDialog(value) {
             this.modalMenu(value);
+        },
+        modalMenuDialog(value) {
+            this.modalMenu(value);
         }
     },
     created() {
