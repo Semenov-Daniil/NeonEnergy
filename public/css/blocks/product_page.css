@@ -232,3 +232,13 @@ table {
     vertical-align: top;
 }
 
+/* section reviews */
+
+.reviews_section {
+    width: 80vw;
+}
+
+.title_section {
+    font-size: 3rem;
+
+}

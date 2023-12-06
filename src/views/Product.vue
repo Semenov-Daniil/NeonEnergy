@@ -164,6 +164,171 @@
                 </ul>
             </div>
         </section>
+        <section class="section--products">
+            <div class="container--products">
+                <div class='container--products__header'>
+                    <div class='products__header--left'>
+                        <a href="#" class="products--link">
+                            Похожие товары
+                            <svg class="icon-arrow">
+                                <use :xlink:href="imagesUrl + 'images/icons/arrow.svg#arrow'"></use>
+                            </svg>
+
+                        </a>
+                    </div>
+                    <div class='products__header--right'></div>
+                </div>
+                <div class='container--products__body'>
+                    <swiper
+                        class="container__card-product"
+                        :modules="modules"
+                        :navigation="{
+                            nextEl: '.swiper-button-next_swiper-popular-products',
+                            prevEl: '.swiper-button-prev_swiper-popular-products'
+                        }"
+                        :pagination="{
+                            el: '.swiper-pagination_swiper-popular-products',
+                            clickable: true
+                        }"
+                        :slidesPerView="4"
+                        :spaceBetween="50"
+
+                        :watchOverflow="true"
+
+                        :breakpoints="{
+                            '0': {
+                                slidesPerView: 1,
+                                spaceBetween: 20
+                            },
+                            '480': {
+                                slidesPerView: 1,
+                                spaceBetween: 20
+                            },
+                            '900': {
+                                slidesPerView: 2,
+                                spaceBetween: 80
+                            },
+                            '1600': {
+                                slidesPerView: 3,
+                                spaceBetween: 45,
+                            },
+                            '1900': {
+                                slidesPerView: 4,
+                                spaceBetween: 20,
+                            }
+                        }"
+                    >
+                        <swiper-slide
+                            v-for="product in products.popularProducts"
+                            :key="product.id"
+                        >
+                            <card-product
+                                :product="product"
+                                @addBasket="addBasket"
+                            >
+                            </card-product>
+                        </swiper-slide>
+                    </swiper>
+                    <div class="swiper-pagination swiper-pagination_swiper-popular-products"></div>
+                    <div class="swiper-button-next_swiper-popular-products swiper-button-next"></div>
+                    <div class="swiper-button-prev_swiper-popular-products swiper-button-prev"></div>
+                </div>
+                <div class="container--products__background bg-g"></div>
+                <div class="container--products__background bg-w"></div>
+            </div>
+        </section>
+        <section class="reviews_section">
+            <h1 class="text--caps title_section">ОТЗЫВЫ</h1>
+            <div class="reviews_wrapper">
+                <div class="comments_wrapper">
+                    <div class="comment_wrapper">
+                        <header>
+                            <h5>Login</h5>
+                            <span>00.00.00</span>
+                        </header>
+                        <main>
+                            <p>text comment text comment text comment text comment text comment text comment text comment text comment text comment text comment text comment text comment text comment </p>
+                        </main>
+                        <footer>
+                            <ul class="product__rating">
+                                <li
+                                    v-for="star in 5"
+                                    :key="star"
+                                    :class="{'star':true, 'full-star': (star <= product.rating)}"
+                                >
+                                    <svg viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                                        <use :xlink:href="imagesUrl + 'images/icons/Star.svg#star'"></use>
+                                    </svg>
+                                </li>
+                            </ul>
+                        </footer>
+                    </div>
+                </div>
+                <div class="grade_wrapper">
+                    <div class="grade_container">
+                        <header class="grade_header">
+                            {{ product.rating }}
+                            <ul class="product__rating">
+                                <li
+                                    v-for="star in 5"
+                                    :key="star"
+                                    :class="{'star':true, 'full-star': (star <= product.rating)}"
+                                >
+                                    <svg viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                                        <use :xlink:href="imagesUrl + 'images/icons/Star.svg#star'"></use>
+                                    </svg>
+                                </li>
+                            </ul>
+                        </header>
+                        <main class="grade_main">
+                            <ul>
+                                <li>
+                                    <span></span>
+                                    <div>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                    <span></span>
+                                </li>
+                                <li>
+                                    <span></span>
+                                    <div>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                    <span></span>
+                                </li>
+                                <li>
+                                    <span></span>
+                                    <div>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                    <span></span>
+                                </li>
+                                <li>
+                                    <span></span>
+                                    <div>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                    <span></span>
+                                </li>
+                                <li>
+                                    <span></span>
+                                    <div>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                    <span></span>
+                                </li>
+                            </ul>
+                        </main>
+                    </div>
+                    <a href="#">Написать отзыв</a>
+                </div>
+            </div>
+        </section>
     </main>
 </template>
 
@@ -195,7 +360,8 @@ export default {
             timerId: '',
             productDesc: {},
             productCompound: {},
-            productCharacteristics: {}
+            productCharacteristics: {},
+            products: {}
         }
     },
     created() {
@@ -204,6 +370,7 @@ export default {
             () => {
                 this.fetchData();
                 this.fetchDescProduct();
+                this.getProducts();
             },
             { immediate: true }
         )
@@ -307,7 +474,15 @@ export default {
             if (this.mousedown) {
                 this.timerId = setTimeout(this.plusCountProduct, 100);
             }
-        }
+        },
+        async getProducts() {
+            try {
+                let response = await fetch(this.imagesUrl + 'data/products.json');
+                this.products = await response.json();
+            } catch(err) {
+                console.log(err.message);
+            }
+        },
     },
     computed: {
         specialProduct() {
