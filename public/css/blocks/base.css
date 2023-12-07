@@ -147,3 +147,26 @@ use {
 .pd-none {
     padding: 0 !important;
 }
+
+.btn {
+    border: 1px solid transparent;
+
+    border-radius: 30px;
+
+    background-color: var(--main-color-green);
+
+    color: #ffffff;
+    font-size: 1.5rem;
+
+    padding: 10px 20px;
+
+    text-align: center;
+
+    cursor: pointer;
+}
+
+.btn:hover {
+    border-color: var(--main-color-green);
+    background-color: transparent;
+    color: var(--main-color-green);
+}
