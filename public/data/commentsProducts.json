@@ -1,0 +1,67 @@
+{
+    "comments": [
+        {
+            "id": 1, "product_id": 1, "login": "Daniil", "comment": "Very good", "rating": 5, "create_at": "2023-12-12"
+        },
+        {
+            "id": 2, "product_id": 1, "login": "Vitya", "comment": "Very good", "rating": 4, "create_at": "2023-12-12"
+        },
+        {
+            "id": 3, "product_id": 1, "login": "Daniil", "comment": "Very good", "rating": 3, "create_at": "2023-12-12"
+        },
+        {
+            "id": 4, "product_id": 1, "login": "Daniil", "comment": "Very good", "rating": 3, "create_at": "2023-12-12"
+        },
+        {
+            "id": 5, "product_id": 1, "login": "Sergey", "comment": "Very good", "rating": 4, "create_at": "2023-12-12"
+        },
+        {
+            "id": 6, "product_id": 1, "login": "Daniil", "comment": "Very good", "rating": 4, "create_at": "2023-12-12"
+        },
+        {
+            "id": 7, "product_id": 1, "login": "Daniil", "comment": "Very good", "rating": 4, "create_at": "2023-12-12"
+        },
+        {
+            "id": 1, "product_id": 2, "login": "Daniil", "comment": "Very good", "rating": 5, "create_at": "2023-12-12"
+        },
+        {
+            "id": 2, "product_id": 2, "login": "Vitya", "comment": "Very good", "rating": 4, "create_at": "2023-12-12"
+        },
+        {
+            "id": 3, "product_id": 2, "login": "Daniil", "comment": "Very good", "rating": 3, "create_at": "2023-12-12"
+        },
+        {
+            "id": 4, "product_id": 3, "login": "Daniil", "comment": "Very good", "rating": 3, "create_at": "2023-12-12"
+        },
+        {
+            "id": 5, "product_id": 3, "login": "Sergey", "comment": "Very good", "rating": 4, "create_at": "2023-12-12"
+        },
+        {
+            "id": 6, "product_id": 3, "login": "Daniil", "comment": "Very good", "rating": 4, "create_at": "2023-12-12"
+        },
+        {
+            "id": 7, "product_id": 4, "login": "Daniil", "comment": "Very good", "rating": 4, "create_at": "2023-12-12"
+        },
+        {
+            "id": 1, "product_id": 4, "login": "Daniil", "comment": "Very good", "rating": 5, "create_at": "2023-12-12"
+        },
+        {
+            "id": 2, "product_id": 5, "login": "Vitya", "comment": "Very good", "rating": 4, "create_at": "2023-12-12"
+        },
+        {
+            "id": 3, "product_id": 5, "login": "Daniil", "comment": "Very good", "rating": 3, "create_at": "2023-12-12"
+        },
+        {
+            "id": 4, "product_id": 6, "login": "Daniil", "comment": "Very good", "rating": 3, "create_at": "2023-12-12"
+        },
+        {
+            "id": 5, "product_id": 7, "login": "Sergey", "comment": "Very good", "rating": 4, "create_at": "2023-12-12"
+        },
+        {
+            "id": 6, "product_id": 8, "login": "Daniil", "comment": "Very good", "rating": 4, "create_at": "2023-12-12"
+        },
+        {
+            "id": 7, "product_id": 9, "login": "Daniil", "comment": "Very good", "rating": 4, "create_at": "2023-12-12"
+        }
+    ]
+}

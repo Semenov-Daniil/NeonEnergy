@@ -1,10 +1,19 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: >0.3%,defaults
+*/
+
 .header {
     height: 8vh;
     padding: 0px 5%;
     border-bottom: 1px solid #818181;
     background-color: #0000003C;
     box-shadow: 0px 5px 15px 0px rgba(129, 129, 129, 0.25);
-    backdrop-filter: blur(12.5px);
+    -webkit-backdrop-filter: blur(12.5px);
+            backdrop-filter: blur(12.5px);
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -80,7 +89,8 @@
     position: absolute;
 
     left: 50%;
-    transform: translate(-50%);
+    -webkit-transform: translate(-50%);
+            transform: translate(-50%);
     top: 170%;
     z-index: 1;
 }

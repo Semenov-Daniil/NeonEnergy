@@ -1,5 +1,14 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: >0.3%,defaults
+*/
+
 .product_section {
     width: 80vw;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
     height: fit-content;
     display: flex;
     flex-wrap: wrap;
@@ -44,7 +53,8 @@
     left: 0 !important;
     top: auto !important;
     position: relative;
-    transform: none !important;
+    -webkit-transform: none !important;
+            transform: none !important;
 }
 
 .swiper-pagination_swiper-page-products .swiper-pagination-bullet-active {
@@ -94,6 +104,8 @@
     color: #ffffff;
     font-size: 2.5rem;
     position: relative;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
 }
 
@@ -153,7 +165,8 @@
     height: 3.5rem;
     position: absolute;
     left: 2%;
-    transform: translate(0, -20%);
+    -webkit-transform: translate(0, -20%);
+            transform: translate(0, -20%);
     color: transparent;
     display: flex;
     justify-content: center;
@@ -178,6 +191,8 @@
 .product-page__count-product {
     color: #ffffff;
     font-size: 1.8rem;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
     border: 1px solid #ffffff;
     border-radius: 25px;
@@ -246,11 +261,28 @@ table {
     font-size: 3rem;
 }
 
+.count_reviews {
+    color: #818181;
+    font-size: 1.5rem;
+}
+
 .reviews_wrapper {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap-reverse;
-    gap: 20px;
+    gap: 50px;
+}
+
+.not_comment {
+    color: #818181;
+    font-size: 2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 60%;
+    flex: 2;
 }
 
 .comments_wrapper {
@@ -258,11 +290,14 @@ table {
     flex-direction: column;
     gap: 20px;
 
-    width: 70%;
+    min-width: 60%;
+    flex: 2;
 }
 
 .comment_wrapper {
     width: 100%;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
     height: fit-content;
 
     padding: 15px 20px;
@@ -327,9 +362,16 @@ table {
 .grade_wrapper {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 15px;
-    width: 20%;
+
+    min-width: -webkit-fit-content;
+
+    min-width: -moz-fit-content;
+
     min-width: fit-content;
+
+    flex: 1;
 }
 
 .grade_container {
@@ -341,7 +383,18 @@ table {
 
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 50px;
+    justify-content: space-around;
+    
+    width: 300px;
+    min-width: 300px;
+    height: 300px;
+    min-height: 300px;
+}
+
+.link_create_comment {
+    width: 300px;
+    min-width: 300px;
 }
 
 .grade_header {
@@ -350,6 +403,7 @@ table {
 
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     gap: 20px;
 }
 
@@ -369,32 +423,38 @@ table {
     fill: var(--main-color-green);
 }
 
-.grade_main_list {
+.grade_main {
+    flex: 1;
+
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 10px;
 
     font-size: 1.2rem;
     color: #000;
+
+    height: 100%;
 }
 
 .grade_main_item {
     width: 100%;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
     height: fit-content;
 
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
-    gap: 20px;
 
     font-size: 1.5rem;
 }
 
 .progress_grade_container {
     background-color: #000;
-    width: 70%;
     height: 4px;
+    width: 150px;
+    margin: 0 2rem;
 }
 
 .progress_grade {
@@ -411,6 +471,12 @@ table {
     width: 80vw;
 }
 
+.btn_show_comment {
+    color: #818181;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
 .form_create_comment {
     width: 50%;
 
@@ -418,10 +484,10 @@ table {
 
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
 }
 
-input {
+input[type="text"], textarea {
     padding: 10px;
 
     background-color: transparent;
@@ -434,7 +500,21 @@ input {
     border: none;
 
     border-bottom: 1px solid #ffffff;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
 }
+
+/* input:valid,
+textarea:valid {
+    border-bottom-color: var(--main-color-green);
+}
+
+input:invalid,
+textarea:invalid {
+    border-bottom-color: red;
+} */
 
 label {
     font-size: 1.5rem;
@@ -446,5 +526,114 @@ label {
 }
 
 .input_wrapper label {
-    position: relative;
+    position: absolute;
+    left: 10px;
+    bottom: 11px;
 }
+
+.input_wrapper:hover label {
+    color: #ffffff;
+}
+
+.input_wrapper input:not(:-moz-placeholder-shown)~label {
+    color: var(--main-color-green);
+    font-size: 1.2rem;
+    bottom: calc(100% - 5px);
+    -moz-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.input_wrapper input:not(:-ms-input-placeholder)~label {
+    color: var(--main-color-green);
+    font-size: 1.2rem;
+    bottom: calc(100% - 5px);
+    -ms-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.input_wrapper input:focus~label,
+.input_wrapper input:not(:placeholder-shown)~label {
+    color: var(--main-color-green);
+    font-size: 1.2rem;
+    bottom: calc(100% - 5px);
+    transition: 0.5s;
+}
+
+.input_wrapper textarea:not(:-moz-placeholder-shown)~label {
+    color: var(--main-color-green);
+    font-size: 1.2rem;
+    bottom: calc(100%);
+    -moz-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.input_wrapper textarea:not(:-ms-input-placeholder)~label {
+    color: var(--main-color-green);
+    font-size: 1.2rem;
+    bottom: calc(100%);
+    -ms-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.input_wrapper textarea:focus~label,
+.input_wrapper textarea:not(:placeholder-shown)~label {
+    color: var(--main-color-green);
+    font-size: 1.2rem;
+    bottom: calc(100%);
+    transition: 0.5s;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.create_comment_footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input_rating {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+}
+
+.rating_star {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 4px;
+}
+
+.rating_star:not(:checked) > input {
+	display: none;
+}
+
+.rating_star:not(:checked) > label {
+    cursor: pointer;
+    stroke: var(--main-color-green);
+    fill: none !important;
+}
+
+.rating_star > input:checked ~ label svg{
+    fill: var(--main-color-green);
+}
+
+.rating_star:not(:checked) > label:hover svg,
+.rating_star:not(:checked) > label:hover ~ label svg{
+    fill: var(--main-color-green);
+}
+
+.rating_star > input:checked + label:hover svg,
+.rating_star > input:checked + label:hover ~ label svg,
+.rating_star > input:checked ~ label:hover svg,
+.rating_star > input:checked ~ label:hover ~ label svg,
+.rating_star > label:hover ~ input:checked ~ label svg {
+	fill: var(--main-color-green);
+}
+
+

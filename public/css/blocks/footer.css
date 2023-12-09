@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: >0.3%,defaults
+*/
+
 .footer {
     height: 15vh;
     padding: 15px 5%;
@@ -56,6 +63,8 @@
     gap: 10%;
 
     width: 50vw;
+    min-width: -webkit-fit-content;
+    min-width: -moz-fit-content;
     min-width: fit-content;
     max-width: 50%;
 }
@@ -67,9 +76,13 @@
 }
 
 .list__socials {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
     height: fit-content;
 
     li {
+        height: -webkit-fit-content;
+        height: -moz-fit-content;
         height: fit-content;
     }
 
@@ -85,6 +98,8 @@
 }
 
 .list__socials li {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
     height: fit-content;
 }
 

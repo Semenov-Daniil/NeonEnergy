@@ -239,22 +239,23 @@
         </section>
         <section class="reviews_section">
             <h1 class="text--caps title_section">ОТЗЫВЫ</h1>
+            <h5 class="count_reviews">{{ comments.length }} отзывов</h5>
             <div class="reviews_wrapper">
-                <div class="comments_wrapper">
-                    <div class="comment_wrapper">
+                <div class="comments_wrapper" v-if="comments.length">
+                    <div class="comment_wrapper" v-for="(comment, index) in comments" :key="comment.id" v-show="(index < 5) ? true : showComment">
                         <header class="comment_header">
-                            <span class="comment_login">Login</span>
-                            <span class="comment_create_time">00.00.00</span>
+                            <span class="comment_login">{{ comment.login }}</span>
+                            <span class="comment_create_time">{{ comment.create_at }}</span>
                         </header>
                         <main class="comment_content">
-                            <p class="comment_content_text">text comment text comment text comment text comment text comment text comment text comment text comment text comment text comment text comment text comment text comment </p>
+                            <p class="comment_content_text">{{ comment.comment }}</p>
                         </main>
                         <footer class="comment_footer">
                             <ul class="comment__rating">
                                 <li
                                     v-for="star in 5"
                                     :key="star"
-                                    :class="{'star':true, 'full-star': (star <= product.rating)}"
+                                    :class="{'star':true, 'full-star': (star <= comment.rating)}"
                                 >
                                     <svg viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg" >
                                         <use :xlink:href="imagesUrl + 'images/icons/Star.svg#star'"></use>
@@ -263,82 +264,20 @@
                             </ul>
                         </footer>
                     </div>
-                    <div class="comment_wrapper">
-                        <header class="comment_header">
-                            <span class="comment_login">Login</span>
-                            <span class="comment_create_time">00.00.00</span>
-                        </header>
-                        <main class="comment_content">
-                            <p class="comment_content_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis minus perferendis tempore quasi nobis numquam eos, accusamus sint nulla in expedita debitis delectus, dignissimos veritatis. In odit dolores iure fugit.</p>
-                        </main>
-                        <footer class="comment_footer">
-                            <ul class="comment__rating">
-                                <li
-                                    v-for="star in 5"
-                                    :key="star"
-                                    :class="{'star':true, 'full-star': (star <= product.rating)}"
-                                >
-                                    <svg viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg" >
-                                        <use :xlink:href="imagesUrl + 'images/icons/Star.svg#star'"></use>
-                                    </svg>
-                                </li>
-                            </ul>
-                        </footer>
-                    </div>
-                    <div class="comment_wrapper">
-                        <header class="comment_header">
-                            <span class="comment_login">Login</span>
-                            <span class="comment_create_time">00.00.00</span>
-                        </header>
-                        <main class="comment_content">
-                            <p class="comment_content_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis minus perferendis tempore quasi nobis numquam eos, accusamus sint nulla in expedita debitis delectus, dignissimos veritatis. In odit dolores iure fugit.</p>
-                        </main>
-                        <footer class="comment_footer">
-                            <ul class="comment__rating">
-                                <li
-                                    v-for="star in 5"
-                                    :key="star"
-                                    :class="{'star':true, 'full-star': (star <= product.rating)}"
-                                >
-                                    <svg viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg" >
-                                        <use :xlink:href="imagesUrl + 'images/icons/Star.svg#star'"></use>
-                                    </svg>
-                                </li>
-                            </ul>
-                        </footer>
-                    </div>
-                    <div class="comment_wrapper">
-                        <header class="comment_header">
-                            <span class="comment_login">Login</span>
-                            <span class="comment_create_time">00.00.00</span>
-                        </header>
-                        <main class="comment_content">
-                            <p class="comment_content_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis minus perferendis tempore quasi nobis numquam eos, accusamus sint nulla in expedita debitis delectus, dignissimos veritatis. In odit dolores iure fugit.</p>
-                        </main>
-                        <footer class="comment_footer">
-                            <ul class="comment__rating">
-                                <li
-                                    v-for="star in 5"
-                                    :key="star"
-                                    :class="{'star':true, 'full-star': (star <= product.rating)}"
-                                >
-                                    <svg viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg" >
-                                        <use :xlink:href="imagesUrl + 'images/icons/Star.svg#star'"></use>
-                                    </svg>
-                                </li>
-                            </ul>
-                        </footer>
-                    </div>
+                    <button @click="showComment = true" v-show="!showComment && comments.length > 5" class="btn_show_comment">Показать еще...</button>
+                </div>
+                <div v-else class="not_comment">
+                    Отзывов нету
                 </div>
                 <div class="grade_wrapper">
                     <div class="grade_container">
                         <header class="grade_header">
-                            {{ product.rating }}
+                            {{ ratingProduct.toFixed(1) }}
                             <ul class="grade_product_rating">
                                 <li
                                     v-for="star in 5"
                                     :key="star"
-                                    :class="{'star':true, 'full-star': (star <= product.rating)}"
+                                    :class="{'star':true, 'full-star': (star <= ratingProduct)}"
                                 >
                                     <svg viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg" >
                                         <use :xlink:href="imagesUrl + 'images/icons/Star.svg#star'"></use>
@@ -347,99 +286,99 @@
                             </ul>
                         </header>
                         <main class="grade_main">
-                            <ul class="grade_main_list">
-                                <li class="grade_main_item">
-                                    <span>5</span>
-                                    <div class="progress_grade_container">
-                                        <div class="progress_grade"></div>
-                                    </div>
-                                    <span>80%</span>
-                                </li>
-                                <li class="grade_main_item">
-                                    <span>4</span>
-                                    <div class="progress_grade_container">
-                                        <div class="progress_grade"></div>
-                                    </div>
-                                    <span>80%</span>
-                                </li>
-                                <li class="grade_main_item">
-                                    <span>3</span>
-                                    <div class="progress_grade_container">
-                                        <div class="progress_grade"></div>
-                                    </div>
-                                    <span>80%</span>
-                                </li>
-                                <li class="grade_main_item">
-                                    <span>2</span>
-                                    <div class="progress_grade_container">
-                                        <div class="progress_grade"></div>
-                                    </div>
-                                    <span>80%</span>
-                                </li>
-                                <li class="grade_main_item">
-                                    <span>1</span>
-                                    <div class="progress_grade_container">
-                                        <div class="progress_grade"></div>
-                                    </div>
-                                    <span>80%</span>
-                                </li>
-                            </ul>
+                            <div class="grade_main_item">
+                                <span>5</span>
+                                <div class="progress_grade_container">
+                                    <div class="progress_grade" :style="{width: `${ratingItemProduct(5)}%`,}"></div>
+                                </div>
+                                <span>{{ ratingItemProduct(5) }}%</span>
+                            </div>
+                            <div class="grade_main_item">
+                                <span>4</span>
+                                <div class="progress_grade_container">
+                                    <div class="progress_grade" :style="{width: `${ratingItemProduct(4)}%`,}"></div>
+                                </div>
+                                <span>{{ ratingItemProduct(4) }}%</span>
+                            </div>
+                            <div class="grade_main_item">
+                                <span>3</span>
+                                <div class="progress_grade_container">
+                                    <div class="progress_grade" :style="{width: `${ratingItemProduct(3)}%`,}"></div>
+                                </div>
+                                <span>{{ ratingItemProduct(3) }}%</span>
+                            </div>
+                            <div class="grade_main_item">
+                                <span>2</span>
+                                <div class="progress_grade_container">
+                                    <div class="progress_grade" :style="{width: `${ratingItemProduct(2)}%`,}"></div>
+                                </div>
+                                <span>{{ ratingItemProduct(2) }}%</span>
+                            </div>
+                            <div class="grade_main_item">
+                                <span>1</span>
+                                <div class="progress_grade_container">
+                                    <div class="progress_grade" :style="{width: `${ratingItemProduct(1)}%`,}"></div>
+                                </div>
+                                <span>{{ ratingItemProduct(1) }}%</span>
+                            </div>
                         </main>
                     </div>
-                    <a href="#" class="btn">Написать отзыв</a>
+                    <a href="#create_comment" class="btn link_create_comment">Написать отзыв</a>
                 </div>
             </div>
         </section>
-        <section class="creat_comment_section">
+        <section class="creat_comment_section" id="create_comment">
             <h1 class="text--caps title_section">ОСТАВИТЬ ОТЗЫВ</h1>
-            <form action="#" id="form_create_comment" class="form_create_comment">
+            <form action="#" id="form_create_comment" class="form_create_comment" @submit.prevent>
                 <div class="input_wrapper">
+                    <input type="text" id="name" placeholder="" required autocapitalize="on" v-model="nameUser"/>
                     <label for="name">Ваше имя</label>
-                    <input type="text" id="name"/>
                 </div>
                 <div class="input_wrapper">
+                    <textarea name="comment" id="comment" wrap="soft" placeholder="" rows="1" autocapitalize="on" required v-model="commentUser"></textarea>
                     <label for="comment">Ваш отзыв</label>
-                    <input type="text" id="comment"/>
                 </div>
-                <div>
-                    <div>
-                        <input type="radio" id="rating1">
-                        <label for="rating1">
-                            <svg viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg" >
-                                <use :xlink:href="imagesUrl + 'images/icons/Star.svg#star'"></use>
-                            </svg>
-                        </label>
+                <div class="create_comment_footer">
+                    <div class="input_rating">
+                        <div class="rating_star">
+                            <input type="radio" id="rating5" value="5" v-model="rating">
+                            <label for="rating5" title="Оценка 5" @mouseover="rating_hover = 5" @mouseleave="rating_hover = 0">
+                                <svg viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                                    <use :xlink:href="imagesUrl + 'images/icons/Star.svg#star'"></use>
+                                </svg>
+                            </label>
 
-                        <input type="radio" id="rating2">
-                        <label for="rating2">
-                            <svg viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg" >
-                                <use :xlink:href="imagesUrl + 'images/icons/Star.svg#star'"></use>
-                            </svg>
-                        </label>
+                            <input type="radio" id="rating4" value="4" v-model="rating">
+                            <label for="rating4" title="Оценка 4" @mouseover="rating_hover = 4" @mouseleave="rating_hover = 0">
+                                <svg viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                                    <use :xlink:href="imagesUrl + 'images/icons/Star.svg#star'"></use>
+                                </svg>
+                            </label>
 
-                        <input type="radio" id="rating3">
-                        <label for="rating3">
-                            <svg viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg" >
-                                <use :xlink:href="imagesUrl + 'images/icons/Star.svg#star'"></use>
-                            </svg>
-                        </label>
+                            <input type="radio" id="rating3" value="3" v-model="rating">
+                            <label for="rating3" title="Оценка 3" @mouseover="rating_hover = 3" @mouseleave="rating_hover = 0">
+                                <svg viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                                    <use :xlink:href="imagesUrl + 'images/icons/Star.svg#star'"></use>
+                                </svg>
+                            </label>
 
-                        <input type="radio" id="rating4">
-                        <label for="rating4">
-                            <svg viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg" >
-                                <use :xlink:href="imagesUrl + 'images/icons/Star.svg#star'"></use>
-                            </svg>
-                        </label>
+                            <input type="radio" id="rating2" value="2" v-model="rating">
+                            <label for="rating2" title="Оценка 2" @mouseover="rating_hover = 2" @mouseleave="rating_hover = 0">
+                                <svg viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                                    <use :xlink:href="imagesUrl + 'images/icons/Star.svg#star'"></use>
+                                </svg>
+                            </label>
 
-                        <input type="radio" id="rating5">
-                        <label for="rating5">
-                            <svg viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg" >
-                                <use :xlink:href="imagesUrl + 'images/icons/Star.svg#star'"></use>
-                            </svg>
-                        </label>
-                        0
+                            <input type="radio" id="rating1" value="1" v-model="rating">
+                            <label for="rating1" title="Оценка 1" @mouseover="rating_hover = 1" @mouseleave="rating_hover = 0">
+                                <svg viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                                    <use :xlink:href="imagesUrl + 'images/icons/Star.svg#star'"></use>
+                                </svg>
+                            </label>
+                        </div>
+                        <div class="title_rating">{{ rating_hover ? rating_hover : rating }}</div>
                     </div>
-                    <button class="btn" type="sumbit" form="form_create_comment">Отправить отзыв</button>
+                    <button class="btn" type="sumbit" form="form_create_comment" @click="createComment">Отправить отзыв</button>
                 </div>
             </form>
         </section>
@@ -449,11 +388,15 @@
 <script>
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination, Navigation, Mousewheel } from 'swiper/modules';
+import Accordion from 'primevue/accordion';
+import AccordionTab from 'primevue/accordiontab';
 
 export default {
     components: {
         Swiper,
         SwiperSlide,
+        Accordion,
+        AccordionTab
     },
     props: {
         basket: {
@@ -475,7 +418,13 @@ export default {
             productDesc: {},
             productCompound: {},
             productCharacteristics: {},
-            products: {}
+            products: {},
+            rating: 0,
+            rating_hover: 0,
+            comments: [],
+            showComment: false,
+            nameUser: '',
+            commentUser: '',
         }
     },
     created() {
@@ -485,6 +434,7 @@ export default {
                 this.fetchData();
                 this.fetchDescProduct();
                 this.getProducts();
+                this.fetchCommentsProduct()
             },
             { immediate: true }
         )
@@ -597,11 +547,48 @@ export default {
                 console.log(err.message);
             }
         },
+        async fetchCommentsProduct() {
+            try {
+                let response = await fetch(this.imagesUrl + 'data/commentsProducts.json');
+                let data = await response.json();
+                let comments = data.comments;
+                for (let commentsItem in comments) {
+                    let comment = comments[commentsItem];
+                    if (comment.product_id == this.productId) {
+                        this.comments.push(comment) 
+                    }
+                }
+            } catch(err) {
+                console.log(err.message);
+            }
+        },
+        ratingItemProduct(num) {
+            let countRating = 0;
+            for(let comment of this.comments) {
+                if (comment.rating == num) {
+                    countRating++;
+                }
+            }
+            return Math.round((countRating/this.comments.length)*100)
+        },
+        createComment() {
+            this.nameUser = '';
+            this.commentUser = '';
+            this.rating = 0;
+        }
     },
     computed: {
         specialProduct() {
             return this.product["speсial"]
-        }
+        },
+        ratingProduct() {
+            let sumRating = 0;
+            for(let comment of this.comments) {
+                sumRating += comment.rating;
+            }
+            return sumRating/this.comments.length;
+        },
+        
     },
 }
 </script>

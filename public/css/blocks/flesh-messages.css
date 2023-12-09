@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: >0.3%,defaults
+*/
+
 .flash_messages_wrapper {
     position: fixed;
     top: 10vh;
@@ -30,7 +37,8 @@
 
 .flash_message_item:hover {
     background-color: transparent;
-    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
 }
 
 .success:hover {

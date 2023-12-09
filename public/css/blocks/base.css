@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: >0.3%,defaults
+*/
+
 @font-face {
     font-family: 'OpenSans-SemiBold';
     src: url(../../fonts/OpenSans-SemiBold.ttf);
@@ -104,6 +111,8 @@ button {
 .conteiner--image {
     display: block;
     height: 100%;
+    max-height: -webkit-fit-content;
+    max-height: -moz-fit-content;
     max-height: fit-content;
 }
 
