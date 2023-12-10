@@ -4,7 +4,7 @@
             <div class="nav__left">
                 <ul class="nav__list text--caps">
                     <li class=""><a href="#" @click.prevent="$emit('update:warningDialog', true)">Энергетики</a></li>
-                    <li class=""><a href="#" @click.prevent="$emit('update:warningDialog', true)">О нас</a></li>
+                    <li class=""><a href="#" @click.prevent="$router.push('/about')">О нас</a></li>
                     <li class=""><a href="#" @click.prevent="$emit('update:warningDialog', true)">Контакты</a></li>
                 </ul>
 
