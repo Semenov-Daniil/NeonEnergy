@@ -75,7 +75,7 @@
             <a class="footer__logo" href="#" @click.prevent="$router.push('/')">
                 <img :src="imagesUrl + 'images/logo.png'" alt="Neon~Energy">
             </a>
-            <span class="title--shops">© 2023 NeonEnergy</span>
+            <span class="title--shops">&copy; 2023 NeonEnergy</span>
         </div>
     </footer>
 </template>

@@ -10,6 +10,7 @@
         v-model:basket="basket"
         v-model:flashMessages="flashMessages"
         @updateBasket="updateBasket"
+        v-model:search="search"
     ></router-view>
     <my-footer/>
     <noscript>

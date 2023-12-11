@@ -168,7 +168,7 @@
             <div class="container--products">
                 <div class='container--products__header'>
                     <div class='products__header--left'>
-                        <a href="#" class="products--link">
+                        <a href="#" class="products--link" @click.prevent="$router.push('/catalog')">
                             Похожие товары
                             <svg class="icon-arrow">
                                 <use :xlink:href="imagesUrl + 'images/icons/arrow.svg#arrow'"></use>
@@ -555,7 +555,7 @@ export default {
                 for (let commentsItem in comments) {
                     let comment = comments[commentsItem];
                     if (comment.product_id == this.productId) {
-                        this.comments.push(comment) 
+                        this.comments.push(comment)
                     }
                 }
             } catch(err) {
@@ -563,13 +563,18 @@ export default {
             }
         },
         ratingItemProduct(num) {
+            let result = 0;
             let countRating = 0;
-            for(let comment of this.comments) {
-                if (comment.rating == num) {
-                    countRating++;
+
+            if (this.comments.length) {
+                for(let comment of this.comments) {
+                    if (comment.rating == num) {
+                        countRating++;
+                    }
                 }
+                result = Math.round((countRating/this.comments.length)*100)
             }
-            return Math.round((countRating/this.comments.length)*100)
+            return result
         },
         createComment() {
             this.nameUser = '';
@@ -582,13 +587,19 @@ export default {
             return this.product["speсial"]
         },
         ratingProduct() {
+            let result = 0;
             let sumRating = 0;
-            for(let comment of this.comments) {
-                sumRating += comment.rating;
+
+            if(this.comments.length) {
+                for(let comment of this.comments) {
+                    sumRating += comment.rating;
+                }
+                result = sumRating/this.comments.length;
             }
-            return sumRating/this.comments.length;
+
+            return result;
         },
-        
+
     },
 }
 </script>

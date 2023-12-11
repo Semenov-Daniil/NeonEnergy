@@ -3,6 +3,7 @@ import Main from '@/views/Main.vue'
 import Product from '@/views/Product.vue'
 import NotFound from '@/views/NotFound.vue'
 import About from '@/views/About.vue'
+import Catalog from '@/views/Catalog.vue'
 
 const routes = [
     {
@@ -21,15 +22,29 @@ const routes = [
             title: "Продукт"
         }
     },
-    { 
-        path: '/:pathMatch(.*)*', 
-        name: 'NotFound', 
-        component: NotFound 
+    {
+        path: '/:pathMatch(.*)*',
+        name: 'NotFound',
+        component: NotFound,
+        meta: {
+            title: "Страница не найдена"
+        }
     },
-    { 
-        path: '/about', 
-        name: 'about', 
-        component: About 
+    {
+        path: '/about',
+        name: 'about',
+        component: About,
+        meta: {
+            title: "О нас"
+        }
+    },
+    {
+        path: '/catalog',
+        name: 'catalog',
+        component: Catalog,
+        meta: {
+            title: "Каталог"
+        }
     },
 ]
 

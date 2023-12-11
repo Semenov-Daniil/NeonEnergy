@@ -27,7 +27,7 @@
             <div class="container--products">
                 <div class='container--products__header'>
                     <div class='products__header--left'>
-                        <a href="#" class="products--link">
+                        <a href="#" class="products--link" @click.prevent="$router.push('/catalog')">
                             Популярные товары
                             <svg class="icon-arrow">
                                 <use xlink:href="images/icons/arrow.svg#arrow"></use>
@@ -99,7 +99,7 @@
             <div class="container--products cp--mirrored">
                 <div class='container--products__header'>
                     <div class='products__header--left'>
-                        <a href="#" class="products--link">
+                        <a href="#" class="products--link" @click.prevent="$router.push('/catalog')">
                             Новинки и акции
                             <svg class="icon-arrow">
                                 <use xlink:href="images/icons/arrow.svg#arrow"></use>
