@@ -11,6 +11,7 @@
                         @blur="focusDialog = false"
                         :value="search"
                         @input="$emit('update:search', ($event.target.value).trim())"
+                        @keydown.enter="updateSearchTag()"
                     />
                     <button class="search_btn search_input_reset" v-show="search.length" @click="$emit('update:search', '')">
                         <svg class="icon icon-cross">
@@ -320,7 +321,7 @@ export default {
             } else if(tag.id == 'max_price') {
                 this.maxPrice = this.maxValuePrice;
             } else if(tag.id == 'search') {
-                this.search = '';
+                this.$emit('update:search', '');
             } else {
                 tag.value = false;
             }
