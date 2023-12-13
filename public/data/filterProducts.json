@@ -1,39 +1,40 @@
 {
     "brend": [
-        {"id": 1, "title": "Monster Energy"},
-        {"id": 2, "title": "Andrenaline Rush"},
-        {"id": 3, "title": "Burn"},
-        {"id": 4, "title": "Red Bull"},
-        {"id": 5, "title": "Tornado Energy"},
-        {"id": 6, "title": "Drive me"},
-        {"id": 7, "title": "Gorilla"},
-        {"id": 8, "title": "Flash up"},
-        {"id": 9, "title": "Jaguar"}
+        {"id": 1, "title": "Monster Energy", "value": false},
+        {"id": 2, "title": "Andrenaline Rush", "value": false},
+        {"id": 3, "title": "Burn", "value": false},
+        {"id": 4, "title": "Red Bull", "value": false},
+        {"id": 5, "title": "Tornado Energy", "value": false},
+        {"id": 6, "title": "Drive me", "value": false},
+        {"id": 7, "title": "Gorilla", "value": false},
+        {"id": 8, "title": "Flash up", "value": false},
+        {"id": 9, "title": "Jaguar", "value": false}
     ],
     "compound": [
-        {"id": 1, "title": "Витамины"},
-        {"id": 2, "title": "Глюкоза"},
-        {"id": 3, "title": "Кофеин"},
-        {"id": 4, "title": "Таурин"},
-        {"id": 5, "title": "Сахароз"},
-        {"id": 6, "title": "Женьшень"},
-        {"id": 7, "title": "Гуарану"}
+        {"id": 1, "title": "Витамины", "value": false},
+        {"id": 2, "title": "Глюкоза", "value": false},
+        {"id": 3, "title": "Кофеин", "value": false},
+        {"id": 4, "title": "Таурин", "value": false},
+        {"id": 5, "title": "Сахароз", "value": false},
+        {"id": 6, "title": "Женьшень", "value": false},
+        {"id": 7, "title": "Гуарану", "value": false}
     ],
     "taste": [
-        {"id": 1, "title": "Манго"},
-        {"id": 2, "title": "Классический"},
-        {"id": 3, "title": "Тропический"},
-        {"id": 4, "title": "Яблоко"},
-        {"id": 5, "title": "Тоник"},
-        {"id": 6, "title": "Оригинальный"},
-        {"id": 7, "title": "Мята"},
-        {"id": 8, "title": "Клубника"}
+        {"id": 1, "title": "Манго", "value": false},
+        {"id": 2, "title": "Классический", "value": false},
+        {"id": 3, "title": "Тропический", "value": false},
+        {"id": 4, "title": "Яблоко", "value": false},
+        {"id": 5, "title": "Тоник", "value": false},
+        {"id": 6, "title": "Оригинальный", "value": false},
+        {"id": 7, "title": "Мята", "value": false},
+        {"id": 8, "title": "Клубника", "value": false},
+        {"id": 9, "title": "Кофе", "value": false}
     ],
     "volume": [
-        {"id": 1, "title": "2л"},
-        {"id": 2, "title": "1.5л"},
-        {"id": 3, "title": "1л"},
-        {"id": 4, "title": "0.5л"},
-        {"id": 5, "title": "0.25л"}
+        {"id": 1, "title": "2л", "value": false},
+        {"id": 2, "title": "1.5л", "value": false},
+        {"id": 3, "title": "1л", "value": false},
+        {"id": 4, "title": "0.5л", "value": false},
+        {"id": 5, "title": "0.25л", "value": false}
     ]
 }

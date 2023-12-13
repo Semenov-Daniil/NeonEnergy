@@ -45,6 +45,7 @@
     display: flex;
     flex-direction: row;
     gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .teg_item {
@@ -130,13 +131,15 @@
     width: 100%;
 }
 
-input[type="checkbox"] {
+input[type="checkbox"],
+input[type="radio"] {
     position: absolute;
     z-index: -1;
     opacity: 0;
 }
 
-input[type="checkbox"]+label {
+input[type="checkbox"]+label,
+input[type="radio"]+label {
     display: inline-flex;
     align-items: center;
     position: relative;
@@ -146,7 +149,8 @@ input[type="checkbox"]+label {
     cursor: pointer;
 }
 
-input[type="checkbox"]+label::before {
+input[type="checkbox"]+label::before,
+input[type="radio"]+label::before {
     content: '';
 
     width: 10px;
@@ -162,7 +166,8 @@ input[type="checkbox"]+label::before {
     margin-right: 1rem;
 }
 
-input[type="checkbox"]:checked+label:after {
+input[type="checkbox"]:checked+label:after,
+input[type="radio"]:checked+label:after {
     content: "";
     position: absolute;
     width: 6px;
@@ -175,11 +180,13 @@ input[type="checkbox"]:checked+label:after {
             transform: translate(70%, 0%);
 }
 
-input[type="checkbox"]:checked+label::before {
+input[type="checkbox"]:checked+label::before,
+input[type="radio"]:checked+label::before {
     border-color: var(--main-color-green);
 }
 
-input[type="checkbox"]:checked+label {
+input[type="checkbox"]:checked+label,
+input[type="radio"]:checked+label {
     color: var(--main-color-green);
     font-style: italic;
 }
@@ -230,6 +237,10 @@ input[type="checkbox"]:checked+label {
     background-color: #dbdbdb;
 }
 
+.filter_list::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+}
+
 .filter_price_input {
     display: flex;
     flex-direction: row;
@@ -256,6 +267,8 @@ input[type="checkbox"]:checked+label {
     width: 100%;
 
     font-size: 1.2rem;
+
+    text-align: center;
 }
 
 .separator {
@@ -363,4 +376,10 @@ input[type="range"]:active::-moz-range-thumb {
     -webkit-transform: scale(0.8);
             transform: scale(0.8);
     margin: 0 !important;
+}
+
+.title_cont_tag {
+    align-self: flex-start;
+    margin-top: 3px;
+    font-size: 1.5rem;
 }

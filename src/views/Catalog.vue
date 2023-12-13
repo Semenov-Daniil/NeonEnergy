@@ -17,11 +17,11 @@
                             <use :xlink:href="imagesUrl + 'images/icons/cross2.svg#cross'"></use>
                         </svg>
                     </button>
-                    <a href="#" class="search_btn search_btn_icon">
+                    <button href="#" class="search_btn search_btn_icon" @click="updateSearchTag()">
                         <svg class="icon icon-search">
                             <use :xlink:href="imagesUrl + 'images/icons/icons.svg#icon-search'"></use>
                         </svg>
-                    </a>
+                    </button>
                 </div>
             </div>
             <div class="catalog_wrapper">
@@ -30,13 +30,9 @@
                         Фильтры
                     </div>
                     <div class="filters_container">
-                        <div class="checkbox_wrapper">
-                            <input type="checkbox" id="new_product" @change="updateTags({'title': 'Новинки', 'id': 'new_product'}, $event.target.checked)">
-                            <label for="new_product">Новинки</label>
-                        </div>
-                        <div class="checkbox_wrapper">
-                            <input type="checkbox" id="stok_product">
-                            <label for="stok_product">Акции</label>
+                        <div class="checkbox_wrapper" v-for="filter in filters.other" :key="filter.id">
+                            <input type="checkbox" :id="'other' + filter.id" v-model="filter.value" @change="updateTags(filter, $event.target.checked)">
+                            <label :for="'other' + filter.id">{{ filter.title }}</label>
                         </div>
                         <div class="filter_wrapper">
                             <div class="title_filter">
@@ -54,6 +50,7 @@
                                         @blur="minPriceValid"
                                         @keydown.enter="minPriceValid"
                                     />
+                                    ₽
                                 </div>
                                 <span class="separator"></span>
                                 <div class="price_number">
@@ -67,6 +64,7 @@
                                         @blur="maxPriceValid"
                                         @keydown.enter="maxPriceValid"
                                     />
+                                    ₽
                                 </div>
                             </div>
                             <div class="price_slider">
@@ -102,37 +100,9 @@
                                 Бренд
                             </div>
                             <div class="filter_list">
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_brend1">
-                                    <label for="filter_brend1">Monster Energy</label>
-                                </div>
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_brend2">
-                                    <label for="filter_brend2">Andrenaline Rush</label>
-                                </div>
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_brend3">
-                                    <label for="filter_brend3">Burn</label>
-                                </div>
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_brend4">
-                                    <label for="filter_brend4">Red Bull</label>
-                                </div>
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_brend5">
-                                    <label for="filter_brend5">Tornado Energy</label>
-                                </div>
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_brend6">
-                                    <label for="filter_brend6">Drive me</label>
-                                </div>
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_brend7">
-                                    <label for="filter_brend7">Gorilla</label>
-                                </div>
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_brend8">
-                                    <label for="filter_brend8">Flash up</label>
+                                <div class="checkbox_wrapper" v-for="filter in filters.brend" :key="filter.id">
+                                    <input type="checkbox" :id="'brend' + filter.id" v-model="filter.value" @change="updateTags(filter, $event.target.checked)">
+                                    <label :for="'brend' + filter.id">{{ filter.title }}</label>
                                 </div>
                             </div>
                         </div>
@@ -141,33 +111,9 @@
                                 Содержит
                             </div>
                             <div class="filter_list">
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_compound1">
-                                    <label for="filter_compound1">Витамины</label>
-                                </div>
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_compound2">
-                                    <label for="filter_compound2">Глюкоза</label>
-                                </div>
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_compound3">
-                                    <label for="filter_compound3">Кофеин</label>
-                                </div>
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_compound4">
-                                    <label for="filter_compound4">Таурин</label>
-                                </div>
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_compound5">
-                                    <label for="filter_compound5">Сахароз</label>
-                                </div>
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_compound6">
-                                    <label for="filter_compound6">Женьшень</label>
-                                </div>
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_compound7">
-                                    <label for="filter_compound7">Гуарану</label>
+                                <div class="checkbox_wrapper" v-for="filter in filters.compound" :key="filter.id">
+                                    <input type="checkbox" :id="'compound' + filter.id" v-model="filter.value" @change="updateTags(filter, $event.target.checked)">
+                                    <label :for="'compound' + filter.id">{{ filter.title }}</label>
                                 </div>
                             </div>
                         </div>
@@ -176,37 +122,9 @@
                                 Вкус
                             </div>
                             <div class="filter_list">
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_taste_mango">
-                                    <label for="filter_taste_mango">Манго</label>
-                                </div>
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_taste_classic">
-                                    <label for="filter_taste_classic">Классический</label>
-                                </div>
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_taste_tropic">
-                                    <label for="filter_taste_tropic">Тропический</label>
-                                </div>
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_taste_apple">
-                                    <label for="filter_taste_apple">Яблоко</label>
-                                </div>
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_taste_tonic">
-                                    <label for="filter_taste_tonic">Тоник</label>
-                                </div>
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_taste_origin">
-                                    <label for="filter_taste_origin">Оригинальный</label>
-                                </div>
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_taste_mint">
-                                    <label for="filter_taste_mint">Мята</label>
-                                </div>
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_taste_strawberry">
-                                    <label for="filter_taste_strawberry">Клубника</label>
+                                <div class="checkbox_wrapper" v-for="filter in filters.taste" :key="filter.id">
+                                    <input type="checkbox" :id="'taste' + filter.id" v-model="filter.value" @change="updateTags(filter, $event.target.checked)">
+                                    <label :for="'taste' + filter.id">{{ filter.title }}</label>
                                 </div>
                             </div>
                         </div>
@@ -215,25 +133,9 @@
                                 Объём
                             </div>
                             <div class="filter_list">
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_volume_2l">
-                                    <label for="filter_volume_2l">2л</label>
-                                </div>
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_volume_1.5l">
-                                    <label for="filter_volume_1.5l">1.5л</label>
-                                </div>
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_volume_1l">
-                                    <label for="filter_volume_1l">1л</label>
-                                </div>
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_volume_0.5l">
-                                    <label for="filter_volume_0.5l">0.5л</label>
-                                </div>
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_volume_0.25l">
-                                    <label for="filter_volume_0.25l">0.25л</label>
+                                <div class="checkbox_wrapper" v-for="filter in filters.volume" :key="filter.id">
+                                    <input type="checkbox" :id="'volume' + filter.id" v-model="filter.value" @change="updateTags(filter, $event.target.checked)">
+                                    <label :for="'volume' + filter.id">{{ filter.title }}</label>
                                 </div>
                             </div>
                         </div>
@@ -242,36 +144,27 @@
                                 Оценка
                             </div>
                             <div class="filter_list">
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_grade_5">
-                                    <label for="filter_grade_5">5.0</label>
-                                </div>
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_grade_4">
-                                    <label for="filter_grade_4">от 4.0</label>
-                                </div>
-                                <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="filter_grade_3">
-                                    <label for="filter_grade_3">от 3.0</label>
+                                <div class="checkbox_wrapper" v-for="filter in filters.grade" :key="filter.id">
+                                    <input type="checkbox" :id="'grade' + filter.id" v-model="filter.value" @change="updateGrade(filter), updateTags(filter, $event.target.checked)">
+                                    <label :for="'grade' + filter.id">{{ filter.title }}</label>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <button class="btn">Применить</button>
                 </div>
                 <div class="catalog_partition"></div>
                 <div class="catalog_products">
-                    <div v-if="tegs.length">
+                    <div v-if="tags.length">
                         <div class="catalog_teg_wrapper">
-                            <span>Теги:</span>
+                            <h2 class="title_cont_tag">Теги:</h2>
                             <div class="tegs_container">
                                 <div
                                     class="teg_item"
-                                    v-for="(teg, index) in tegs"
+                                    v-for="(tag, index) in tags"
                                     :key="index"
                                 >
-                                    <span>{{ teg.title }}</span>
-                                    <button class="del_teg">
+                                    <span>{{ tag.title }}</span>
+                                    <button class="del_teg" @click="deleteTag(tag)">
                                         <svg class="icon icon-cross">
                                             <use :xlink:href="imagesUrl + 'images/icons/cross2.svg#cross'"></use>
                                         </svg>
@@ -323,14 +216,33 @@ export default {
             maxRangePrice: 10000,
 
             products: [],
-            tegs: [],
-            filters: [
-                {'id': 'new_products', 'title': 'Новинки', 'value': false},
-                {'id': 'stock_products', 'title': 'Акции', 'value': false},
-            ],
+            tags: [],
+            filters: {},
         }
     },
     methods: {
+        async fetchFilter() {
+            try {
+                let response = await fetch(this.imagesUrl + './data/filterProducts.json');
+                let data = await response.json();
+                this.filters = data;
+                this.filters.grade = [
+                    {"id": 1, "title": "от 5★", "value": false},
+                    {"id": 2, "title": "от 4★", "value": false},
+                    {"id": 3, "title": "от 3★", "value": false}
+                ];
+                this.filters.other = [
+                    {"id": 1, "title": "Новинки", "value": false},
+                    {"id": 2, "title": "Акции", "value": false}
+                ];
+                this.filters.price = [
+                    {"id": 'min_price', "title": "от " + this.minPrice, "value": false},
+                    {"id": 'max_price', "title": "до " + this.maxPrice, "value": false}
+                ];
+            } catch(err) {
+                console.log(err.message);
+            }
+        },
         isNumber(event) {
             let charCode = event.charCode;
             if (charCode < 48 || charCode > 57) {
@@ -391,15 +303,60 @@ export default {
                 console.log(err.message);
             }
         },
-        updateTags(teg, value) {
+        updateTags(filter, value) {
             if (value) {
-                this.tegs.push(teg)
+                this.tags.push(filter)
             } else {
-                this.tegs.forEach((el, index) => {
-                    if (el.id == teg.id) {
-                        this.tegs.splice(index, 1);
+                this.tags.forEach((el, index) => {
+                    if (el.title == filter.title) {
+                        this.tags.splice(index, 1);
                     }
                 })
+            }
+        },
+        deleteTag(tag) {
+            if (tag.id == 'min_price') {
+                this.minPrice = this.minValuePrice;
+            } else if(tag.id == 'max_price') {
+                this.maxPrice = this.maxValuePrice;
+            } else if(tag.id == 'search') {
+                this.search = '';
+            } else {
+                tag.value = false;
+            }
+            this.updateTags(tag, false);
+        },
+        updateGrade(filter) {
+            this.filters.grade.forEach((el) => {
+                if (el.title != filter.title) {
+                    this.deleteTag(el);
+                }
+            })
+        },
+        updatePriceTags(price) {
+            let push = true;
+            this.tags.forEach((el) => {
+                if (el.id == price.id) {
+                    el.title = price.title;
+                    push = false;
+                }
+            })
+
+            if (push) {
+                this.tags.push(price);
+            }
+        },
+        updateSearchTag() {
+            let push = true;
+            this.tags.forEach((el) => {
+                if (el.id == 'search') {
+                    el.title = this.search;
+                    push = false;
+                }
+            })
+
+            if (push) {
+                this.tags.push({'id': 'search', 'title': this.search});
             }
         }
     },
@@ -464,15 +421,34 @@ export default {
         },
         minPrice(newValue) {
             this.minInputPrice = this.minRangePrice = this.minPrice = newValue;
+            if (this.minPrice != this.minValuePrice) {
+                this.updatePriceTags({'id': 'min_price', 'title': 'от ' + this.minPrice})
+            } else {
+                this.tags.forEach((el, index) => {
+                    if (el.id == 'min_price') {
+                        this.tags.splice(index, 1)
+                    }
+                })
+            }
         },
         maxPrice(newValue) {
             this.maxInputPrice = this.maxRangePrice = this.maxPrice = newValue;
+            if (this.maxPrice != this.maxValuePrice) {
+                this.updatePriceTags({'id': 'max_price', 'title': 'до ' + this.maxPrice})
+            } else {
+                this.tags.forEach((el, index) => {
+                    if (el.id == 'max_price') {
+                        this.tags.splice(index, 1)
+                    }
+                })
+            }
         }
     },
     mounted() {
         this.minRangePrice = this.minInputPrice = this.minPrice = this.minValuePrice;
         this.maxRangePrice = this.maxInputPrice = this.maxPrice = this.maxValuePrice;
         this.getProducts();
+        this.fetchFilter();
     },
 }
 </script>
