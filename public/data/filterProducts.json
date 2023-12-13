@@ -1,0 +1,39 @@
+{
+    "brend": [
+        {"id": 1, "title": "Monster Energy"},
+        {"id": 2, "title": "Andrenaline Rush"},
+        {"id": 3, "title": "Burn"},
+        {"id": 4, "title": "Red Bull"},
+        {"id": 5, "title": "Tornado Energy"},
+        {"id": 6, "title": "Drive me"},
+        {"id": 7, "title": "Gorilla"},
+        {"id": 8, "title": "Flash up"},
+        {"id": 9, "title": "Jaguar"}
+    ],
+    "compound": [
+        {"id": 1, "title": "Витамины"},
+        {"id": 2, "title": "Глюкоза"},
+        {"id": 3, "title": "Кофеин"},
+        {"id": 4, "title": "Таурин"},
+        {"id": 5, "title": "Сахароз"},
+        {"id": 6, "title": "Женьшень"},
+        {"id": 7, "title": "Гуарану"}
+    ],
+    "taste": [
+        {"id": 1, "title": "Манго"},
+        {"id": 2, "title": "Классический"},
+        {"id": 3, "title": "Тропический"},
+        {"id": 4, "title": "Яблоко"},
+        {"id": 5, "title": "Тоник"},
+        {"id": 6, "title": "Оригинальный"},
+        {"id": 7, "title": "Мята"},
+        {"id": 8, "title": "Клубника"}
+    ],
+    "volume": [
+        {"id": 1, "title": "2л"},
+        {"id": 2, "title": "1.5л"},
+        {"id": 3, "title": "1л"},
+        {"id": 4, "title": "0.5л"},
+        {"id": 5, "title": "0.25л"}
+    ]
+}

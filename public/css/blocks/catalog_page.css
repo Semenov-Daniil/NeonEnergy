@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: >0.3%,defaults
+*/
+
 .section_catalog {
     display: flex;
     flex-direction: column;
@@ -10,6 +17,8 @@
     gap: 3rem;
 
     width: 100%;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
     height: fit-content;
 }
 
@@ -26,6 +35,7 @@
 .catalog_teg_wrapper {
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 1rem;
 
     font-size: 1.5rem;
@@ -52,7 +62,7 @@
 
     background-color: #818181;
 
-    padding: 5px 5px 5px 10px;
+    padding: 5px 10px;
 
     cursor: pointer;
 }
@@ -72,7 +82,9 @@
     width: 1rem;
     height: 1rem;
 
-    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+
+            transform: rotate(45deg);
 }
 
 .del_teg:hover svg {
@@ -91,7 +103,8 @@
 }
 
 .filter_text svg {
-    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
 }
 
 .catalog_filters_wrapper {
@@ -157,7 +170,9 @@ input[type="checkbox"]:checked+label:after {
     border-radius: 100%;
     background-color: var(--main-color-green);
 
-    transform: translate(70%, 0%);
+    -webkit-transform: translate(70%, 0%);
+
+            transform: translate(70%, 0%);
 }
 
 input[type="checkbox"]:checked+label::before {
@@ -198,8 +213,12 @@ input[type="checkbox"]:checked+label {
     gap: .5rem;
 
     overflow-y: auto;
+    min-width: -webkit-fit-content;
+    min-width: -moz-fit-content;
     min-width: fit-content;
     height: 80px;
+    min-height: -webkit-fit-content;
+    min-height: -moz-fit-content;
     min-height: fit-content;
 
     border-bottom: 1px solid #818181;
@@ -207,7 +226,7 @@ input[type="checkbox"]:checked+label {
 
 .filter_list::-webkit-scrollbar {
     width: 3px;
-    border-radius: 5px;
+    border-radius: 50px;
     background-color: #dbdbdb;
 }
 
@@ -284,9 +303,13 @@ input[type="checkbox"]:checked+label {
 
     height: 5px;
 
-    background-color: transparent;
+    background: none;
 
-    appearance: none;
+    pointer-events: none;
+
+    -moz-appearance: none;
+
+         appearance: none;
     -webkit-appearance: none;
 }
 
@@ -297,6 +320,7 @@ input[type="range"]::-webkit-slider-thumb{
     border-radius: 50%;
     border-radius: 50%;
     cursor: pointer;
+    background-color: #fff;
     pointer-events: auto;
     -webkit-appearance: none;
 }
@@ -306,6 +330,7 @@ input[type="range"]::-moz-range-thumb{
     width: 15px;
     border: 3px solid var(--main-color-green);
     border-radius: 50%;
+    background-color: #fff;
     -moz-appearance: none;
     cursor: pointer;
     pointer-events: auto;
@@ -322,15 +347,20 @@ input[type="range"]:active::-moz-range-thumb {
     background-color: var(--main-color-green);
 }
 
+.catalog_products {
+    width: 100%;
+}
+
 .catalog_products_list {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: flex-start;
-    align-content: flex-start; 
+    align-content: flex-start;
 }
 
 .catalog_product {
-    transform: scale(0.8);
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
     margin: 0 !important;
 }

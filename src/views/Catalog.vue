@@ -24,66 +24,14 @@
                     </a>
                 </div>
             </div>
-            <div class="catalog_teg_wrapper">
-                <span>Теги:</span>
-                <div class="tegs_container">
-                    <div class="teg_item">
-                        <span>Тег</span>
-                        <button class="del_teg">
-                            <svg class="icon icon-cross">
-                                <use :xlink:href="imagesUrl + 'images/icons/cross2.svg#cross'"></use>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="teg_item">
-                        <span>Тег</span>
-                        <button class="del_teg">
-                            <svg class="icon icon-cross">
-                                <use :xlink:href="imagesUrl + 'images/icons/cross2.svg#cross'"></use>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="teg_item">
-                        <span>Тег</span>
-                        <button class="del_teg">
-                            <svg class="icon icon-cross">
-                                <use :xlink:href="imagesUrl + 'images/icons/cross2.svg#cross'"></use>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="teg_item">
-                        <span>Тег</span>
-                        <button class="del_teg">
-                            <svg class="icon icon-cross">
-                                <use :xlink:href="imagesUrl + 'images/icons/cross2.svg#cross'"></use>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="teg_item">
-                        <span>Тег</span>
-                        <button class="del_teg">
-                            <svg class="icon icon-cross">
-                                <use :xlink:href="imagesUrl + 'images/icons/cross2.svg#cross'"></use>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
             <div class="catalog_wrapper">
                 <div class="catalog_filters_wrapper">
                     <div class="filter_text">
                         Фильтры
-                        <svg class="icon icon-arrow">
-                            <use :xlink:href="imagesUrl + 'images/icons/arrow2.svg#arrow'"></use>
-                        </svg>
                     </div>
                     <div class="filters_container">
                         <div class="checkbox_wrapper">
-                            <input type="checkbox" id="all_product">
-                            <label for="all_product">Все товары</label>
-                        </div>
-                        <div class="checkbox_wrapper">
-                            <input type="checkbox" id="new_product">
+                            <input type="checkbox" id="new_product" @change="updateTags({'title': 'Новинки', 'id': 'new_product'}, $event.target.checked)">
                             <label for="new_product">Новинки</label>
                         </div>
                         <div class="checkbox_wrapper">
@@ -97,11 +45,11 @@
                             <div class="filter_price_input">
                                 <div class="price_number">
                                     <label for="price_number_min">Min</label>
-                                    <input 
+                                    <input
                                         class="input_price"
-                                        type="text" 
-                                        id="price_number_min" 
-                                        v-model="minInputPrice" 
+                                        type="text"
+                                        id="price_number_min"
+                                        v-model="minInputPrice"
                                         @keypress="isNumber"
                                         @blur="minPriceValid"
                                         @keydown.enter="minPriceValid"
@@ -110,11 +58,11 @@
                                 <span class="separator"></span>
                                 <div class="price_number">
                                     <label for="price_number_max">Max</label>
-                                    <input 
+                                    <input
                                         class="input_price"
-                                        type="text" 
-                                        id="price_number_max" 
-                                        v-model="maxInputPrice" 
+                                        type="text"
+                                        id="price_number_max"
+                                        v-model="maxInputPrice"
                                         @keypress="isNumber"
                                         @blur="maxPriceValid"
                                         @keydown.enter="maxPriceValid"
@@ -122,28 +70,28 @@
                                 </div>
                             </div>
                             <div class="price_slider">
-                                <div 
+                                <div
                                     class="progress"
                                     :style="{
-                                        left: (minRangePrice / maxValuePrice) * 100 + '%', 
+                                        left: (minRangePrice / maxValuePrice) * 100 + '%',
                                         right: 100 - (maxRangePrice / maxValuePrice) * 100 + '%'
                                     }"
                                 ></div>
                                 <div class="filter_price_range">
-                                    <input 
-                                        type="range" 
-                                        class="range-min" 
-                                        :min="minValuePrice" 
-                                        :max="maxValuePrice" 
-                                        step="100" 
+                                    <input
+                                        type="range"
+                                        class="range-min"
+                                        :min="minValuePrice"
+                                        :max="maxValuePrice"
+                                        step="100"
                                         v-model="minRangePrice"
                                     />
-                                    <input 
-                                        type="range" 
-                                        class="range-max" 
-                                        :min="minValuePrice" 
-                                        :max="maxValuePrice" 
-                                        step="100" 
+                                    <input
+                                        type="range"
+                                        class="range-max"
+                                        :min="minValuePrice"
+                                        :max="maxValuePrice"
+                                        step="100"
                                         v-model="maxRangePrice"
                                     />
                                 </div>
@@ -308,18 +256,39 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
+                    <button class="btn">Применить</button>
                 </div>
                 <div class="catalog_partition"></div>
-                <div class="catalog_products_list">
-                    <card-product
-                        v-for="product in products"
-                        :key="product.id"
-                        :product="product"
-                        @addBasket="addBasket"
-                        class="catalog_product"
-                    />
+                <div class="catalog_products">
+                    <div v-if="tegs.length">
+                        <div class="catalog_teg_wrapper">
+                            <span>Теги:</span>
+                            <div class="tegs_container">
+                                <div
+                                    class="teg_item"
+                                    v-for="(teg, index) in tegs"
+                                    :key="index"
+                                >
+                                    <span>{{ teg.title }}</span>
+                                    <button class="del_teg">
+                                        <svg class="icon icon-cross">
+                                            <use :xlink:href="imagesUrl + 'images/icons/cross2.svg#cross'"></use>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="catalog_products_list">
+                        <card-product
+                            v-for="product in products"
+                            :key="product.id"
+                            :product="product"
+                            @addBasket="addBasket"
+                            class="catalog_product"
+                        />
+                    </div>
                 </div>
             </div>
         </section>
@@ -354,16 +323,20 @@ export default {
             maxRangePrice: 10000,
 
             products: [],
-
+            tegs: [],
+            filters: [
+                {'id': 'new_products', 'title': 'Новинки', 'value': false},
+                {'id': 'stock_products', 'title': 'Акции', 'value': false},
+            ],
         }
     },
     methods: {
-        isNumber(event) {  
+        isNumber(event) {
             let charCode = event.charCode;
-            if (charCode < 48 || charCode > 57) {  
-                event.preventDefault();  
-            }  
-        }, 
+            if (charCode < 48 || charCode > 57) {
+                event.preventDefault();
+            }
+        },
         minPriceValid() {
             if (this.minInputPrice == '') {
                 this.minInputPrice = this.minValuePrice;
@@ -416,6 +389,17 @@ export default {
                 this.$emit('updateBasket', JSON.parse(JSON.stringify(this.basket)));
             } catch(err) {
                 console.log(err.message);
+            }
+        },
+        updateTags(teg, value) {
+            if (value) {
+                this.tegs.push(teg)
+            } else {
+                this.tegs.forEach((el, index) => {
+                    if (el.id == teg.id) {
+                        this.tegs.splice(index, 1);
+                    }
+                })
             }
         }
     },
