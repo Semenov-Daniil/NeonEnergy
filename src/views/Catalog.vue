@@ -92,40 +92,99 @@
                         </div>
                         <div class="filter_wrapper">
                             <div class="title_filter">
+                                Цена
+                            </div>
+                            <div class="filter_price_input">
+                                <div class="price_number">
+                                    <label for="price_number_min">Min</label>
+                                    <input 
+                                        class="input_price"
+                                        type="text" 
+                                        id="price_number_min" 
+                                        v-model="minInputPrice" 
+                                        @keypress="isNumber"
+                                        @blur="minPriceValid"
+                                        @keydown.enter="minPriceValid"
+                                    />
+                                </div>
+                                <span class="separator"></span>
+                                <div class="price_number">
+                                    <label for="price_number_max">Max</label>
+                                    <input 
+                                        class="input_price"
+                                        type="text" 
+                                        id="price_number_max" 
+                                        v-model="maxInputPrice" 
+                                        @keypress="isNumber"
+                                        @blur="maxPriceValid"
+                                        @keydown.enter="maxPriceValid"
+                                    />
+                                </div>
+                            </div>
+                            <div class="price_slider">
+                                <div 
+                                    class="progress"
+                                    :style="{
+                                        left: (minRangePrice / maxValuePrice) * 100 + '%', 
+                                        right: 100 - (maxRangePrice / maxValuePrice) * 100 + '%'
+                                    }"
+                                ></div>
+                                <div class="filter_price_range">
+                                    <input 
+                                        type="range" 
+                                        class="range-min" 
+                                        :min="minValuePrice" 
+                                        :max="maxValuePrice" 
+                                        step="100" 
+                                        v-model="minRangePrice"
+                                    />
+                                    <input 
+                                        type="range" 
+                                        class="range-max" 
+                                        :min="minValuePrice" 
+                                        :max="maxValuePrice" 
+                                        step="100" 
+                                        v-model="maxRangePrice"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filter_wrapper">
+                            <div class="title_filter">
                                 Бренд
                             </div>
                             <div class="filter_list">
                                 <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="brend1">
-                                    <label for="brend1">Акции</label>
+                                    <input type="checkbox" id="filter_brend1">
+                                    <label for="filter_brend1">Monster Energy</label>
                                 </div>
                                 <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="brend2">
-                                    <label for="brend2">Акции</label>
+                                    <input type="checkbox" id="filter_brend2">
+                                    <label for="filter_brend2">Andrenaline Rush</label>
                                 </div>
                                 <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="brend3">
-                                    <label for="brend3">Акции</label>
+                                    <input type="checkbox" id="filter_brend3">
+                                    <label for="filter_brend3">Burn</label>
                                 </div>
                                 <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="brend3">
-                                    <label for="brend3">Акции</label>
+                                    <input type="checkbox" id="filter_brend4">
+                                    <label for="filter_brend4">Red Bull</label>
                                 </div>
                                 <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="brend3">
-                                    <label for="brend3">Акции</label>
+                                    <input type="checkbox" id="filter_brend5">
+                                    <label for="filter_brend5">Tornado Energy</label>
                                 </div>
                                 <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="brend3">
-                                    <label for="brend3">Акции</label>
+                                    <input type="checkbox" id="filter_brend6">
+                                    <label for="filter_brend6">Drive me</label>
                                 </div>
                                 <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="brend3">
-                                    <label for="brend3">Акции</label>
+                                    <input type="checkbox" id="filter_brend7">
+                                    <label for="filter_brend7">Gorilla</label>
                                 </div>
                                 <div class="checkbox_wrapper">
-                                    <input type="checkbox" id="brend3">
-                                    <label for="brend3">Акции</label>
+                                    <input type="checkbox" id="filter_brend8">
+                                    <label for="filter_brend8">Flash up</label>
                                 </div>
                             </div>
                         </div>
@@ -252,8 +311,16 @@
 
                     </div>
                 </div>
-                <span class="catalog_partition"></span>
-                <div></div>
+                <div class="catalog_partition"></div>
+                <div class="catalog_products_list">
+                    <card-product
+                        v-for="product in products"
+                        :key="product.id"
+                        :product="product"
+                        @addBasket="addBasket"
+                        class="catalog_product"
+                    />
+                </div>
             </div>
         </section>
     </main>
@@ -275,8 +342,154 @@ export default {
     data() {
         return {
             imagesUrl: '../',
+
+            minValuePrice: 0,
+            maxValuePrice: 10000,
+
+            minPrice: 0,
+            maxPrice: 10000,
+            minInputPrice: 0,
+            maxInputPrice: 10000,
+            minRangePrice: 0,
+            maxRangePrice: 10000,
+
+            products: [],
+
         }
-    }
+    },
+    methods: {
+        isNumber(event) {  
+            let charCode = event.charCode;
+            if (charCode < 48 || charCode > 57) {  
+                event.preventDefault();  
+            }  
+        }, 
+        minPriceValid() {
+            if (this.minInputPrice == '') {
+                this.minInputPrice = this.minValuePrice;
+            }
+
+            this.minInputPrice = Number(this.minInputPrice);
+        },
+        maxPriceValid() {
+            if (this.maxInputPrice == '') {
+                this.maxInputPrice = this.minValuePrice;
+            }
+
+            this.maxInputPrice = Number(this.maxInputPrice);
+        },
+        async getProducts() {
+            try {
+                let response = await fetch(this.imagesUrl + './data/products.json');
+                let data = await response.json();
+                this.products = data.allProducts;
+            } catch(err) {
+                console.log(err.message);
+            }
+        },
+        async addBasket(event) {
+            let productBasket = {};
+            let addNewProduct = true;
+            try {
+                for (let productItem in this.basket) {
+                    let product = this.basket[productItem]
+                    if (product.id === event) {
+                        product.count++;
+                        addNewProduct = false;
+                        break;
+                    }
+                }
+
+                if (addNewProduct) {
+                    let response = await fetch(this.imagesUrl + './data/products.json');
+                    let data = await response.json();
+                    let allProducts = data.allProducts;
+                    for (let productItem in allProducts) {
+                        let product = allProducts[productItem];
+                        if (product.id === event) {
+                            productBasket = product;
+                            productBasket.count = 1;
+                        }
+                    }
+                    this.basket.push(productBasket);
+                }
+                this.$emit('updateBasket', JSON.parse(JSON.stringify(this.basket)));
+            } catch(err) {
+                console.log(err.message);
+            }
+        }
+    },
+    watch: {
+        minInputPrice(newValue) {
+            if (newValue < this.minValuePrice) {
+                newValue = this.minValuePrice;
+            }
+
+            if (newValue > this.maxInputPrice) {
+                newValue = this.maxInputPrice;
+            }
+
+            if (newValue != "") {
+                this.minInputPrice = Number(newValue);
+            } else {
+                this.minInputPrice = newValue;
+            }
+
+            this.minPrice = Number(this.minInputPrice);
+        },
+        maxInputPrice(newValue) {
+            if (newValue < this.minInputPrice) {
+                newValue = this.minInputPrice;
+            }
+
+            if (newValue > this.maxValuePrice) {
+                newValue = this.maxValuePrice;
+            }
+
+            if (newValue != "") {
+                this.maxInputPrice = Number(newValue);
+            } else {
+                this.maxInputPrice = newValue;
+            }
+
+            this.maxPrice = Number(this.maxInputPrice)
+        },
+        minRangePrice(newValue) {
+            if (newValue < this.minValuePrice) {
+                newValue = this.minValuePrice;
+            }
+
+            if (newValue > this.maxRangePrice) {
+                newValue = this.maxRangePrice;
+            }
+
+            this.minRangePrice = newValue;
+            this.minPrice = Number(this.minRangePrice)
+        },
+        maxRangePrice(newValue) {
+            if (newValue < this.minRangePrice) {
+                newValue = this.minRangePrice;
+            }
+
+            if (newValue > this.maxValuePrice) {
+                newValue = this.maxValuePrice;
+            }
+
+            this.maxRangePrice = newValue;
+            this.maxPrice = Number(this.maxRangePrice);
+        },
+        minPrice(newValue) {
+            this.minInputPrice = this.minRangePrice = this.minPrice = newValue;
+        },
+        maxPrice(newValue) {
+            this.maxInputPrice = this.maxRangePrice = this.maxPrice = newValue;
+        }
+    },
+    mounted() {
+        this.minRangePrice = this.minInputPrice = this.minPrice = this.minValuePrice;
+        this.maxRangePrice = this.maxInputPrice = this.maxPrice = this.maxValuePrice;
+        this.getProducts();
+    },
 }
 </script>
 
