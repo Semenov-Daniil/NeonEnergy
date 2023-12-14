@@ -376,6 +376,8 @@
     align-self: flex-start;
     border-right: 2.5px solid #00FF01; 
     padding: 80px 40px;    
+
+    overflow: auto;
 }
 
 .modal_menu_nav_list {

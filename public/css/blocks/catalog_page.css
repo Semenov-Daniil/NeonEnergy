@@ -103,9 +103,8 @@
     cursor: pointer;
 }
 
-.filter_text svg {
-    -webkit-transform: rotate(90deg);
-            transform: rotate(90deg);
+.icon_filter {
+    display: none;
 }
 
 .catalog_filters_wrapper {

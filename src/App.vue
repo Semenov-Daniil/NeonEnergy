@@ -11,6 +11,9 @@
         v-model:flashMessages="flashMessages"
         @updateBasket="updateBasket"
         v-model:search="search"
+        v-model:filters="filters"
+        v-model:tags="tags"
+        v-model:modalFilter="modalFilterDialog"
     ></router-view>
     <my-footer/>
     <noscript>
@@ -40,9 +43,16 @@
         v-model:basketDialog="basketDialog"
         v-model:warningDialog="warningDialog"
     />
+    <modal-filter
+        v-if="route.name == 'catalog'"
+        v-model:modalFilter="modalFilterDialog"
+        v-model:filters="filters"
+        v-model:tags="tags"
+    />
 </template>
 
 <script>
+import { useRouter, useRoute } from 'vue-router'
 import myHeader from '@/components/myHeader.vue';
 import myFooter from '@/components/myFooter.vue';
 import modalSearch from '@/components/modalSearch.vue';
@@ -51,6 +61,7 @@ import flashMessageList from '@/components/flashMessageList.vue';
 import modalWarning from '@/components/modalWarning.vue';
 import modalMenu from '@/components/modalMenu.vue';
 import modalNavbar from '@/components/modalNavbar.vue';
+import modalFilter from '@/components/modalFilter.vue';
 
 export default {
     components: {
@@ -61,17 +72,27 @@ export default {
         flashMessageList,
         modalWarning,
         modalMenu,
-        modalNavbar
+        modalNavbar,
+        modalFilter
     },
     data() {
         return {
+            router: useRouter(),
+            route: useRoute(),
+
             basket: [],
             search: '',
+
+            flashMessages: [],
+
             searchDialog: false,
             basketDialog: false,
-            flashMessages: [],
             warningDialog: false,
             modalMenuDialog: false,
+            modalFilterDialog: false,
+
+            filters: {},
+            tags: []
         }
     },
     methods: {
@@ -147,6 +168,9 @@ export default {
             this.modalMenu(value);
         },
         modalMenuDialog(value) {
+            this.modalMenu(value);
+        },
+        modalFilterDialog(value) {
             this.modalMenu(value);
         }
     },

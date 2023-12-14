@@ -228,7 +228,6 @@
 
     /* section products */
     .container--products__body {
-        height: 40vh;
         padding-left: 40px;
         padding-right: 40px;
     }
@@ -278,6 +277,26 @@
         aspect-ratio: 1/1;
         width: 80vw;
     }
+
+    .card-product__img-product {
+        height: 200px;
+    }
+
+    .card-product {
+        height: 300px;
+    }
+
+    .icon_filter {
+        display: block;
+    }
+
+    .catalog_wrapper {
+        flex-direction: column;
+    }
+
+    .catalog_products_list {
+        justify-content: center;
+    }
 }
 
 @media only screen and (max-width: 480px) {
@@ -307,7 +326,6 @@
 
     /* section products */
     .container--products__body {
-        height: 30vh;
         padding: 20px;
     }
 

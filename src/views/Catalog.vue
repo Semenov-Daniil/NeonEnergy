@@ -27,7 +27,10 @@
             </div>
             <div class="catalog_wrapper">
                 <div class="catalog_filters_wrapper">
-                    <div class="filter_text">
+                    <div class="filter_text" @click="$emit('update:modalFilter',true)">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 14" class="icon icon_filter">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M2.786 2.21659C2.786 1.48208 3.38144 0.886637 4.11595 0.886637C4.85047 0.886637 5.44591 1.48208 5.44591 2.21659C5.44591 2.95111 4.85047 3.54655 4.11595 3.54655C3.38144 3.54655 2.786 2.95111 2.786 2.21659ZM1.96419 2.75094H0.312256V1.8643H1.9272C2.09597 0.807538 3.01165 0 4.11595 0C5.22025 0 6.13594 0.807538 6.3047 1.8643H14.6876V2.75094H6.26771C6.0286 3.717 5.15591 4.43319 4.11595 4.43319C3.07599 4.43319 2.2033 3.717 1.96419 2.75094ZM11.2504 4.82922C10.1783 4.82922 9.28393 5.59039 9.07828 6.6018H0.312256V7.48844H9.078C9.28311 8.50054 10.1778 9.2624 11.2504 9.2624C12.323 9.2624 13.2177 8.50054 13.4228 7.48844H14.6876V6.6018H13.4225C13.2169 5.59039 12.3225 4.82922 11.2504 4.82922ZM8.78566 12.2259H14.6876V11.3393H8.78538C8.57974 10.3279 7.6854 9.56672 6.61327 9.56672C5.54115 9.56672 4.6468 10.3279 4.44116 11.3393H0.312256V12.2259H4.44088C4.64599 13.238 5.54066 13.9999 6.61327 13.9999C7.68588 13.9999 8.58055 13.238 8.78566 12.2259ZM11.2504 5.71585C10.5159 5.71585 9.92044 6.3113 9.92044 7.04581C9.92044 7.78032 10.5159 8.37576 11.2504 8.37576C11.9849 8.37576 12.5804 7.78032 12.5804 7.04581C12.5804 6.3113 11.9849 5.71585 11.2504 5.71585ZM5.28332 11.7833C5.28332 11.0488 5.87876 10.4534 6.61327 10.4534C7.34779 10.4534 7.94323 11.0488 7.94323 11.7833C7.94323 12.5178 7.34779 13.1133 6.61327 13.1133C5.87876 13.1133 5.28332 12.5178 5.28332 11.7833Z"/>
+                        </svg>
                         Фильтры
                     </div>
                     <div class="filters_container">
@@ -200,6 +203,15 @@ export default {
         },
         search: {
             type: String
+        },
+        filters: {
+            type: Object
+        },
+        tags: {
+            type: Array
+        },
+        modalFilter: {
+            type: Boolean
         }
     },
     data() {
@@ -217,8 +229,8 @@ export default {
             maxRangePrice: 10000,
 
             products: [],
-            tags: [],
-            filters: {},
+            // tags: [],
+            // filters: {},
         }
     },
     methods: {
@@ -226,20 +238,22 @@ export default {
             try {
                 let response = await fetch(this.imagesUrl + './data/filterProducts.json');
                 let data = await response.json();
-                this.filters = data;
-                this.filters.grade = [
+                let filtersData = data;
+                filtersData.grade = [
                     {"id": 1, "title": "от 5★", "value": false},
                     {"id": 2, "title": "от 4★", "value": false},
                     {"id": 3, "title": "от 3★", "value": false}
                 ];
-                this.filters.other = [
+                filtersData.other = [
                     {"id": 1, "title": "Новинки", "value": false},
                     {"id": 2, "title": "Акции", "value": false}
                 ];
-                this.filters.price = [
+                filtersData.price = [
                     {"id": 'min_price', "title": "от " + this.minPrice, "value": false},
                     {"id": 'max_price', "title": "до " + this.maxPrice, "value": false}
                 ];
+
+                this.$emit('update:filters', JSON.parse(JSON.stringify(filtersData)));
             } catch(err) {
                 console.log(err.message);
             }
@@ -305,15 +319,17 @@ export default {
             }
         },
         updateTags(filter, value) {
+            let tagsData = this.tags;
             if (value) {
-                this.tags.push(filter)
+                tagsData.push(filter)
             } else {
-                this.tags.forEach((el, index) => {
+                tagsData.forEach((el, index) => {
                     if (el.title == filter.title) {
-                        this.tags.splice(index, 1);
+                        tagsData.splice(index, 1);
                     }
                 })
             }
+            this.$emit('update:tags', JSON.parse(JSON.stringify(tagsData)));
         },
         deleteTag(tag) {
             if (tag.id == 'min_price') {
@@ -336,7 +352,8 @@ export default {
         },
         updatePriceTags(price) {
             let push = true;
-            this.tags.forEach((el) => {
+            let tagsData = this.tags;
+            tagsData.forEach((el) => {
                 if (el.id == price.id) {
                     el.title = price.title;
                     push = false;
@@ -344,12 +361,15 @@ export default {
             })
 
             if (push) {
-                this.tags.push(price);
+                tagsData.push(price);
             }
+
+            this.$emit('update:tags', JSON.parse(JSON.stringify(tagsData)));
         },
         updateSearchTag() {
             let push = true;
-            this.tags.forEach((el) => {
+            let tagsData = this.tags;
+            tagsData.forEach((el) => {
                 if (el.id == 'search') {
                     el.title = this.search;
                     push = false;
@@ -357,8 +377,10 @@ export default {
             })
 
             if (push) {
-                this.tags.push({'id': 'search', 'title': this.search});
+                tagsData.push({'id': 'search', 'title': this.search});
             }
+
+            this.$emit('update:tags', JSON.parse(JSON.stringify(tagsData)));
         }
     },
     watch: {
