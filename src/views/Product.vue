@@ -577,9 +577,13 @@ export default {
             return result
         },
         createComment() {
-            this.nameUser = '';
-            this.commentUser = '';
-            this.rating = 0;
+            if (this.nameUser && this.commentUser && this.rating) {
+                this.nameUser = '';
+                this.commentUser = '';
+                this.rating = 0;
+
+                $this.$emit("createComment");
+            }
         }
     },
     computed: {

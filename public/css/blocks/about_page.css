@@ -1,3 +1,66 @@
-section {
+.main_about {
+    gap: 100px;
+}
+
+.main_about section {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
     width: 90%;
+}
+
+.about_title {
+    font-size: 2.5rem;
+    color: var(--main-color-green);
+}
+
+.about_paragraph, .about_list_wrapp {
+    padding: 0 20px;
+
+    font-family: "OpenSans-Regular";
+    font-size: 1.5rem;
+}
+
+.about_list_title {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.about_list li {
+    list-style-type: disc;
+
+    font-size: 1.5rem;
+    font-family: "OpenSans-Regular";
+
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.about_list_contact {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.about_list_contact li {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    
+    font-size: 1.5rem;
+}
+
+.about_list_contact li h2 {
+    margin: 0;
+}
+
+.about_list_contact li a {
+    font-size: 1.5rem;
+}
+
+.about_list_socials {
+    display: flex;
+    gap: 10px;
 }

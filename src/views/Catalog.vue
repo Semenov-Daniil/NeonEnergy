@@ -186,6 +186,27 @@
                             class="catalog_product"
                         />
                     </div>
+                    <div class="catalog_pagination_wrapper" v-if="totalPage > 1">
+                        <div class="catalog_pagination">
+                            <div class="start_page" @click="page = 1" :class="{'opacity_page': page == 1}"></div>
+                            <div class="prev_page" @click="page > 1 ? page-- : false" :class="{'opacity_page': page == 1}"></div>
+                            <div>{{ minViewPage > 1 ? '...' : '' }}</div>
+                            <div 
+                                v-for="pageNumber in pageList" 
+                                :key="pageNumber"
+                                class="page"
+                                :class="{
+                                    'current_page': page === pageNumber
+                                }"
+                                @click="page = pageNumber"
+                            >
+                                {{ pageNumber }}
+                            </div>
+                            <div>{{ maxViewPage < totalPage ? '...' : '' }}</div>
+                            <div class="next_page" @click="page < totalPage ? page++ : false;" :class="{'opacity_page': page == totalPage}"></div>
+                            <div class="end_page" @click="page = totalPage" :class="{'opacity_page': page == totalPage}"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -229,8 +250,11 @@ export default {
             maxRangePrice: 10000,
 
             products: [],
-            // tags: [],
-            // filters: {},
+            
+            totalPage: 10,
+            page: 1,
+            limit: 10,
+            pageView: 7,
         }
     },
     methods: {
@@ -381,7 +405,10 @@ export default {
             }
 
             this.$emit('update:tags', JSON.parse(JSON.stringify(tagsData)));
-        }
+        },
+        changePage(pageNumber) {
+            this.page = pageNumber;
+        },
     },
     watch: {
         minInputPrice(newValue) {
@@ -473,6 +500,54 @@ export default {
         this.getProducts();
         this.fetchFilter();
     },
+    computed: {
+        minViewPage() {
+            let result = 1;
+
+            if (this.totalPage <= this.pageView) {
+                result = 1;
+            }
+
+            if ((this.page + Math.floor(this.pageView/2)) < this.totalPage) {
+                if (this.page <= Math.ceil(this.pageView/2)) {
+                    result = 1;
+                } else {
+                    result = this.page - Math.floor(this.pageView/2);
+                }
+            } else {
+                result = this.totalPage - this.pageView + 1;
+            }
+
+            return result;
+        },
+        maxViewPage() {
+            let result = this.totalPage;
+
+            if (this.totalPage <= this.pageView) {
+                result = this.totalPage;
+            }
+
+            if ((this.page + Math.floor(this.pageView/2)) < this.totalPage) {
+                if (this.page <= Math.ceil(this.pageView/2)) {
+                    result = this.pageView;
+                } else {
+                    result = this.page + Math.floor(this.pageView/2);
+                }
+            } else {
+                result = this.totalPage;
+            }
+
+            return result;
+        },
+        pageList() {
+            let result = [];
+            for (let i = this.minViewPage; i <= this.maxViewPage; i++) {
+                result.push(i);
+            }
+
+            return result;
+        }
+    }
 }
 </script>
 

@@ -297,6 +297,15 @@
     .catalog_products_list {
         justify-content: center;
     }
+
+    .catalog_wrapper .filters_container {
+        display: none;
+    }
+
+    .catalog_partition {
+        width: 100%;
+        height: 2px;
+    }
 }
 
 @media only screen and (max-width: 480px) {

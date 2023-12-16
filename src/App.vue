@@ -14,6 +14,8 @@
         v-model:filters="filters"
         v-model:tags="tags"
         v-model:modalFilter="modalFilterDialog"
+        @createQuestion="createQuestion"
+        @createComment="createComment"
     ></router-view>
     <my-footer/>
     <noscript>
@@ -155,6 +157,12 @@ export default {
             if (window.innerWidth > 900) {
                 this.modalMenuDialog = false;
             }
+        },
+        createQuestion() {
+            this.addFlashMessage('success', `Вопрос отправлен.`);
+        },
+        createComment() {
+            this.addFlashMessage('success', `Комментарий создан.`);
         }
     },
     watch: {

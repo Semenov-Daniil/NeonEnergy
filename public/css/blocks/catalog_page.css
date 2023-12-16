@@ -130,15 +130,13 @@
     width: 100%;
 }
 
-input[type="checkbox"],
-input[type="radio"] {
+input[type="checkbox"] {
     position: absolute;
     z-index: -1;
     opacity: 0;
 }
 
-input[type="checkbox"]+label,
-input[type="radio"]+label {
+input[type="checkbox"]+label {
     display: inline-flex;
     align-items: center;
     position: relative;
@@ -148,8 +146,7 @@ input[type="radio"]+label {
     cursor: pointer;
 }
 
-input[type="checkbox"]+label::before,
-input[type="radio"]+label::before {
+input[type="checkbox"]+label::before {
     content: '';
 
     width: 10px;
@@ -165,8 +162,7 @@ input[type="radio"]+label::before {
     margin-right: 1rem;
 }
 
-input[type="checkbox"]:checked+label:after,
-input[type="radio"]:checked+label:after {
+input[type="checkbox"]:checked+label:after {
     content: "";
     position: absolute;
     width: 6px;
@@ -179,13 +175,11 @@ input[type="radio"]:checked+label:after {
             transform: translate(70%, 0%);
 }
 
-input[type="checkbox"]:checked+label::before,
-input[type="radio"]:checked+label::before {
+input[type="checkbox"]:checked+label::before {
     border-color: var(--main-color-green);
 }
 
-input[type="checkbox"]:checked+label,
-input[type="radio"]:checked+label {
+input[type="checkbox"]:checked+label {
     color: var(--main-color-green);
     font-style: italic;
 }
@@ -381,4 +375,85 @@ input[type="range"]:active::-moz-range-thumb {
     align-self: flex-start;
     margin-top: 3px;
     font-size: 1.5rem;
+}
+
+.catalog_pagination_wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.catalog_pagination {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 18px;
+    font-family: "OpenSans-Regular";
+}
+
+.next_page::after {
+    content: 'next';
+    font-family: swiper-icons;
+    font-size: 15px;
+
+    cursor: pointer;
+}
+
+.prev_page::after {
+    content: 'prev';
+    font-family: swiper-icons;
+    font-size: 15px;
+
+    cursor: pointer;
+}
+
+.next_page:hover,
+.prev_page:hover {
+    color: var(--main-color-green);
+}
+
+.page {
+    cursor: pointer;
+}
+
+.current_page {
+    font-size: 25px;
+    color: var(--main-color-green);
+}
+
+.end_page::after,
+.end_page::before {
+    content: 'next';
+    font-family: swiper-icons;
+    font-size: 15px;
+
+    cursor: pointer;
+}
+
+.start_page::after,
+.start_page::before {
+    content: 'prev';
+    font-family: swiper-icons;
+    font-size: 15px;
+
+    cursor: pointer;
+}
+
+.end_page:hover,
+.start_page:hover {
+    color: var(--main-color-green);
+}
+
+.opacity_page {
+    opacity: 0.5;
+
+    pointer-events: none;
+}
+
+.page_hidden {
+    
 }
