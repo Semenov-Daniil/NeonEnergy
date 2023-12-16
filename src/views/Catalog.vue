@@ -24,6 +24,16 @@
                         </svg>
                     </button>
                 </div>
+                <ul class="search_tips" v-if="searchData.length">
+                    <li
+                        class="search_tips_item"
+                        v-for="(result, index) in searchData"
+                        :key="index"
+                        @click="$emit('update:search', result)"
+                    >
+                        <a href="#" class="search_tips_item_title" @click.prevent>{{ result }}</a>
+                    </li>
+                </ul>
             </div>
             <div class="catalog_wrapper">
                 <div class="catalog_filters_wrapper">
@@ -35,8 +45,8 @@
                     </div>
                     <div class="filters_container">
                         <div class="checkbox_wrapper" v-for="filter in filters.other" :key="filter.id">
-                            <input type="checkbox" :id="'other' + filter.id" v-model="filter.value" @change="updateTags(filter, $event.target.checked)">
-                            <label :for="'other' + filter.id">{{ filter.title }}</label>
+                            <input type="checkbox" :id="'other' + filter.id" :checked="filter.value" @change="updateTags(filter, $event.target.checked)">
+                            <label :for="'other' + filter.id">{{ filter.title }}  {{ filter.value }}</label>
                         </div>
                         <div class="filter_wrapper">
                             <div class="title_filter">
@@ -255,33 +265,11 @@ export default {
             page: 1,
             limit: 10,
             pageView: 7,
+
+            searchData: [],
         }
     },
     methods: {
-        async fetchFilter() {
-            try {
-                let response = await fetch(this.imagesUrl + './data/filterProducts.json');
-                let data = await response.json();
-                let filtersData = data;
-                filtersData.grade = [
-                    {"id": 1, "title": "от 5★", "value": false},
-                    {"id": 2, "title": "от 4★", "value": false},
-                    {"id": 3, "title": "от 3★", "value": false}
-                ];
-                filtersData.other = [
-                    {"id": 1, "title": "Новинки", "value": false},
-                    {"id": 2, "title": "Акции", "value": false}
-                ];
-                filtersData.price = [
-                    {"id": 'min_price', "title": "от " + this.minPrice, "value": false},
-                    {"id": 'max_price', "title": "до " + this.maxPrice, "value": false}
-                ];
-
-                this.$emit('update:filters', JSON.parse(JSON.stringify(filtersData)));
-            } catch(err) {
-                console.log(err.message);
-            }
-        },
         isNumber(event) {
             let charCode = event.charCode;
             if (charCode < 48 || charCode > 57) {
@@ -345,7 +333,17 @@ export default {
         updateTags(filter, value) {
             let tagsData = this.tags;
             if (value) {
-                tagsData.push(filter)
+                let push = true;
+                for (let tag in tagsData) {
+                    if (tagsData[tag].title == filter.title) {
+                        push = false;
+                        break;
+                    }
+                }
+
+                if (push) {
+                    tagsData.push(filter)
+                }
             } else {
                 tagsData.forEach((el, index) => {
                     if (el.title == filter.title) {
@@ -409,8 +407,37 @@ export default {
         changePage(pageNumber) {
             this.page = pageNumber;
         },
+        featchTags() {
+            for (let filterTeam in this.filters) {
+                for (let filter of this.filters[filterTeam]) {
+                    if (filter.value) {
+                        this.updateTags(filter, filter.value);
+                    }
+                }
+            }
+        },
+        async getTitleProducts() {
+            try {
+                let response = await fetch('./data/titleProducts.json');
+                let data = await response.json();
+                let reg = new RegExp(this.search,"i");
+                for (let title of data.title) {
+                    if (reg.test(title)) {
+                        this.searchData.push(title)
+                    }
+                }
+            } catch(err) {
+                console.log(err.message);
+            }
+        },
     },
     watch: {
+        search() {
+            this.searchData = [];
+            if(this.search.length) {
+                this.getTitleProducts();
+            }
+        },
         minInputPrice(newValue) {
             if (newValue < this.minValuePrice) {
                 newValue = this.minValuePrice;
@@ -495,10 +522,11 @@ export default {
         }
     },
     mounted() {
+        window.scroll(0, 0);
         this.minRangePrice = this.minInputPrice = this.minPrice = this.minValuePrice;
         this.maxRangePrice = this.maxInputPrice = this.maxPrice = this.maxValuePrice;
         this.getProducts();
-        this.fetchFilter();
+        // this.featchTags();
     },
     computed: {
         minViewPage() {

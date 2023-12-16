@@ -136,6 +136,9 @@ export default {
                 this.$emit('createQuestion');
             }
         }
+    },
+    mounted() {
+        window.scroll(0, 0);
     }
 }
 </script>

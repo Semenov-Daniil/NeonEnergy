@@ -28,7 +28,7 @@
                         </li>
                     </ul>
                 </div>
-                <a href="#" class="widget__link">
+                <a href="#" class="widget__link" @click.prevent="$router.push('/catalog')">
                     <span class="link__title text--caps">ЭНЕРГЕТИКИ</span>
                     <svg class="icon-arrow">
                         <use :xlink:href="imagesUrl + 'images/icons/arrow.svg#arrow'"></use>
@@ -48,7 +48,7 @@
                         </li>
                     </ul>
                 </div>
-                <a href="#" class="widget__link">
+                <a href="#" class="widget__link" @click.prevent="$router.push('/about')">
                     <span class="link__title text--caps">О нас</span>
                     <svg class="icon-arrow">
                         <use :xlink:href="imagesUrl + 'images/icons/arrow.svg#arrow'"></use>
@@ -56,13 +56,13 @@
                 </a>
             </div>
             <div class="widget__link__mobile">
-                <a href="#" class="widget__link widget__link__top">
+                <a href="#" class="widget__link widget__link__top" @click.prevent="$router.push('/catalog')">
                     <span class="link__title text--caps">ЭНЕРГЕТИКИ</span>
                     <svg class="icon-arrow">
                         <use :xlink:href="imagesUrl + 'images/icons/arrow.svg#arrow'"></use>
                     </svg>
                 </a>
-                <a href="#" class="widget__link widget__link__botton">
+                <a href="#" class="widget__link widget__link__botton" @click.prevent="$router.push('/about')">
                     <span class="link__title text--caps">О нас</span>
                     <svg class="icon-arrow">
                         <use :xlink:href="imagesUrl + 'images/icons/arrow.svg#arrow'"></use>

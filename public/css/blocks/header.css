@@ -84,15 +84,8 @@
     text-align: center;
 }
 
-[data-title]:hover::after {
-    content: attr(data-title);
-    position: absolute;
-
-    left: 50%;
-    -webkit-transform: translate(-50%);
-            transform: translate(-50%);
-    top: 170%;
-    z-index: 1;
+.nav__list__icon li a:hover svg {
+    fill: var(--main-color-green);
 }
 
 .mobile--menu {
@@ -130,4 +123,8 @@
 
 .icon-active {
     fill: #00FF01;
+}
+
+.active_page {
+    color: var(--main-color-green);
 }

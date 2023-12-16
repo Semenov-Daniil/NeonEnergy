@@ -4,27 +4,27 @@
             class="modal_content searh_modal"
             @click.stop
         >
-        <div class="searh_modal_content" :class="{'modal_focus': focusDialog}">
-            <input
-                class="search_input"
-                type="text"
-                placeholder="Поиск на сайте NeonEnergy..."
-                @focus="focusDialog = true"
-                @blur="focusDialog = false"
-                :value="search"
-                @input="$emit('update:search', ($event.target.value).trim())"
-            />
-            <button class="search_btn search_input_reset" v-show="search.length" @click="$emit('update:search', '')">
-                <svg class="icon icon-cross">
-                    <use :xlink:href="imagesUrl + 'images/icons/cross2.svg#cross'"></use>
-                </svg>
-            </button>
-            <a href="#" class="search_btn search_btn_icon">
-                <svg class="icon icon-search">
-                    <use :xlink:href="imagesUrl + 'images/icons/icons.svg#icon-search'"></use>
-                </svg>
-            </a>
-        </div>
+            <div class="searh_modal_content" :class="{'modal_focus': focusDialog}">
+                <input
+                    class="search_input"
+                    type="text"
+                    placeholder="Поиск на сайте NeonEnergy..."
+                    @focus="focusDialog = true"
+                    @blur="focusDialog = false"
+                    :value="search"
+                    @input="$emit('update:search', ($event.target.value).trim())"
+                />
+                <button class="search_btn search_input_reset" v-show="search.length" @click="$emit('update:search', '')">
+                    <svg class="icon icon-cross">
+                        <use :xlink:href="imagesUrl + 'images/icons/cross2.svg#cross'"></use>
+                    </svg>
+                </button>
+                <a href="#" class="search_btn search_btn_icon">
+                    <svg class="icon icon-search">
+                        <use :xlink:href="imagesUrl + 'images/icons/icons.svg#icon-search'"></use>
+                    </svg>
+                </a>
+            </div>
             <ul class="search_tips" v-if="searchData.length">
                 <li
                     class="search_tips_item"

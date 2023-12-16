@@ -27,7 +27,12 @@
             <div class="container--products">
                 <div class='container--products__header'>
                     <div class='products__header--left'>
-                        <a href="#" class="products--link" @click.prevent="$router.push('/catalog')">
+                        <a 
+                            href="#" 
+                            class="products--link" 
+                            @click.prevent="linkCatalogPopular"
+
+                        >
                             Популярные товары
                             <svg class="icon-arrow">
                                 <use xlink:href="images/icons/arrow.svg#arrow"></use>
@@ -99,7 +104,11 @@
             <div class="container--products cp--mirrored">
                 <div class='container--products__header'>
                     <div class='products__header--left'>
-                        <a href="#" class="products--link" @click.prevent="$router.push('/catalog')">
+                        <a 
+                            href="#" 
+                            class="products--link" 
+                            @click.prevent="linkCatalogNew"
+                        >
                             Новинки и акции
                             <svg class="icon-arrow">
                                 <use xlink:href="images/icons/arrow.svg#arrow"></use>
@@ -170,10 +179,8 @@
 
         <section class="section--answers">
             <div class="answers__title">
-                <h2>часто задаваемые</h2>
-                <h1>вопросы</h1>
+                <h2>часто задаваемые вопросы</h2>
             </div>
-
             <div class="answers__accordion">
                 <ul id="my-accordion" class="accordionjs">
                     <li class="accordion__wrapper accordion__line">
@@ -223,7 +230,11 @@ export default {
         },
         flashMessages: {
             type: Object
+        },
+        filters: {
+            type: Object
         }
+
     },
     data() {
         return {
@@ -240,6 +251,7 @@ export default {
                 console.log(err.message);
             }
         },
+
         async addBasket(event) {
             let productBasket = {};
             let addNewProduct = true;
@@ -270,10 +282,22 @@ export default {
             } catch(err) {
                 console.log(err.message);
             }
+        },
+
+        linkCatalogPopular() {
+            this.$router.push('/catalog');
+        },
+
+        linkCatalogNew() {
+            let filterAdd = this.filters;
+            filterAdd.other.forEach((el) => el.title == "Новинки" || el.title == "Акции" ? el.value = true : false);
+            this.$emit("update:filters", JSON.parse(JSON.stringify(filterAdd)));
+            this.$router.push('/catalog');
         }
     },
     mounted() {
-      this.getProducts();
+        this.getProducts();
+        window.scroll(0, 0);
     },
 }
 </script>

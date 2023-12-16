@@ -454,6 +454,10 @@ input[type="range"]:active::-moz-range-thumb {
     pointer-events: none;
 }
 
-.page_hidden {
-    
+.catalog_search .searh_modal_content {
+    width: 100%;
+}
+
+.section_catalog .search_tips {
+    margin-top: 20px;
 }

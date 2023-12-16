@@ -57,6 +57,10 @@
 }
 
 /* ПОИСК */
+.searh_modal {
+    position: relative;
+}
+
 .searh_modal_content {
     display: flex;
     align-items: center;
@@ -116,8 +120,12 @@
     fill: #818181;
 }
 
+.catalog_search {
+    position: relative;
+}
+
 .search_tips {
-    margin-top: 18px;
+    margin-top: 60px;
     padding: 0px 1.8rem;
     display: flex;
     flex-direction: column;
@@ -125,6 +133,9 @@
     gap: 5px;
     -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
+
+    z-index: 100;
+    position: absolute;
 }
 
 .search_tips_item {
@@ -459,4 +470,12 @@
 
 .navbar_nav_link {
     position: relative;
+}
+
+.wrapper_navbar .count-prod {
+    box-shadow: none;
+}
+
+.modal_filter {
+    width: fit-content;
 }

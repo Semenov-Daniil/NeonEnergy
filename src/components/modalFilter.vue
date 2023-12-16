@@ -1,7 +1,7 @@
 <template>
     <div class="modal_wrapper" v-show="wrapperModal" @click="$emit('update:modalFilter', false)">
         <transition name="slide-menu">
-            <div class="modal_menu_content" @click.stop v-show="modalFilter">
+            <div class="modal_menu_content modal_filter" @click.stop v-show="modalFilter">
                 <div class="filter_text">
                     Фильтры
                 </div>

@@ -10,9 +10,9 @@
                             </svg>
                         </a>
                     </li>
-                    <li class="navbar_nav_item" @click.prevent="$emit('update:warningDialog', true)">
-                        <a href="#">
-                            <svg class="icon icon-catalog">
+                    <li class="navbar_nav_item">
+                        <a href="#" @click="$router.push('/catalog')">
+                            <svg class="icon icon-catalog" :class="{'icon-active': (route.name == 'catalog')}">
                                 <use :xlink:href="imagesUrl + 'images/icons/icons.svg#icon-catalog'"></use>
                             </svg>
                         </a>

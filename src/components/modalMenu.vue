@@ -5,16 +5,13 @@
                 <nav class="modal_menu_nav">
                     <ul class="modal_menu_nav_list">
                         <li class="modal_menu_nav_item main_nav_item">
-                            <a href="#" class="link_modal_menu">ЭНЕРГЕТИКИ</a>
+                            <a href="#" class="link_modal_menu" :class="{'active_page': route.name == 'catalog'}" @click.prevent="$emit('update:modalMenu', false), ($router.push('/catalog'))">ЭНЕРГЕТИКИ</a>
                         </li>
                         <li class="modal_menu_nav_item main_nav_item">
-                            <a href="#" class="link_modal_menu">О НАС</a>
-                        </li>
-                        <li class="modal_menu_nav_item main_nav_item">
-                            <a href="#" class="link_modal_menu">КОНТАКТЫ</a>
+                            <a href="#" class="link_modal_menu" :class="{'active_page': route.name == 'about'}" @click.prevent="$emit('update:modalMenu', false), $router.push('/about')">О НАС</a>
                         </li>
                         <li class="modal_menu_nav_item ">
-                            <a href="#" class="link_modal_menu">
+                            <a href="#" class="link_modal_menu" @click.prevent="$emit('update:modalMenu', false), $emit('update:warningDialog', true)">
                                 <svg class="icon icon-user">
                                     <use :xlink:href="imagesUrl + 'images/icons/icons.svg#icon-user'"></use>
                                 </svg>
@@ -22,7 +19,7 @@
                             </a>
                         </li>
                         <li class="modal_menu_nav_item">
-                            <a href="#" class="link_modal_menu">
+                            <a href="#" class="link_modal_menu" @click.prevent="$emit('update:modalMenu', false), $emit('update:warningDialog', true)">
                                 <svg class="icon icon-favorites">
                                     <use :xlink:href="imagesUrl + 'images/icons/icons.svg#icon-favorites'"></use>
                                 </svg>
@@ -30,7 +27,7 @@
                             </a>
                         </li>
                         <li class="modal_menu_nav_item">
-                            <a href="#" class="link_modal_menu">
+                            <a href="#" class="link_modal_menu" @click.prevent="$emit('update:modalMenu', false), $emit('update:warningDialog', true)">
                                 <svg class="icon icon-favorites">
                                     <use :xlink:href="imagesUrl + 'images/icons/icons.svg#icon-orders'"></use>
                                 </svg>
@@ -38,7 +35,7 @@
                             </a>
                         </li>
                         <li class="modal_menu_nav_item">
-                            <a href="#" class="link_modal_menu">
+                            <a href="#" class="link_modal_menu" @click.prevent="$emit('update:modalMenu', false), $emit('update:basketDialog', true)">
                                 <svg class="icon icon-favorites">
                                     <use :xlink:href="imagesUrl + 'images/icons/icons.svg#icon-basket'"></use>
                                 </svg>
@@ -58,17 +55,29 @@
 </template>
 
 <script>
+import { useRouter, useRoute } from 'vue-router'
 export default {
     name: 'modal-menu',
     props: {
         modalMenu: {
             type: Boolean
-        }
+        },
+        basket: {
+            type: Array
+        },
+        basketDialog: {
+            type: Boolean
+        },
+        warningDialog: {
+            type: Boolean
+        },
     },
     data() {
         return {
             wrapperModal: false,
             imagesUrl: '../',
+            router: useRouter(),
+            route: useRoute()
         }
     },
     watch: {

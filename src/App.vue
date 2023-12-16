@@ -1,4 +1,5 @@
 <template>
+    <!-- header -->
     <my-header
         :basket="basket"
         v-model:searchDialog="searchDialog"
@@ -6,6 +7,7 @@
         v-model:warningDialog="warningDialog"
         v-model:modalMenu="modalMenuDialog"
     />
+    <!-- main -->
     <router-view
         v-model:basket="basket"
         v-model:flashMessages="flashMessages"
@@ -17,34 +19,47 @@
         @createQuestion="createQuestion"
         @createComment="createComment"
     ></router-view>
+    <!-- footer -->
     <my-footer/>
+    <!-- noscript -->
     <noscript>
         <strong>We're sorry but NeonEnergy doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
+
+    <!-- modal menu -->
+    <!-- modal search -->
     <modal-search
         v-model:search="search"
         v-model:searchDialog="searchDialog"
     />
+    <!-- modal basket -->
     <modal-basket
         v-model:basket="basket"
         v-model:basketDialog="basketDialog"
         v-model:messages="flashMessages"
         @deleteProduct="deleteProduct"
     />
+    <!-- modal warning page -->
     <modal-warning
         v-model:warningDialog="warningDialog"
     />
+    <!-- modal menu -->
     <modal-menu
         v-model:modalMenu="modalMenuDialog"
+        v-model:basketDialog="basketDialog"
+        v-model:warningDialog="warningDialog"
     />
+    <!-- modal fkexh message -->
     <flash-message-list
         v-model:flashMessages="flashMessages"
     />
+    <!-- mmodal navbar -->
     <modal-navbar
         v-model:basket="basket"
         v-model:basketDialog="basketDialog"
         v-model:warningDialog="warningDialog"
     />
+    <!-- modal filter -->
     <modal-filter
         v-if="route.name == 'catalog'"
         v-model:modalFilter="modalFilterDialog"
@@ -98,6 +113,7 @@ export default {
         }
     },
     methods: {
+        // open, close modal menu
         modalMenu(value) {
             let body = document.getElementsByTagName('body')[0];
             let header = document.querySelector('header');
@@ -129,14 +145,30 @@ export default {
                 body.style.top = "";
             }
         },
+
+        // close modal menu and filter menu
+        updateModalMenuDialog(e) {
+            if (window.innerWidth > 900) {
+                this.modalMenuDialog = false;
+            }
+
+            if (window.innerWidth > 768) {
+                this.modalFilterDialog = false
+            }
+        },
+
+        // update basket
         updateBasket(newBasket) {
             this.basket = newBasket;
             this.addFlashMessage('success', `Товар добавлен в корзину`);
         },
+        // delete product
         deleteProduct(newBasket) {
             this.basket = newBasket;
             this.addFlashMessage('error', `Товар удален из корзины`);
         },
+
+        // delete flash message
         removeFlash() {
             this.flashMessages = this.flashMessages.filter(
                 message =>
@@ -145,6 +177,7 @@ export default {
                     }
             );
         },
+        // add flash message
         addFlashMessage(type, message) {
             this.flashMessages.push(
                 {"type": type, "message": message, "id": (new Date().getTime())}
@@ -153,17 +186,40 @@ export default {
                 this.removeFlash();
             }, 5000)
         },
-        updateModalMenuDialog(e) {
-            if (window.innerWidth > 900) {
-                this.modalMenuDialog = false;
-            }
-        },
+
+        // create question flesh message
         createQuestion() {
             this.addFlashMessage('success', `Вопрос отправлен.`);
         },
+
+        // create comment flash message
         createComment() {
             this.addFlashMessage('success', `Комментарий создан.`);
-        }
+        },
+
+        // add filter
+        async fetchFilter() {
+            try {
+                let response = await fetch('./data/filterProducts.json');
+                let data = await response.json();
+                this.filters = data;
+                this.filters.grade = [
+                    {"id": 1, "title": "от 5★", "value": true},
+                    {"id": 2, "title": "от 4★", "value": false},
+                    {"id": 3, "title": "от 3★", "value": false}
+                ];
+                this.filters.other = [
+                    {"id": 1, "title": "Новинки", "value": false},
+                    {"id": 2, "title": "Акции", "value": false}
+                ];
+                this.filters.price = [
+                    {"id": 'min_price', "title": "от " + this.minPrice, "value": false},
+                    {"id": 'max_price', "title": "до " + this.maxPrice, "value": false}
+                ];
+            } catch(err) {
+                console.log(err.message);
+            }
+        },
     },
     watch: {
         basketDialog(value) {
@@ -188,6 +244,9 @@ export default {
     destroyed() {
         window.removeEventListener("resize", this.updateModalMenuDialog);
     },
+    mounted() {
+        this.fetchFilter();
+    }
 }
 </script>
 

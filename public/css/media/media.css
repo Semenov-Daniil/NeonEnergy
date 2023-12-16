@@ -306,6 +306,26 @@
         width: 100%;
         height: 2px;
     }
+
+    .section--products {
+        gap: 100px;
+    }
+
+    .basket_modal_content {
+        width: 80vw;
+        padding: 10px 20px;
+        gap: 0;
+    }
+
+    .warning_modal {
+        width: 80vw;
+        padding: 10px 20px;
+        gap: 0;
+    }
+
+    .product-desc__accordion {
+        width: 100%;
+    }
 }
 
 @media only screen and (max-width: 480px) {
@@ -384,5 +404,17 @@
 
     .basket_modal_content {
         width: 80vw;
+    }
+
+    .section--products {
+        gap: 80px;
+    }
+
+    .card-product {
+        height: 250px;
+    }
+
+    .card-product__img-product {
+        height: 150px;
     }
 }

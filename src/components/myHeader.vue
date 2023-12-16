@@ -3,9 +3,8 @@
         <nav class="nav">
             <div class="nav__left">
                 <ul class="nav__list text--caps">
-                    <li class=""><a href="#" @click.prevent="$router.push('/catalog')">Энергетики</a></li>
-                    <li class=""><a href="#" @click.prevent="$router.push('/about')">О нас</a></li>
-                    <li class=""><a href="#" @click.prevent="$emit('update:warningDialog', true)">Контакты</a></li>
+                    <li><a href="#" :class="{'active_page': route.name == 'catalog'}" @click.prevent="$router.push('/catalog')">Энергетики</a></li>
+                    <li><a href="#" :class="{'active_page': route.name == 'about'}" @click.prevent="$router.push('/about')">О нас</a></li>
                 </ul>
 
                 <div class="mobile--menu" @click="$emit('update:modalMenu', true)">
@@ -66,6 +65,7 @@
 </template>
 
 <script>
+import { useRouter, useRoute } from 'vue-router'
 export default {
     name: 'my-header',
     props: {
@@ -96,7 +96,9 @@ export default {
     },
     data() {
         return {
-            imagesUrl: '../'
+            imagesUrl: '../',
+            router: useRouter(),
+            route: useRoute()
         }
     }
 }
