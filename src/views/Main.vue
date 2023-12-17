@@ -15,7 +15,7 @@
             </div>
             <div class="content--right">
                 <div class="fly--energy">
-                    <img src="images/energy_drink/Jaguar_Live.png" alt="энергетик Jaguar Live">
+                    <img :src="'images/energy_drink/' + titleUrl" alt="Энергетик">
                 </div>
                 <div class="oval--backlight">
                     <img src="images/OvalBacklight.png" alt="">
@@ -240,13 +240,26 @@ export default {
         return {
             products: {},
             modules: [Pagination, Navigation],
+            titleUrl: ''
         }
     },
     methods: {
         async getProducts() {
             try {
                 let response = await fetch('./data/products.json');
-                this.products = await response.json();
+                let data = await response.json();
+                this.products = data;
+
+                let titleImageUrlArr = data.titleProducts;
+
+                let localTitleImgUrl = sessionStorage.getItem("titleImgUrl");
+                if (!localTitleImgUrl) {
+                    sessionStorage.setItem("titleImgUrl", Math.floor(Math.random() * titleImageUrlArr.length));
+                    localTitleImgUrl = sessionStorage.getItem("titleImgUrl");
+                    this.titleUrl = titleImageUrlArr[localTitleImgUrl].img_title;
+                } else {
+                    this.titleUrl = titleImageUrlArr[localTitleImgUrl].img_title;
+                }
             } catch(err) {
                 console.log(err.message);
             }

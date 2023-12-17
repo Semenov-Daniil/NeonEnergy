@@ -38,6 +38,7 @@
         v-model:basketDialog="basketDialog"
         v-model:messages="flashMessages"
         @deleteProduct="deleteProduct"
+        v-model:warningDialog="warningDialog"
     />
     <!-- modal warning page -->
     <modal-warning
@@ -49,7 +50,7 @@
         v-model:basketDialog="basketDialog"
         v-model:warningDialog="warningDialog"
     />
-    <!-- modal fkexh message -->
+    <!-- modal flesh message -->
     <flash-message-list
         v-model:flashMessages="flashMessages"
     />
@@ -109,7 +110,10 @@ export default {
             modalFilterDialog: false,
 
             filters: {},
-            tags: []
+            tags: [],
+
+            timerLoader: 0,
+            loader: true,
         }
     },
     methods: {
@@ -240,12 +244,28 @@ export default {
     },
     created() {
         window.addEventListener("resize", this.updateModalMenuDialog);
+
+        this.$watch(
+            () => this.$route.params,
+            () => {
+                this.loader = true;
+                clearTimeout(this.timerLoader);
+                this.timerLoader = setTimeout(() => {
+                    this.loader = false;
+                }, 2000)
+            },
+            { immediate: true }
+        )
     },
     destroyed() {
         window.removeEventListener("resize", this.updateModalMenuDialog);
     },
     mounted() {
         this.fetchFilter();
+        let firstTime = localStorage.getItem("first_time");
+        if(!firstTime) {
+            localStorage.setItem("first_time","1");
+        }
     }
 }
 </script>

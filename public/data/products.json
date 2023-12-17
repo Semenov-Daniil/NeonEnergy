@@ -77,8 +77,13 @@
         {"id": 12, "img_title": "drive_title.png", "img2": "drive2.png", "img3": "drive3.png", "img4": "drive4.png", "title": "Drive Me",  "volume": "0,5л",  "quantity": 1, "rating": 4,  "favorites": false,  "price": 54, "speсial": {"id": 0}},
         {"id": 13, "img_title": "drive_title.png", "img2": "drive2.png", "img3": "drive3.png", "img4": "drive4.png", "title": "Drive Me",  "volume": "0,5л",  "quantity": 1, "rating": 4,  "favorites": false,  "price": 54, "speсial": {"id": 2}},
         {"id": 14, "img_title": "drive_title.png", "img2": "drive2.png", "img3": "drive3.png", "img4": "drive4.png", "title": "Drive Me",  "volume": "0,5л",  "quantity": 1, "rating": 4,  "favorites": false,  "price": 54, "speсial": {"id": 2}},
-        {"id": 15, "img_title": "adrenaline_rush.png", "img2": "adr2.png", "img3": "adr3.png", "img4": "adr4.png", "title": "Adrenaline Rush ",  "volume": "0,5л",  "quantity": 1, "rating": 4,  "favorites": false,  "price": 54, "speсial": {"id": 2}},
+        {"id": 15, "img_title": "adrenaline_rush.png", "img2": "adr2.png", "img3": "adr3.png", "img4": "adr4.png", "title": "Adrenaline Rush",  "volume": "0,5л",  "quantity": 1, "rating": 4,  "favorites": false,  "price": 54, "speсial": {"id": 2}},
         {"id": 16, "img_title": "adrenaline_rush.png", "img2": "adr2.png", "img3": "adr3.png", "img4": "adr4.png", "title": "Adrenaline Rush",  "volume": "0,5л",  "quantity": 1, "rating": 4,  "favorites": false,  "price": 54, "speсial": {"id": 2}}
+    ],
+    "titleProducts": [
+        {"img_title": "Jaguar_Live.png"},
+        {"img_title": "drive_title.png"},
+        {"img_title": "adrenaline_rush.png"}
     ]
 
 }

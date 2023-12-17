@@ -5,6 +5,13 @@
 * Browsers: >0.3%,defaults
 */
 
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: >0.3%,defaults
+*/
+
 @font-face {
     font-family: 'OpenSans-SemiBold';
     src: url(../../fonts/OpenSans-SemiBold.ttf);
@@ -42,6 +49,7 @@
 
 :root {
     --main-color-green: #00FF01;
+    --color-system: #050505;
 }
 
 * {
@@ -58,7 +66,7 @@ html {
 }
 
 body{
-    background-color: #050505;
+    background-color: var(--color-system);
     display:flex;
     flex-direction: column;
     min-height: 100vh;

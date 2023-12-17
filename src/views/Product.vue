@@ -267,7 +267,7 @@
                     <button @click="showComment = true" v-show="!showComment && comments.length > 5" class="btn_show_comment">Показать еще...</button>
                 </div>
                 <div v-else class="not_comment">
-                    Отзывов нету
+                    Отзывов нет
                 </div>
                 <div class="grade_wrapper">
                     <div class="grade_container">

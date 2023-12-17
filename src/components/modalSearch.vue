@@ -60,7 +60,7 @@ export default {
     methods: {
         async getTitleProducts() {
             try {
-                let response = await fetch('./data/titleProducts.json');
+                let response = await fetch(this.imagesUrl + 'data/titleProducts.json');
                 let data = await response.json();
                 let reg = new RegExp(this.search,"i");
                 for (let title of data.title) {

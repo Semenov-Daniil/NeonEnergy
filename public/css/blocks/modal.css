@@ -126,7 +126,7 @@
 
 .search_tips {
     margin-top: 60px;
-    padding: 0px 1.8rem;
+    padding: 0px 18px;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -136,6 +136,8 @@
 
     z-index: 100;
     position: absolute;
+
+    border-radius: 5px;
 }
 
 .search_tips_item {
@@ -477,5 +479,7 @@
 }
 
 .modal_filter {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
 }

@@ -25,7 +25,7 @@
                 <div class="sum_products text--caps">
                     СУММА: <span class="sum_products_price">{{ sumProducts.toLocaleString("ru-RU") }}</span> ₽
                 </div>
-                <a href="#" class="btn_place_order">Оформить заказ</a>
+                <a href="#" class="btn_place_order" @click.prevent="$emit('update:basketDialog', false), $emit('update:warningDialog', true)">Оформить заказ</a>
             </footer>
         </div>
     </div>
@@ -39,6 +39,9 @@ export default {
             type: Array
         },
         basketDialog: {
+            type: Boolean
+        },
+        warningDialog: {
             type: Boolean
         }
     },

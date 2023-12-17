@@ -65,7 +65,7 @@ export default {
     methods: {
         navigateToProduct(title, id) {
             sessionStorage.setItem('productId', id)
-            this.$router.push(`product/${title}`)
+            this.$router.push({name: 'product', params: {title: title}})
         }
     },
     data() {
