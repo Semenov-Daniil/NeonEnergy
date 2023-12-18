@@ -84,10 +84,6 @@
     text-align: center;
 }
 
-.nav__list__icon li a:hover svg {
-    fill: var(--main-color-green);
-}
-
 .mobile--menu {
     display: none;
     cursor: pointer;

@@ -34,19 +34,3 @@
     cursor: pointer;
     border: 1px solid transparent;
 }
-
-.flash_message_item:hover {
-    background-color: transparent;
-    -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-}
-
-.success:hover {
-    border-color: #00FF01;
-    color: #00FF01;
-}
-
-.error:hover {
-    border-color: #FF0000;
-    color: #FF0000;
-}

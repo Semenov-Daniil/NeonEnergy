@@ -46,7 +46,7 @@
                     <div class="filters_container">
                         <div class="checkbox_wrapper" v-for="filter in filters.other" :key="filter.id">
                             <input type="checkbox" :id="'other' + filter.id" :checked="filter.value" @change="updateTags(filter, $event.target.checked)">
-                            <label :for="'other' + filter.id">{{ filter.title }}  {{ filter.value }}</label>
+                            <label :for="'other' + filter.id">{{ filter.title }}</label>
                         </div>
                         <div class="filter_wrapper">
                             <div class="title_filter">
@@ -201,8 +201,8 @@
                             <div class="start_page" @click="page = 1" :class="{'opacity_page': page == 1}"></div>
                             <div class="prev_page" @click="page > 1 ? page-- : false" :class="{'opacity_page': page == 1}"></div>
                             <div>{{ minViewPage > 1 ? '...' : '' }}</div>
-                            <div 
-                                v-for="pageNumber in pageList" 
+                            <div
+                                v-for="pageNumber in pageList"
                                 :key="pageNumber"
                                 class="page"
                                 :class="{
@@ -260,7 +260,7 @@ export default {
             maxRangePrice: 10000,
 
             products: [],
-            
+
             totalPage: 10,
             page: 1,
             limit: 10,

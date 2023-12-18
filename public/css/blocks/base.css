@@ -179,11 +179,7 @@ use {
     cursor: pointer;
 }
 
-.btn:hover {
-    border-color: var(--main-color-green);
-    background-color: transparent;
-    color: var(--main-color-green);
-}
+
 
 /* ::-webkit-scrollbar {
     width: 0;

@@ -1,0 +1,12 @@
+@import url(./normalize.css);
+@import url(./base.css);
+@import url(./header.css);
+@import url(./footer.css);
+@import url(./section.css);
+@import url(./modal.css);
+@import url(./flesh-messages.css);
+@import url(./notFound.css);
+@import url(./product_page.css);
+@import url(./about_page.css);
+@import url(./catalog_page.css);
+@import url(./loader.css);

@@ -1,16 +1,2 @@
-@import url(blocks/normalize.css);
-@import url(blocks/base.css);
-@import url(blocks/header.css);
-@import url(blocks/body.css);
-@import url(blocks/footer.css);
-@import url(blocks/main.css);
-@import url(blocks/section.css);
-@import url(blocks/modal.css);
-@import url(blocks/flesh-messages.css);
-@import url(blocks/notFound.css);
-@import url(blocks/product_page.css);
-@import url(blocks/about_page.css);
-@import url(blocks/catalog_page.css);
-@import url(blocks/loader.css);
-
-@import url(media/media.css);
+@import url(./blocks/main.css);
+@import url(./media.css);

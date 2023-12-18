@@ -52,10 +52,6 @@
     fill: #000;
 }
 
-.close_modal_btn:hover svg {
-    fill: #818181;
-}
-
 /* ПОИСК */
 .searh_modal {
     position: relative;
@@ -71,9 +67,7 @@
     background-color: #fff;
 }
 
-.searh_modal_content:hover {
-    border-color: #00FF01;
-}
+
 
 .modal_focus {
     box-shadow: 0px 0px 10px 0px #7eff7e;
@@ -107,17 +101,9 @@
     border-radius: 0 25px 25px 0;
 }
 
-.search_btn_icon:hover svg {
-    fill: #00FF01;
-}
-
 .searh_modal_content .icon-cross {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg);
-}
-
-.search_input_reset:hover svg {
-    fill: #818181;
 }
 
 .catalog_search {
@@ -145,11 +131,6 @@
     font-size: 1.3rem;
     background-color: #fff;
     cursor: pointer;
-}
-
-.search_tips_item:hover {
-    background-color: #c1c1c1;
-    transition: 0.5s;
 }
 
 .search_tips_item_title {
@@ -321,13 +302,6 @@
     border: 1.8px solid transparent;
 }
 
-.btn_place_order:hover {
-    border-color: #00FF01;
-    background-color: rgba(0, 0, 0, 0.2);
-    color: #00FF01;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-}
-
 .not_products {
     font-family: 'OpenSans-Regular', sans-serif;
     font-size: 2rem;
@@ -381,14 +355,14 @@
     position: relative;
     height: 100vh;
     width: 60%;
-    background-color: rgba(0, 0, 0, 0.70); 
-    -webkit-backdrop-filter: blur(25px); 
-            backdrop-filter: blur(25px); 
+    background-color: rgba(0, 0, 0, 0.70);
+    -webkit-backdrop-filter: blur(25px);
+            backdrop-filter: blur(25px);
     left: 0;
     top: 0;
     align-self: flex-start;
-    border-right: 2.5px solid #00FF01; 
-    padding: 80px 40px;    
+    border-right: 2.5px solid #00FF01;
+    padding: 80px 40px;
 
     overflow: auto;
 
@@ -421,17 +395,12 @@
 .close_modal_menu {
     position: absolute;
     right: 20px;
-    top: 20px;    
+    top: 20px;
 }
 
 .close_modal_menu svg {
     fill: #00FF01;
 }
-
-.close_modal_menu:hover svg {
-    fill: #7eff7e;
-}
-
 
 /* modal navbar */
 .wrapper_navbar {
@@ -451,7 +420,7 @@
     -webkit-backdrop-filter: blur(25px);
             backdrop-filter: blur(25px);
     border: 1px solid #00FF01;
-    border-radius: 25px; 
+    border-radius: 25px;
     margin: auto;
     padding: 10px 20px;
     display: flex;

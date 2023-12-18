@@ -173,21 +173,6 @@
     align-items: center;
 }
 
-.page-product__btn-basket:hover {
-    background-color: transparent;
-    border: 1px solid var(--main-color-green);
-    color: var(--main-color-green);
-    padding-left: 0.8rem;
-    transition: .5s;
-}
-
-.page-product__btn-basket:hover::before {
-    border-color: var(--main-color-green);
-    left: 80%;
-    transition: .5s;
-    color: var(--main-color-green);
-}
-
 .product-page__count-product {
     color: #ffffff;
     font-size: 1.8rem;
@@ -531,9 +516,7 @@ textarea:invalid {
     bottom: 11px;
 }
 
-.input_wrapper:hover label {
-    color: #ffffff;
-}
+
 
 .input_wrapper input:not(:-moz-placeholder-shown)~label {
     color: var(--main-color-green);
@@ -622,18 +605,3 @@ input[type="radio"] {
 .rating_star > input:checked ~ label svg{
     fill: var(--main-color-green);
 }
-
-.rating_star:not(:checked) > label:hover svg,
-.rating_star:not(:checked) > label:hover ~ label svg{
-    fill: var(--main-color-green);
-}
-
-.rating_star > input:checked + label:hover svg,
-.rating_star > input:checked + label:hover ~ label svg,
-.rating_star > input:checked ~ label:hover svg,
-.rating_star > input:checked ~ label:hover ~ label svg,
-.rating_star > label:hover ~ input:checked ~ label svg {
-	fill: var(--main-color-green);
-}
-
-
