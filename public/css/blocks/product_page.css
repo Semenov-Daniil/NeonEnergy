@@ -516,8 +516,6 @@ textarea:invalid {
     bottom: 11px;
 }
 
-
-
 .input_wrapper input:not(:-moz-placeholder-shown)~label {
     color: var(--main-color-green);
     font-size: 1.2rem;
