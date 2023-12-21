@@ -16,7 +16,7 @@
 
             <div class="nav__right">
                 <a class="nav__logo conteiner--image" href="#" @click.prevent="$router.push('/')">
-                    <img :src="imagesUrl + 'images/logo.png'" alt="логотип Neon~Energy">
+                    <img :src="imagesUrl + 'images/site/logo.png'" alt="логотип Neon~Energy">
                 </a>
 
                 <ul class="nav__list__icon">

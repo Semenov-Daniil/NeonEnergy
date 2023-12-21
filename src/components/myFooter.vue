@@ -2,7 +2,7 @@
     <footer class="footer">
         <div class="footer__logo--left">
             <a class="footer__logo " href="#" @click.prevent="$router.push('/')">
-                <img :src="imagesUrl + 'images/logo-mini.png'" alt="Neon~Energy">
+                <img :src="imagesUrl + 'images/site/logo-mini.png'" alt="Neon~Energy">
             </a>
             <span class="title--company">by JAVALETS</span>
         </div>
@@ -73,7 +73,7 @@
 
         <div class="footer__logo--right">
             <a class="footer__logo" href="#" @click.prevent="$router.push('/')">
-                <img :src="imagesUrl + 'images/logo.png'" alt="Neon~Energy">
+                <img :src="imagesUrl + 'images/site/logo.png'" alt="Neon~Energy">
             </a>
             <span class="title--shops">&copy; 2023 NeonEnergy</span>
         </div>

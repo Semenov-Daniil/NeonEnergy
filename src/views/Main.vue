@@ -2,7 +2,7 @@
     <main class="main main__index">
         <section class="section__opening">
             <div class="content--left">
-                <img src="images/logo.png" alt="логотип Neon~Energy">
+                <img src="images/site/logo.png" alt="логотип Neon~Energy">
             </div>
             <div class="content--bottom">
                 <h1 class="slogan text--caps">ТВОЙ ПОСТАВЩИК ЭНЕРГИИ</h1>
@@ -27,9 +27,9 @@
             <div class="container--products">
                 <div class='container--products__header'>
                     <div class='products__header--left'>
-                        <a 
-                            href="#" 
-                            class="products--link" 
+                        <a
+                            href="#"
+                            class="products--link"
                             @click.prevent="linkCatalogPopular"
 
                         >
@@ -104,9 +104,9 @@
             <div class="container--products cp--mirrored">
                 <div class='container--products__header'>
                     <div class='products__header--left'>
-                        <a 
-                            href="#" 
-                            class="products--link" 
+                        <a
+                            href="#"
+                            class="products--link"
                             @click.prevent="linkCatalogNew"
                         >
                             Новинки и акции
